@@ -1,8 +1,8 @@
 SELECT
   id,
   name,
-  (data->>'nyplUrl')::text,
-  (data->>'nyplDigitalId')::text,
+  (data->>'nyplUrl')::text AS url,
+  (data->>'nyplDigitalId')::text AS digital_id,
   date_part('year', lower(validsince)) AS validsince,
   date_part('year', upper(validuntil)) AS validuntil,
   (
