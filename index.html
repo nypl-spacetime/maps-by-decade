@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New York City Maps by Decade</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/fonts.css" />
+
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+
+  <!--
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.js"></script>
+  -->
+
+  <script src="js/L.Map.Sync.js"></script>
+
+  <script src="http://mourner.github.io/rbush/rbush.js"></script>
+  <script src="//api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.0/turf.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    body, .map {
+    /*.leaflet-bar a, .leaflet-bar a:hover */
+      background-color: #AED8E6;
+    }
+
+    article#all-maps-container {
+      width: 900px;
+      margin: 0 auto;
+    }
+
+    article#single-mini-map {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: red;
+      display: flex;
+      flex-direction: row;
+    }
+
+    article#single-mini-map #single-map,
+    article#single-mini-map #sidebar {
+      height: 100%;
+      width: 50%;
+    }
+
+    #maps {
+      list-style-type: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 0;
+      padding: 0;
+    }
+
+		.map-container {
+			top: 0;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+		}
+
+    .map {
+			width: 100%;
+			height: 100%;
+
+      border-color: rgb(196, 224, 232);
+      border-style: solid;
+      border-width: 1.5px;
+			box-sizing: border-box;
+
+      /*border-radius: 8px;*/
+      cursor: pointer;
+    }
+
+    .map:hover {
+      border-color: #39484c;
+    }
+
+    .map .leaflet-control-zoom {
+      display: none;
+    }
+
+    .map:hover .leaflet-control-zoom {
+      display: block;
+    }
+
+    #maps li {
+      /*padding: 8px;*/
+    }
+
+    .mini-map {
+      position: relative;
+      box-sizing: border-box;
+			padding: 5px;
+			width: 33.333%;
+    }
+
+		.mini-map:before {
+			content: '';
+			padding: 50% 0;
+			display: inline-block;
+		}
+
+		.mini-map .map-message {
+			text-align: center;
+			left: 50%;
+			position: absolute;
+			bottom: 8px;
+			width: 100%;
+		}
+
+		.mini-map .map-message span {
+			opacity: 0;
+			position: relative;
+			left: -50%;
+			display: inline-block;
+      pointer-events: none;
+			padding: 5px 8px;
+			border-radius: 15px;
+			background-color: rgba(255, 255, 255, 0.7);
+			transition: opacity 0.25s;
+		}
+
+		.mini-map .map-message span.visible {
+			opacity: 1;
+		}
+
+    .mini-map h2 {
+      width: 100%;
+      top: 5px;
+      text-shadow: 0 0 4px rgb(196, 224, 232);
+      text-align: center;
+      margin: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    #images {
+      position: fixed;
+      top: 0;
+      left: 950px;
+      width: 600px;
+      height: 600px;
+    }
+  </style>
+</head>
+<body>
+  <article id='all-maps-container'>
+    <h1>New York City Maps by Decade</h1>
+    <p>All large-scale <a href='http://maps.nypl.org/'>NYPL Map Warper</a> maps between 1830 and 1950, grouped by band. Click on a map for more details.</p>
+    <ol id="maps">
+    </ol>
+  </article>
+  <article id='single-mini-map' class='hidden'>
+    <div id='single-map'>
+    </div>
+    <div id='sidebar'>
+    </div>
+  </article>
+</body>
+<script>
+  const center = [40.702504, -74.008712]
+  const zoom = 10
+
+  // var tileUrl = 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png'
+  var tileUrl = 'https://api.mapbox.com/styles/v1/bertspaan/cio0gk14s000hainh1ghuhmyu/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmVydHNwYWFuIiwiYSI6ImR3dERiQk0ifQ.DLbScmbRohc3Sqv7prfhqw'
+
+  var outlineStyle = {
+    color: '#39484c',
+    weight: 1.5,
+    opacity: 0.7,
+    fillOpacity: 0
+  }
+
+  var mapStyle = {
+    color: '#39484c',
+    fillColor: 'white',
+    weight: 3,
+    opacity: 1,
+    fillOpacity: 0.2
+  }
+
+  var outlines = {}
+  var maps = {}
+  var trees = {}
+  var leafletMaps = {}
+
+  var singleMap = L.map(`single-map`, {
+    minZoom: 10,
+    maxZoom: 16
+  }).setView(center, zoom)
+
+  L.tileLayer(tileUrl, {
+    opacity: 0.3
+  }).addTo(singleMap)
+
+  var singleMapOutline = L.geoJson(null, {
+    style: outlineStyle
+  }).addTo(singleMap)
+
+  var singleMapMap = L.geoJson(null, {
+    style: mapStyle
+  }).addTo(singleMap)
+
+  d3.json('data/all.geojson', function(err, geojson) {
+    geojson.features.forEach(function(feature) {
+      var band = feature.properties.band
+      if (!maps[band]) {
+        maps[band] = []
+      }
+
+      maps[band].push(feature)
+    })
+
+    Object.keys(maps).forEach(function(band) {
+      var mapsForBand = maps[band]
+      var tree = rbush(mapsForBand.length)
+      trees[band] = tree
+
+      tree.load(
+        mapsForBand.map(function(map, i) {
+          var boundingbox = map.properties.boundingbox.slice()
+          boundingbox.index = i
+          return boundingbox
+        })
+      )
+    })
+  })
+
+  d3.json('data/grouped.geojson', function(err, geojson) {
+    var map = d3.select('#maps').selectAll('li').data(geojson.features)
+        .enter()
+      .append('li')
+        .attr('class', 'mini-map')
+				.attr('id', function (d, i) {
+          return 'mini-map' + i
+        })
+
+    map.append('div')
+		  	.attr('class', 'map-container')
+			.append('div')
+        .attr('class', 'map')
+        .attr('id', function (d, i) {
+          return 'map' + i
+        })
+        .each(function (d, i) {
+          var band = d.properties.band
+
+          outlines[band] = d
+
+          var map = L.map('map' + i, {
+            zoomControl: false,
+            minZoom: zoom,
+            maxZoom: zoom,
+            attributionControl: false,
+            scrollWheelZoom: false
+          }).setView(center, zoom)
+
+          leafletMaps[band] = map
+
+          L.tileLayer(tileUrl, {
+            opacity: 0.3
+          }).addTo(map)
+
+          L.geoJson(d, {
+            style: outlineStyle
+          }).addTo(map)
+
+          var mapLayer = L.geoJson(null, {
+            style: mapStyle
+          }).addTo(map)
+
+          mapLayer.on('dblclick', function(e) {
+            map._fireDOMEvent(map, e.originalEvent, 'dblclick')
+          })
+
+          mapLayer.on('click', function(e) {
+            map._fireDOMEvent(map, e.originalEvent, 'click')
+          })
+
+          map.on('click', function(e) {
+
+            d3.select('#all-maps-container').classed('hidden', true)
+            d3.select('#single-mini-map').classed('hidden', false)
+
+            singleMapOutline.clearLayers()
+            singleMapOutline.addData(outlines[band])
+          })
+
+          map.on('mousemove', function(e) {
+            if (!trees[band]) {
+              return
+            }
+
+            var results = trees[band].search([
+              e.latlng.lng,
+              e.latlng.lat,
+              e.latlng.lng,
+              e.latlng.lat
+            ])
+
+            mapLayer.clearLayers()
+
+						var mapMessage = d3.select('#mini-map' + i + ' .map-message span')
+
+						mapMessage
+							.classed('visible', false)
+
+            var hoveredMaps = []
+            if (results.length) {
+              var mapsForBand = maps[band]
+
+              hoveredMaps = results.map(function (result) {
+                return mapsForBand[result.index]
+              })
+              .filter(function(feature) {
+                const point = {
+                  type: 'Feature',
+                  geometry: {
+                    type: 'Point',
+                    coordinates: [
+                      e.latlng.lng,
+                      e.latlng.lat
+                    ]
+                  }
+                }
+                return turf.inside(point, feature)
+              })
+
+              if (hoveredMaps.length) {
+                mapLayer.addData(hoveredMaps)
+
+								mapMessage
+									.text(function (d) {
+										var m = hoveredMaps.length === 1 ? 'map' : 'maps'
+						  			return hoveredMaps.length + ' ' + m + ' found'
+									})
+									.classed('visible', true)
+              }
+            }
+
+            var images = d3.select('#images').selectAll('div')
+                .data(hoveredMaps, function(d) {
+                  return d.properties.id
+                })
+
+            var image = images.enter().append('div')
+
+            image.append('img')
+                .attr('src', function(d) {
+                  return 'http://images.nypl.org/index.php?id=' + d.properties.nyplDigitalId + '&t=w'
+                })
+
+
+
+            // .html(function(d) {
+            //   return d.properties.name
+            // })
+
+            images.exit().remove()
+          })
+        })
+
+		map.append('div')
+				.attr('class', 'map-message')
+			.append('span')
+
+    map.append('h2').text(function (d, i) {
+      var band = d.properties.band
+      return band + ' - ' + (band + 9)
+    })
+
+    Object.keys(leafletMaps).forEach(function(bandA) {
+      Object.keys(leafletMaps).forEach(function(bandB) {
+        if (bandA !== bandB) {
+          leafletMaps[bandA].sync(leafletMaps[bandB])
+        }
+      })
+    })
+  })
+</script>
+</html>
