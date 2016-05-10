@@ -33,7 +33,7 @@
 
     body, .map {
     /*.leaflet-bar a, .leaflet-bar a:hover */
-      background-color: #AED8E6;
+      background-color: #aed8e6;
     }
 
     article#all-maps-container {
@@ -162,6 +162,15 @@
       width: 600px;
       height: 600px;
     }
+
+		#map-list {
+			list-style-type: none;
+			margin: 0;
+		}
+
+		#map-list img {
+			width: 100%;
+		}
   </style>
 </head>
 <body>
@@ -272,7 +281,20 @@
 		}
 	}
 
+	var singleMapDisableHover = false
+
+	singleMapMap.on('click', function(e) {
+		singleMap._fireDOMEvent (e, 'click', singleMap)
+
+		// singleMap._fireDOMEvent(singleMap, e.originalEvent, 'click')
+		singleMapDisableHover = true
+	})
+
 	singleMap.on('mousemove', function(e) {
+		if (singleMapDisableHover) {
+			return
+		}
+
 		chips(singleMap, singleMapMap, singleMapBand, e.latlng, function(hoveredMaps) {
 			var mapList = d3.select('#map-list').selectAll('li')
 					.data(hoveredMaps, function(d) {
