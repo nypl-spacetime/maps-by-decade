@@ -25,6 +25,7 @@
     body {
       margin: 0;
       padding: 0;
+			line-height: 1.5em;
     }
 
     .hidden {
@@ -36,12 +37,12 @@
       background-color: #aed8e6;
     }
 
-    article#all-maps-container {
+    article#all-maps-view {
       width: 900px;
       margin: 0 auto;
     }
 
-    article#single-map-container {
+    article#single-map-view {
       position: absolute;
       left: 0;
       right: 0;
@@ -51,18 +52,24 @@
       flex-direction: row;
     }
 
-		article#single-map-container,
+		article#single-map-view,
 		#single-map {
 			background-color: #ffd72e;
 		}
 
-    article#single-map-container #single-map,
-    article#single-map-container #sidebar {
+    article#single-map-view #single-map-container,
+    article#single-map-view #sidebar {
+			position: relative;
       height: 100%;
       width: 50%;
     }
 
-		article#single-map-container #sidebar {
+		#single-map {
+			width: 100%;
+			height: 100%;
+		}
+
+		article#single-map-view #sidebar {
 			overflow-y: auto;
 		}
 
@@ -111,8 +118,8 @@
     .mini-map {
       position: relative;
       box-sizing: border-box;
-			padding: 5px;
-			width: 33.333%;
+			width: calc(33.333% - 8px);
+			margin-bottom: 12px;
     }
 
 		.mini-map:before {
@@ -145,7 +152,9 @@
 			opacity: 1;
 		}
 
-    .mini-map h2 {
+    .mini-map h2,
+		#single-map-container h2,
+		#single-map-container span {
       width: 100%;
       top: 5px;
       text-shadow: 0 0 4px rgb(196, 224, 232);
@@ -154,6 +163,11 @@
       position: absolute;
       pointer-events: none;
     }
+
+		#single-map-container span {
+			top: 35px;
+			pointer-events: auto;
+		}
 
     #images {
       position: fixed;
@@ -166,6 +180,12 @@
 		#map-list {
 			list-style-type: none;
 			margin: 0;
+			padding: 0;
+			max-width: 600px;
+		}
+
+		#map-list li {
+			padding: 10px;
 		}
 
 		#map-list img {
@@ -174,14 +194,22 @@
   </style>
 </head>
 <body>
-  <article id='all-maps-container'>
+  <article id='all-maps-view'>
     <h1>New York City Maps by Decade</h1>
-    <p>All large-scale <a href='http://maps.nypl.org/'>NYPL Map Warper</a> maps between 1830 and 1950, grouped by band. Click on a map for more details.</p>
+    <p>All New York City maps between 1830 and 1950, grouped by decade. Click on a map for more details.</p>
     <ol id="maps">
     </ol>
+		<p>
+			Note: only <a href="https://en.wikipedia.org/wiki/Scale_(map)#Large_scale.2C_medium_scale.2C_small_scale">large-scale</a> maps are shown in this visualization (e.g. maps depicting an area smaller than 1.5 km²). You can find more maps on <a href='http://maps.nypl.org/'>Map Warper</a> and <a href="http://digitalcollections.nypl.org/">Digital Collections</a>.
+		</p>
+
   </article>
-  <article id='single-map-container' class='hidden'>
-    <div id='single-map'>
+  <article id='single-map-view' class='hidden'>
+    <div id='single-map-container'>
+			<div id='single-map'>
+	    </div>
+			<h2></h2>
+			<span><a href="#">Go back to all decades</a></span>
     </div>
     <div id='sidebar'>
 			<ol id='map-list'>
@@ -190,7 +218,7 @@
   </article>
 </body>
 <script>
-  const center = [40.702504, -74.008712]
+  const center = [40.732504, -74.008712]
   const zoom = 10
 
   // var tileUrl = 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png'
@@ -220,11 +248,14 @@
 
   var singleMap = L.map(`single-map`, {
     minZoom: 10,
-    maxZoom: 16
+    maxZoom: 18
   }).setView(center, zoom + 1)
 
   L.tileLayer(tileUrl, {
     opacity: 0.3
+  }).addTo(singleMap)
+
+	var mapwarperLayer = L.tileLayer('', {
   }).addTo(singleMap)
 
   var singleMapOutline = L.geoJson(null, {
@@ -232,10 +263,20 @@
   }).addTo(singleMap)
 
   var singleMapMap = L.geoJson(null, {
-    style: mapStyle
+    style: mapStyle,
+		onEachFeature: function (feature, layer) {
+		  layer.on({
+		    click: function(e) {
+					singleMapDisableHover = true
+				},
+				dblclick: function(e) {
+					// TODO: propagate to SingleMap
+				}
+		  })
+		}
   }).addTo(singleMap)
 
-	function chips(map, mapLayer, band, latlng, callback) {
+	function findMaps(map, mapLayer, band, latlng, callback) {
 		if (!trees[band]) {
 			return
 		}
@@ -281,21 +322,23 @@
 		}
 	}
 
+	var bandToPeriod = function(band) {
+		return band + ' - ' + (band + 9)
+	}
+
 	var singleMapDisableHover = false
 
-	singleMapMap.on('click', function(e) {
-		singleMap._fireDOMEvent (e, 'click', singleMap)
-
-		// singleMap._fireDOMEvent(singleMap, e.originalEvent, 'click')
-		singleMapDisableHover = true
-	})
+	document.getElementById('sidebar')
+		.addEventListener('mouseover', function(e) {
+			singleMapDisableHover = false
+		})
 
 	singleMap.on('mousemove', function(e) {
 		if (singleMapDisableHover) {
 			return
 		}
 
-		chips(singleMap, singleMapMap, singleMapBand, e.latlng, function(hoveredMaps) {
+		findMaps(singleMap, singleMapMap, singleMapBand, e.latlng, function(hoveredMaps) {
 			var mapList = d3.select('#map-list').selectAll('li')
 					.data(hoveredMaps, function(d) {
 						return d.properties.id
@@ -315,35 +358,55 @@
 			}
 
 			details
-				.append('h3')
+				.append('div')
 					.html(function(d) {
-						return urnToMapId(d.properties.id) + ' - ' + d.properties.name
+						return d.properties.name
 					})
 
 			details
-				.append('span')
+				.append('div')
 				.append('a')
+					.attr('href', 'javascript:void(0)')
+					.text('View on map')
+					.on('click', function(d) {
+						var tileUrl = 'http://maps.nypl.org/warper/maps/tile/' + urnToMapId(d.properties.id) + '/{z}/{x}/{y}.png'
+						mapwarperLayer.setUrl(tileUrl)
+					})
+
+			details
+				.append('div')
+				.append('a')
+					.attr('target', '_blank')
 					.attr('href', function(d) {
 						return 'http://maps.nypl.org/warper/maps/' + urnToMapId(d.properties.id)
 					})
 					.text('Open in Map Warper')
 
+			details
+				.append('div')
+				.append('a')
+					.attr('target', '_blank')
+					.attr('href', function(d) {
+						return d.properties.url
+					})
+					.text('Open in Digital Collections')
 
-			//
-			//
-			// // .html(function(d) {
-			// //   return d.properties.name
-			// // })
-			//
 			mapList.exit().remove()
 		})
 	})
 
+	var showAllMaps = function() {
+		d3.select('#all-maps-view').classed('hidden', false)
+		d3.select('#single-map-view').classed('hidden', true)
+		mapwarperLayer.setUrl('')
+		singleMapDisableHover = false
+		location.hash = ''
+	}
+
 	document.onkeydown = function(e) {
     e = e || window.event
     if (e.keyCode == 27) {
-			d3.select('#all-maps-container').classed('hidden', false)
-			d3.select('#single-map-container').classed('hidden', true)
+			showAllMaps()
     }
 	}
 
@@ -411,35 +474,43 @@
             style: outlineStyle
           }).addTo(map)
 
-          var mapLayer = L.geoJson(null, {
-            style: mapStyle
-          }).addTo(map)
+					var selectMap = function (e) {
+            d3.select('#all-maps-view').classed('hidden', true)
+            d3.select('#single-map-view').classed('hidden', false)
 
-          mapLayer.on('dblclick', function(e) {
-            // map._fireDOMEvent(map, e.originalEvent, 'dblclick')
-          })
-
-          mapLayer.on('click', function(e) {
-            // map._fireDOMEvent(map, e.originalEvent, 'click')
-          })
-
-          map.on('click', function(e) {
-            d3.select('#all-maps-container').classed('hidden', true)
-            d3.select('#single-map-container').classed('hidden', false)
+						d3.select('#single-map-container h2')
+								.html(bandToPeriod(band))
 
 						singleMapBand = band
+
+						location.hash = band
+
             singleMapOutline.clearLayers()
             singleMapOutline.addData(outlines[band])
 
 						singleMap.invalidateSize(false)
-          })
+          }
+
+          var mapLayer = L.geoJson(null, {
+            style: mapStyle,
+						onEachFeature: function (feature, layer) {
+							layer.on({
+								click: selectMap,
+								dblclick: function(e) {
+									// TODO: propagate to map
+								}
+							})
+						}
+          }).addTo(map)
+
+          map.on('click', selectMap)
 
           map.on('mousemove', function(e) {
-						chips(map, mapLayer, band, e.latlng, function(hoveredMaps) {
+						findMaps(map, mapLayer, band, e.latlng, function(hoveredMaps) {
 							d3.select('#mini-map' + i + ' .map-message span')
 									.text(function (d) {
-										var m = hoveredMaps.length === 1 ? 'map' : 'maps'
-										return hoveredMaps.length + ' ' + m + ' found'
+										var m = hoveredMaps.length <= 1 ? 'map' : 'maps'
+										return Math.max(hoveredMaps.length, 1) + ' ' + m + ' found'
 									})
 									.classed('visible', hoveredMaps.length > 0)
 						})
@@ -452,7 +523,7 @@
 
     map.append('h2').text(function (d, i) {
       var band = d.properties.band
-      return band + ' - ' + (band + 9)
+			return bandToPeriod(band)
     })
 
     Object.keys(leafletMaps).forEach(function(bandA) {

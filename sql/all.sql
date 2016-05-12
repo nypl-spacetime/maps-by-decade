@@ -15,9 +15,17 @@ SELECT
     ST_XMax(geometry),
     ST_YMax(geometry)
   ) AS boundingbox,
-  ST_AsGeoJSON(Geometry(
-    ST_Buffer(Geography(ST_SimplifyPreserveTopology(geometry, {{ simplifyTolerance }})), {{ buffer }})
-  ))::json AS geometry
+  ST_AsGeoJSON(
+    ST_SimplifyPreserveTopology(
+      Geometry(
+        ST_Buffer(
+          Geography(geometry),
+          {{ buffer }}
+        )
+      ),
+      {{ simplifyTolerance }}
+    )
+  )::json AS geometry
 FROM
   pits
 WHERE

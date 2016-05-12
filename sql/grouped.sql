@@ -1,10 +1,18 @@
 SELECT
   band * {{ bandSize }} AS band,
-  ST_AsGeoJSON(ST_SimplifyPreserveTopology(ST_Union(geometry), {{ simplifyTolerance }}))::json AS geometry,
+  ST_AsGeoJSON(ST_Union(geometry))::json AS geometry,
   COUNT(*) AS count
 FROM (
   SELECT
-    Geometry(ST_Buffer(Geography(geometry), {{ buffer }})) AS geometry,
+    ST_SimplifyPreserveTopology(
+      Geometry(
+        ST_Buffer(
+          Geography(geometry),
+          {{ buffer }}
+        )
+      ),
+      {{ simplifyTolerance }}
+    ) AS geometry,
     (
       (date_part('year', lower(validsince)) +
       date_part('year', upper(validuntil))) / 2

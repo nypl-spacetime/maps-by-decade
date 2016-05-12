@@ -10,5 +10,5 @@
   "yearMax": 1949,
   "minArea": 1500000,
   "buffer": 25,
-  "simplifyTolerance": 0.0005
+  "simplifyTolerance": 0.00005
 }

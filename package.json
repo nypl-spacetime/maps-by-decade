@@ -2,7 +2,7 @@
   "name": "mapcube",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "data.js",
   "dependencies": {
     "handlebars": "^4.0.5",
     "ramda": "^0.21.0",
