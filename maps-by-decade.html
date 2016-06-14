@@ -82,6 +82,15 @@
       padding: 0;
     }
 
+		article#all-maps-view h1 {
+			font-size: 40px;
+			text-align: center;
+		}
+
+		article#all-maps-view p {
+			text-align: center;
+		}
+
 		.map-container {
 			top: 0;
 			width: 100%;
@@ -190,6 +199,13 @@
 
 		#map-list img {
 			width: 100%;
+		}
+
+		.map-name {
+			text-overflow: ellipsis;
+    	white-space: nowrap;
+    	width: 100%;
+    	overflow: hidden;
 		}
   </style>
 </head>
@@ -359,12 +375,13 @@
 
 			details
 				.append('div')
+					.attr('class', 'map-name')
 					.html(function(d) {
 						return d.properties.name
 					})
 
 			details
-				.append('div')
+				.append('span')
 				.append('a')
 					.attr('href', 'javascript:void(0)')
 					.text('View on map')
@@ -374,22 +391,30 @@
 					})
 
 			details
-				.append('div')
+				.append('span')
+				.text(' - ')
+
+			details
+				.append('span')
 				.append('a')
 					.attr('target', '_blank')
 					.attr('href', function(d) {
 						return 'http://maps.nypl.org/warper/maps/' + urnToMapId(d.properties.id)
 					})
-					.text('Open in Map Warper')
+					.text('open in Map Warper')
 
 			details
-				.append('div')
+				.append('span')
+				.text(' - ')
+
+			details
+				.append('span')
 				.append('a')
 					.attr('target', '_blank')
 					.attr('href', function(d) {
 						return d.properties.url
 					})
-					.text('Open in Digital Collections')
+					.text('open in Digital Collections')
 
 			mapList.exit().remove()
 		})
