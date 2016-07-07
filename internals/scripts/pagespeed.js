@@ -19,7 +19,7 @@ function runPsi(url) {
 }
 
 function startTunnel(cb) {
-  ngrok.connect(3000, function (err, url) {
+  ngrok.connect(3001, function (err, url) {
     if (err) {
       log(chalk.red('\nERROR\n' + err));
       process.exit(0);
