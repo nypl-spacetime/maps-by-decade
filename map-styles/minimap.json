@@ -1,0 +1,130 @@
+{
+    "version": 8,
+    "name": "Maps by Decade 1",
+    "metadata": {
+        "mapbox:autocomposite": true,
+        "mapbox:groups": {
+            "1444850762048.5845": {
+                "name": "Water labels",
+                "collapsed": true
+            },
+            "1444850923457.5469": {
+                "name": "Water",
+                "collapsed": false
+            },
+            "1444850900520.0022": {
+                "name": "Tunnels",
+                "collapsed": true
+            },
+            "1444850775955.1606": {
+                "name": "POI labels",
+                "collapsed": true
+            },
+            "1444850752066.192": {
+                "name": "Place labels",
+                "collapsed": true
+            },
+            "1444850948248.0754": {
+                "name": "Hillshades",
+                "collapsed": true
+            },
+            "1444850913245.3801": {
+                "name": "Aeroways",
+                "collapsed": true
+            },
+            "1444850808863.985": {
+                "name": "Road labels",
+                "collapsed": true
+            },
+            "1444850892815.3088": {
+                "name": "Roads",
+                "collapsed": false
+            },
+            "1444850928470.7239": {
+                "name": "Buildings",
+                "collapsed": true
+            },
+            "1444850885718.7302": {
+                "name": "Bridges",
+                "collapsed": true
+            },
+            "1444850963394.812": {
+                "name": "Landuses",
+                "collapsed": false
+            },
+            "1444850654682.7075": {
+                "name": "Marine labels",
+                "collapsed": true
+            },
+            "1444850820682.8682": {
+                "name": "Admin boundaries",
+                "collapsed": true
+            },
+            "1444850621704.1523": {
+                "name": "Country/State labels",
+                "collapsed": true
+            },
+            "1444850874198.7793": {
+                "name": "Shields",
+                "collapsed": true
+            },
+            "1444850853666.2222": {
+                "name": "Waterway labels",
+                "collapsed": true
+            },
+            "1444850978189.4492": {
+                "name": "Landcovers",
+                "collapsed": false
+            }
+        }
+    },
+    "center": [
+        -74.02494195357039,
+        40.71145496832426
+    ],
+    "zoom": 10.38422400090608,
+    "bearing": 0,
+    "pitch": 0,
+    "sources": {
+        "composite": {
+            "url": "mapbox://mapbox.mapbox-streets-v7",
+            "type": "vector"
+        }
+    },
+    "sprite": "mapbox://sprites/bertspaan/cio0gk14s000hainh1ghuhmyu",
+    "glyphs": "mapbox://fonts/bertspaan/{fontstack}/{range}.pbf",
+    "layers": [
+        {
+            "id": "background",
+            "type": "background",
+            "interactive": true,
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "background-color": "hsla(34, 59%, 90%, 0)"
+            }
+        },
+        {
+            "id": "water",
+            "type": "fill",
+            "metadata": {
+                "mapbox:group": "1444850923457.5469"
+            },
+            "source": "composite",
+            "source-layer": "water",
+            "interactive": true,
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "hsl(0, 0%, 100%)"
+            }
+        }
+    ],
+    "created": "2016-05-09T20:25:38.346Z",
+    "id": "cio0gk14s000hainh1ghuhmyu",
+    "modified": "2016-05-09T21:33:26.778Z",
+    "owner": "bertspaan",
+    "draft": false
+}

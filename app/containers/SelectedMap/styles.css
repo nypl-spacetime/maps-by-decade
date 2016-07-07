@@ -1,0 +1,50 @@
+.container {
+  width: 100%;
+  margin-bottom: 1em;
+  position: relative;
+}
+
+.container img {
+  width: 100%;
+  cursor: zoom-in;
+  min-height: 500px;
+  top: 0;
+}
+
+.title {
+  width: 90%;
+  font-size: 26px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 6px;
+  margin: 0 auto;
+
+  text-align: center;
+  font-size: 30px;
+  font-family: 'MiloSlab';
+  font-weight: bold;
+}
+
+.links {
+  width: 100%;
+  position: absolute;
+  top: 50px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.links li {
+  display: inline;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 6px 13px 3px 13px;
+  border-radius: 20px;
+  margin: 0.5em;
+}
+
+.links li:hover {
+  background-color: rgba(255, 255, 255, 1);
+}

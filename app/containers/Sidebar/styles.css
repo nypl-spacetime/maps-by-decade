@@ -1,0 +1,34 @@
+.container {
+  height: 100%;
+  width: 100%;
+
+  overflow-y: scroll;
+
+  padding: 5px 20px;
+  box-sizing: border-box;
+}
+
+.list {
+  list-style-type: none;
+  max-width: 800px;
+}
+
+.lightbox-button {
+  font-size: 80%;
+  margin: 0 0.3em;
+  opacity: 0.9;
+  text-decoration: underline;
+}
+
+a.lightbox-button,
+a.lightbox-button:visited {
+  color: white;
+}
+
+.instructions {
+  height: 100%;
+  display: flex;
+  padding: 20px;
+  flex-direction: row;
+  align-items: center;
+}

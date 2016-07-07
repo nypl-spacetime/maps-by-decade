@@ -1,0 +1,60 @@
+data:
+  baseUrl: https://raw.githubusercontent.com/nypl-spacetime/maps-by-decade-data/gh-pages/data/
+
+cssVariables:
+  mobileWidth: 800px
+  headerHeight: 52px
+  homepageColor: '#aed8e6'
+  singleDecadeColor: '#ffd72e'
+
+mapOptions:
+  singleDecade:
+    map:
+      zoomControl: true
+      scrollWheelZoom: true
+      doubleClickZoom: true
+      boxZoom: true
+      minZoom: 10
+      maxZoom: 18
+      attributionControl: false
+      zoom: 13
+      center: [40.75319,-73.98224]
+    tileLayer:
+      opacity: 0.3
+      tileUrl: https://api.mapbox.com/styles/v1/bertspaan/ciqawh1ss0007bzmag2ubt5tp/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmVydHNwYWFuIiwiYSI6ImR3dERiQk0ifQ.DLbScmbRohc3Sqv7prfhqw
+    geojson:
+      color: '#39484c'
+      weight: 1.5
+      opacity: 0.7
+      fillOpacity: 0
+    geojsonSelected:
+      color: '#39484c'
+      fillColor: white
+      weight: 3
+      opacity: 1
+      fillOpacity: 0.2
+  miniMap:
+    map:
+      zoomControl: false
+      scrollWheelZoom: false
+      doubleClickZoom: false
+      boxZoom: false
+      minZoom: 10
+      maxZoom: 10
+      attributionControl: false
+      zoom: 10
+      center: [40.75319,-73.98224]
+    tileLayer:
+      opacity: 0.3
+      tileUrl: https://api.mapbox.com/styles/v1/bertspaan/cio0gk14s000hainh1ghuhmyu/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmVydHNwYWFuIiwiYSI6ImR3dERiQk0ifQ.DLbScmbRohc3Sqv7prfhqw
+    geojson:
+      color: '#39484c'
+      weight: 1.5
+      opacity: 0.7
+      fillOpacity: 0
+    geojsonSelected:
+      color: '#39484c'
+      fillColor: white
+      weight: 3
+      opacity: 1
+      fillOpacity: 0.2

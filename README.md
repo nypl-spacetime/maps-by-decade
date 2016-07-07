@@ -1,3 +1,10 @@
-# New York City Maps by Decade
+# Maps by Decade
 
-![Maps by Decade](images/screenshot.png)
+
+Link to data!
+
+TODO:
+- remove offline - appcache, manifest,
+- wat is DLL?
+- console.log!
+- favicon!
