@@ -9,7 +9,6 @@ import {
 } from 'containers/App/actions';
 
 import {
-  selectTree,
   selectDecadeGeoJSON,
   selectMapOptions
 } from 'containers/App/selectors';
@@ -23,26 +22,30 @@ export class MiniMap extends React.Component {
   maps = [];
 
   openDecade = (decade, mapId) => {
-    if (mapId) {
-      this.props.changeRoute(`/${decade}/${mapId}`);
-    } else {
-      this.props.changeRoute(`/${decade}`);
-    }
+    this.props.changeRoute(`/${decade}`);
+    // if (mapId) {
+    //   this.props.changeRoute(`/${decade}/${mapId}`);
+    // } else {
+    //   this.props.changeRoute(`/${decade}`);
+    // }
   };
 
   decadeToPeriod(decade) {
   	return decade + ' - ' + (decade + 9);
   }
 
+  static contextTypes = {
+    trees: React.PropTypes.object,
+  }
+
   render() {
     const band = this.props.feature.properties.band;
-        // <Map options={this.props.options.map} mapCreated={this.mapCreated.bind(this)} />
+    const tree = this.context.trees && this.context.trees[band];
 
-        // console.log(this.props.tree, this.props.allGeoJSON)
     return (
       <div className={styles.container}>
-        <HoverMap decade={band} tree={this.props.tree} onEachFeatureAll={this.onEachFeature.bind(this)}
-          groupedData={this.props.feature} allGeoJSON={this.props.allGeoJSON}
+        <HoverMap decade={band} tree={tree} onEachFeatureAll={this.onEachFeature.bind(this)}
+          groupedGeoJSON={this.props.feature} allGeoJSON={this.props.allGeoJSON}
           mapCreated={this.mapCreated.bind(this)} options={this.props.mapOptions} />
         <h2>{this.decadeToPeriod(band)}</h2>
       </div>
@@ -74,11 +77,10 @@ export class MiniMap extends React.Component {
 function mapStateToProps(state, ownProps) {
   const band = ownProps.feature.properties.band;
   return createSelector(
-    selectTree(band),
     selectDecadeGeoJSON('all', band),
     selectMapOptions('miniMap'),
-    (tree, allGeoJSON, mapOptions) => ({
-      tree, allGeoJSON, mapOptions
+    (allGeoJSON, mapOptions) => ({
+      allGeoJSON, mapOptions
     })
   )(state);
 }

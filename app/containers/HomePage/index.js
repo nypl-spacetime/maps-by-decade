@@ -48,7 +48,8 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
           </p>
           <p>
             Maps by Decade shows only <a href="https://en.wikipedia.org/wiki/Scale_(map)#Large_scale.2C_medium_scale.2C_small_scale">large-scale</a> maps (e.g. maps depicting an area smaller than <span title='1.5 km² ≈ 0.6 mi²'>1.5 km²</span>) that are digitized and <a href='http://maps.nypl.org/warper'>georectified</a>,
-            and that are in the <a href='http://publicdomain.nypl.org'>public domain</a> or for which the Library holds the copyright. You can find more maps on <a href='http://maps.nypl.org/'>Map Warper</a> and <a href='http://digitalcollections.nypl.org/'>Digital Collections</a>.
+            and that are in the <a href='http://publicdomain.nypl.org'>public domain</a> or for which the Library holds the copyright.
+            For other maps, of larger parts of the city or of other places in the country and the world, please visit <a href='http://digitalcollections.nypl.org/'>Digital Collections</a> and <a href='http://maps.nypl.org/'>Map Warper</a>.
           </p>
           <p className={styles.centered}>
             Click on a map for more details.

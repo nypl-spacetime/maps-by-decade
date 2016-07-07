@@ -15,7 +15,6 @@ import {
 import {
   selectTileUrl,
   selectMapOptions,
-  selectTree,
   selectDecadeGeoJSON,
   selectPreviousDecade,
   selectNextDecade,
@@ -59,6 +58,10 @@ export class DecadePage extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    if (!this.context.trees) {
+      return true;
+    }
+
     const sameProps = (nextProps.params === this.props.params) &&
       (nextProps.selectedMapsLocked === this.props.selectedMapsLocked) &&
       (this.props.loading === nextProps.loading) &&
@@ -91,11 +94,8 @@ export class DecadePage extends React.Component {
     trees: React.PropTypes.object,
   }
 
-
   render() {
     let mainContent;
-
-    console.log('BERTTT', this.context.trees)
 
     if (this.props.loading) {
       mainContent = (
@@ -111,7 +111,7 @@ export class DecadePage extends React.Component {
 
       if (this.props.previousDecade) {
         previousDecade = (
-          <div title='Go to previous decade - or press [' className={`${styles['decade-link']} ${styles.previous}`}>
+          <div title='Go to previous decade - or press ←' className={`${styles['decade-link']} ${styles.previous}`}>
             <Link to={`/${this.props.previousDecade}`}>← previous</Link>
           </div>
         );
@@ -123,7 +123,7 @@ export class DecadePage extends React.Component {
 
       if (this.props.nextDecade) {
         nextDecade = (
-          <div title='Go to next decade - or press ]' className={`${styles['decade-link']} ${styles.next}`}>
+          <div title='Go to next decade - or press →' className={`${styles['decade-link']} ${styles.next}`}>
             <Link to={`/${this.props.nextDecade}`}>next →</Link>
           </div>
         );
@@ -154,10 +154,13 @@ export class DecadePage extends React.Component {
         );
       }
 
+      const decade = this.props.params.decade;
+      const tree = this.context.trees && this.context.trees[decade];
+
       mainContent = (
         <div className={styles.container}>
           <div className={styles.map}>
-            <HoverMap decade={this.props.params.decade} tree={this.props.tree}
+            <HoverMap decade={this.props.params.decade} tree={tree}
               groupedGeoJSON={this.props.groupedGeoJSON} allGeoJSON={this.props.allGeoJSON}
               onHoverMaps={this.hoverMaps.bind(this)} options={this.props.mapOptions}
               disableHover={this.props.selectedMapsLocked} mapCreated={this.mapCreated.bind(this)}
@@ -226,12 +229,16 @@ export class DecadePage extends React.Component {
   }
 
   keyDown(event) {
-    if (event.keyCode === 219) {
+    if (event.keyCode === 37) {
       this.previousDecade();
-    } else if (event.keyCode === 221) {
+    } else if (event.keyCode === 39) {
       this.nextDecade();
     } else if (event.keyCode === 27) {
-      this.backToDecadeList();
+      if (this.props.selectedMapsLocked) {
+        this.props.lockSelectedMaps(false);
+      } else {
+        this.backToDecadeList();
+      }
     }
   }
 }
@@ -240,7 +247,6 @@ function mapStateToProps(state, ownProps) {
   const decade = ownProps.params.decade;
   return createSelector(
     selectMapOptions('singleDecade'),
-    selectTree(decade),
     selectDecadeGeoJSON('grouped', decade),
     selectDecadeGeoJSON('all', decade),
     selectPreviousDecade(decade),
@@ -249,8 +255,8 @@ function mapStateToProps(state, ownProps) {
     selectSelectedMaps(),
     selectSelectedMapsLocked(),
     selectTileUrl(),
-    (mapOptions, tree, groupedGeoJSON, allGeoJSON, previousDecade, nextDecade, loading, selectedMaps, selectedMapsLocked, tileUrl) => ({
-      mapOptions, tree, groupedGeoJSON, allGeoJSON, previousDecade, nextDecade, loading, selectedMaps, selectedMapsLocked, tileUrl
+    (mapOptions, groupedGeoJSON, allGeoJSON, previousDecade, nextDecade, loading, selectedMaps, selectedMapsLocked, tileUrl) => ({
+      mapOptions, groupedGeoJSON, allGeoJSON, previousDecade, nextDecade, loading, selectedMaps, selectedMapsLocked, tileUrl
     })
   )(state);
 }

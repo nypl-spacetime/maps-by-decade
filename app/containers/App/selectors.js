@@ -71,17 +71,6 @@ const selectNextDecade = (band) => createSelector(
   }
 );
 
-const selectTree = (band) => createSelector(
-  selectGlobal(),
-  (globalState) => {
-    const trees = globalState.get('trees');
-    if (trees) {
-      const bandInt = parseInt(band);
-      return trees[bandInt];
-    }
-  }
-);
-
 const selectSelectedMaps = () => createSelector(
   selectGlobal(),
   (globalState) => globalState.get('selectedMaps')
@@ -163,7 +152,6 @@ export {
   selectSelectedMapsLocked,
   selectPreviousDecade,
   selectNextDecade,
-  selectTree,
   selectTileUrl,
   selectShowLightbox,
   selectLightboxIndex,

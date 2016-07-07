@@ -6,6 +6,8 @@
  */
 import 'babel-polyfill';
 
+import 'file?name=[name].[ext]!./favicon.ico';
+
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';

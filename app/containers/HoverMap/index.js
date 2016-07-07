@@ -12,8 +12,8 @@ export class HoverMap extends React.Component {
     if (nextProps.decade !== this.props.decade) {
       if (this.groupedDataLayer) {
         this.groupedDataLayer.clearLayers();
-        if (nextProps.groupedData) {
-          this.groupedDataLayer.addData(nextProps.groupedData);
+        if (nextProps.groupedGeoJSON) {
+          this.groupedDataLayer.addData(nextProps.groupedGeoJSON);
         }
       }
 
@@ -36,7 +36,7 @@ export class HoverMap extends React.Component {
 
     L.tileLayer(options.tileUrl, options).addTo(map);
 
-    this.groupedDataLayer = L.geoJson(this.props.groupedData, {
+    this.groupedDataLayer = L.geoJson(this.props.groupedGeoJSON, {
       style: this.props.options.geojson,
       onEachFeature: this.props.onEachFeatureGrouped
     }).addTo(map);
@@ -96,6 +96,11 @@ export class HoverMap extends React.Component {
   }
 
   highlightMaps(latlng, callback) {
+    if (!this.props.tree) {
+      callback([]);
+      return;
+    }
+
   	var results = this.props.tree.search({
 			minX: latlng.lng,
 			minY: latlng.lat,

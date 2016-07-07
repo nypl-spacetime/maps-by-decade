@@ -14,6 +14,7 @@ mapOptions:
       scrollWheelZoom: true
       doubleClickZoom: true
       boxZoom: true
+      keyboard: false
       minZoom: 10
       maxZoom: 18
       attributionControl: false
@@ -38,6 +39,7 @@ mapOptions:
       zoomControl: false
       scrollWheelZoom: false
       doubleClickZoom: false
+      keyboard: false
       boxZoom: false
       minZoom: 10
       maxZoom: 10

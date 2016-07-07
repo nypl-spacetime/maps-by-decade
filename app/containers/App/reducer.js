@@ -27,8 +27,6 @@ import {
 
 import { fromJS } from 'immutable';
 
-import rbush from 'rbush';
-
 // The initial state of the App
 const initialState = fromJS({
   loading: true,
@@ -65,27 +63,7 @@ function appReducer(state = initialState, action) {
       // TODO: Check bands for holes!
       // all bands from min(band) to max(band) should exist in bands
 
-      if (action.file === 'all') {
-        var trees = [];
-
-        Object.keys(bands).forEach((band) => {
-          const features = bands[band];
-          var tree = rbush(features.length);
-          tree.load(
-            features.map((feature, i) => ({
-              minX: feature.properties.boundingbox[0],
-              minY: feature.properties.boundingbox[1],
-              maxX: feature.properties.boundingbox[2],
-              maxY: feature.properties.boundingbox[3],
-              index: i
-            }))
-          );
-          trees[band] = tree;
-        });
-      }
-
       var newState = state
-        .set('trees', trees)
         .setIn(['data', action.file], bands);
 
       var loaded = true
