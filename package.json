@@ -26,7 +26,7 @@
     "start:prod": "cross-env NODE_ENV=production node server",
     "pagespeed": "node ./internals/scripts/pagespeed.js",
     "presetup": "npm i chalk",
-    "deploy": "npm run build && git-directory-deploy --directory dist/ --branch gh-pages",
+    "deploy": "npm run build && git-directory-deploy --directory build/ --branch gh-pages",
     "setup": "node ./internals/scripts/setup.js",
     "postsetup": "npm run build:dll",
     "clean": "shjs ./internals/scripts/clean.js",
