@@ -50,11 +50,21 @@ export class Map extends React.Component {
 
     this.map = map;
 
-    window.setTimeout(() => {
-      if (this.map) {
-        this.map.invalidateSize();
-      }
-    }, 500);
+    const zeroOffsetDimension = () => (node.offsetWidth && node.offsetHeight) ? false : true;
+    if (zeroOffsetDimension()) {
+      this.offsetDimensionInterval = window.setInterval(() => {
+        if (!zeroOffsetDimension()) {
+          this.map.invalidateSize();
+          window.clearInterval(this.offsetDimensionInterval);
+        }
+      }, 100);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.offsetDimensionInterval) {
+      window.clearInterval(this.offsetDimensionInterval);
+    }
   }
 
 }
