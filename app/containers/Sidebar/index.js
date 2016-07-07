@@ -35,7 +35,7 @@ export class Sidebar extends React.Component {
     if (!this.props.selectedMaps || this.props.selectedMaps.length === 0) {
       return (
         <div className={styles.instructions}>
-          <span>← Hover over maps for details</span>
+          <span>← Interact with map for more details</span>
         </div>
       );
     }
