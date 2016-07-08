@@ -45,6 +45,11 @@
   margin: 0.5em;
 }
 
+.links li a {
+  text-align: center;
+  display: inline-block;
+}
+
 .links li:hover {
   background-color: rgba(255, 255, 255, 1);
 }

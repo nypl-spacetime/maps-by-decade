@@ -5,9 +5,11 @@
   overflow-y: auto;
 }
 
-.container p:first-child {
-  margin-top: 20px;
+.container h1 {
+  margin-top: 0.5em;
+  margin-bottom: 0.4em;
 }
+
 .container p {
   padding: 10px;
 }
@@ -18,16 +20,4 @@
 
 .centered {
   text-align: center;
-}
-
-.footer {
-  margin: 1em;
-  /*font-size: 30px;*/
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.footer img {
-  padding: 10px;
 }

@@ -1,6 +1,8 @@
 # Space/Time Directory - Maps by Decade
 
-All New York City street maps from NYPL's [Lionel Pincus and
+http://spacetime.nypl.org/maps-by-decade
+
+Every New York City street map from NYPL's [Lionel Pincus and
 Princess Firyal Map Division](https://www.nypl.org/about/divisions/map-division) — published between 1830 and 1950 — grouped by decade.
 
 ![](images/screenshot.png)

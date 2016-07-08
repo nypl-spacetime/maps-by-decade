@@ -12,7 +12,7 @@ import { Link } from 'react-router';
 
 import styles from './styles.css';
 
-import nypl from 'images/nypl.svg';
+import nypl from 'images/nypl-white.svg';
 
 export class Header extends React.Component {
 
