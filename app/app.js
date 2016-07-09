@@ -4,9 +4,9 @@
  * This is the entry file for the application, only setup and boilerplate
  * code.
  */
-import 'babel-polyfill';
 
-import 'file?name=[name].[ext]!./favicon.ico';
+// Needed for redux-saga es6 generator support
+import 'babel-polyfill';
 
 // Import all the third party stuff
 import React from 'react';
@@ -14,9 +14,9 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { applyRouterMiddleware, Router, useRouterHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+import { createHashHistory } from 'history';
 import useScroll from 'react-router-scroll';
 import configureStore from './store';
-import { createHashHistory } from 'history';
 import FontFaceObserver from 'fontfaceobserver';
 
 // Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder

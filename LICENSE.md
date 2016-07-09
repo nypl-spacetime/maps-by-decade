@@ -1,6 +1,9 @@
 The MIT License (MIT)
 
-Copyright (c) 2015 The New York Public Library
+Copyright (c) 2016 The New York Public Library
+
+Uses portions of https://github.com/mxstbr/react-boilerplate:
+Copyright (c) 2016 Maximilian Stoiber
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
