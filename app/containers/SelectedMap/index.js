@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
 import {
-  setTileLayer,
+  addTileLayerMap,
+  removeTileLayerMap,
   showLightbox
 } from 'containers/App/actions';
 
@@ -16,12 +17,24 @@ export class SelectedMap extends React.Component {
 
   render() {
     const map = this.props.map;
+
+    let tileLink;
+    if (this.props.tilesOnMap) {
+      tileLink = (
+        <a href='javascript:void(0)' onClick={this.removeTileLayerMap.bind(this)}>Remove from map</a>
+      );
+    } else {
+      tileLink = (
+        <a href='javascript:void(0)' onClick={this.addTileLayerMap.bind(this)}>Add to map</a>
+      );
+    }
+
     return (
       <div className={styles.container}>
         <h3 className={styles.title} title={map.properties.name}>{map.properties.name}</h3>
         <img src={`http://images.nypl.org/index.php?id=${map.properties.digital_id}&t=w`} onClick={this.showLightbox.bind(this)}/>
         <ul className={styles.links}>
-          <li><a href='javascript:void(0)' onClick={this.setTileLayer.bind(this)}>View on map</a></li>
+          <li>{tileLink}</li>
           <li><a href={`http://maps.nypl.org/warper/maps/${this.getMapId(map)}`} target='_blank'>Open in Map Warper</a></li>
           <li><a href={map.properties.url} target='_blank'>Open in Digital Collections</a></li>
         </ul>
@@ -33,16 +46,20 @@ export class SelectedMap extends React.Component {
     this.props.showLightbox(true, this.props.index);
   }
 
-  setTileLayer() {
-    const tileUrl = `http://maps.nypl.org/warper/maps/tile/${this.getMapId(this.props.map)}/{z}/{x}/{y}.png`;
-    this.props.setTileLayer(tileUrl);
+  addTileLayerMap() {
+    this.props.addTileLayerMap(this.props.map);
+  }
+
+  removeTileLayerMap() {
+    this.props.removeTileLayerMap(this.props.map);
   }
 
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    setTileLayer: (tileUrl) => dispatch(setTileLayer(tileUrl)),
+    addTileLayerMap: (feature) => dispatch(addTileLayerMap(feature)),
+    removeTileLayerMap: (feature) => dispatch(removeTileLayerMap(feature)),
     showLightbox: (show, index) => dispatch(showLightbox(show, index))
   };
 }

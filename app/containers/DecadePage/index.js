@@ -13,7 +13,7 @@ import {
 } from 'containers/App/actions';
 
 import {
-  selectTileUrl,
+  selectTileLayerMaps,
   selectMapOptions,
   selectDecadeGeoJSON,
   selectPreviousDecade,
@@ -65,27 +65,45 @@ export class DecadePage extends React.Component {
     const sameProps = (nextProps.params === this.props.params) &&
       (nextProps.selectedMapsLocked === this.props.selectedMapsLocked) &&
       (this.props.loading === nextProps.loading) &&
-      (this.props.tileUrl === nextProps.tileUrl) &&
+      (this.props.tileLayerMaps === nextProps.tileLayerMaps) &&
+      // TODO: .length ?!?!?!?!?!!?!?!? Does this really work?!?!!?
       (this.props.selectedMaps.length === nextProps.selectedMaps.length);
 
     return !sameProps;
   }
 
+  getMapId = (map) => map.properties.id.split('/')[1];
+  getTileUrl = (mapId) => `http://maps.nypl.org/warper/maps/tile/${mapId}/{z}/{x}/{y}.png`;
+
+  tileLayers = {};
+  tileLayerMaps = {};
+
   componentWillReceiveProps(nextProps) {
-    if (nextProps.tileUrl !== this.props.tileUrl) {
+    // kunnen dit meer zijn
+    // const tileUrl =
+
+
+    if (nextProps.tileLayerMaps !== this.props.tileLayerMaps) {
       if (this.map) {
-        if (nextProps.tileUrl) {
-          if (this.tileLayer) {
-            this.tileLayer.setUrl(nextProps.tileUrl);
-          } else {
-            this.tileLayer = L.tileLayer(nextProps.tileUrl).addTo(this.map);
-          }
-        } else {
-          if (this.tileLayer) {
-            this.map.removeLayer(this.tileLayer);
-            this.tileLayer = null;
+
+        for (var newMapId of nextProps.tileLayerMaps.keys()) {
+          if (!this.tileLayerMaps[newMapId]) {
+            const map = nextProps.tileLayerMaps.get(newMapId);
+            var tileUrl = this.getTileUrl(this.getMapId(map));
+            var tileLayer = L.tileLayer(tileUrl).addTo(this.map);
+
+            this.tileLayers[newMapId] = tileLayer;
+            this.tileLayerMaps[newMapId] = map;
           }
         }
+
+        Object.keys(this.tileLayerMaps).forEach((existingMapId) => {
+          if (!nextProps.tileLayerMaps.get(existingMapId)) {
+            this.map.removeLayer(this.tileLayers[existingMapId]);
+            delete this.tileLayers[existingMapId];
+            delete this.tileLayerMaps[existingMapId];
+          }
+        });
       }
     }
   }
@@ -254,9 +272,9 @@ function mapStateToProps(state, ownProps) {
     selectLoading(),
     selectSelectedMaps(),
     selectSelectedMapsLocked(),
-    selectTileUrl(),
-    (mapOptions, groupedGeoJSON, allGeoJSON, previousDecade, nextDecade, loading, selectedMaps, selectedMapsLocked, tileUrl) => ({
-      mapOptions, groupedGeoJSON, allGeoJSON, previousDecade, nextDecade, loading, selectedMaps, selectedMapsLocked, tileUrl
+    selectTileLayerMaps(),
+    (mapOptions, groupedGeoJSON, allGeoJSON, previousDecade, nextDecade, loading, selectedMaps, selectedMapsLocked, tileLayerMaps) => ({
+      mapOptions, groupedGeoJSON, allGeoJSON, previousDecade, nextDecade, loading, selectedMaps, selectedMapsLocked, tileLayerMaps
     })
   )(state);
 }

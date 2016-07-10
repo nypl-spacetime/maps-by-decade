@@ -61,9 +61,9 @@ const selectSelectedMapsLocked = () => createSelector(
   (globalState) => globalState.get('selectedMapsLocked')
 );
 
-const selectTileUrl = () => createSelector(
+const selectTileLayerMaps = () => createSelector(
   selectGlobal(),
-  (globalState) => globalState.get('tileUrl')
+  (globalState) => globalState.get('tileLayerMaps')
 );
 
 const selectShowLightbox = () => createSelector(
@@ -138,7 +138,7 @@ export {
   selectSelectedMapsLocked,
   selectPreviousDecade,
   selectNextDecade,
-  selectTileUrl,
+  selectTileLayerMaps,
   selectShowLightbox,
   selectLightboxIndex,
   selectLightboxImages,

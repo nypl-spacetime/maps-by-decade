@@ -24,7 +24,10 @@ import {
 
   SELECT_MAPS,
   LOCK_SELECTED_MAPS,
-  SET_TILE_LAYER,
+
+  ADD_TILE_LAYER_MAP,
+  REMOVE_TILE_LAYER_MAP,
+  CLEAR_TILE_LAYER_MAPS,
 
   SHOW_LIGHTBOX,
   LIGHTBOX_PREV,
@@ -75,10 +78,24 @@ export function lockSelectedMaps(locked) {
   };
 }
 
-export function setTileLayer(tileUrl) {
+export function addTileLayerMap(feature) {
   return {
-    type: SET_TILE_LAYER,
-    tileUrl
+    type: ADD_TILE_LAYER_MAP,
+    feature
+  };
+}
+
+export function removeTileLayerMap(feature) {
+  return {
+    type: REMOVE_TILE_LAYER_MAP,
+    feature
+  };
+}
+
+export function clearTileLayerMaps() {
+  return {
+    type: CLEAR_TILE_LAYER_MAPS,
+    feature
   };
 }
 

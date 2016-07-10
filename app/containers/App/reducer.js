@@ -19,7 +19,9 @@ import {
   NEW_MINI_MAP,
   SELECT_MAPS,
   LOCK_SELECTED_MAPS,
-  SET_TILE_LAYER,
+  ADD_TILE_LAYER_MAP,
+  REMOVE_TILE_LAYER_MAP,
+  CLEAR_TILE_LAYER_MAPS,
   SHOW_LIGHTBOX,
   LIGHTBOX_PREV,
   LIGHTBOX_NEXT
@@ -37,7 +39,7 @@ const initialState = fromJS({
   selectedMapsLocked: false,
   showLightbox: false,
   ligtboxIndex: 0,
-  tileUrl: null,
+  tileLayerMaps: fromJS({}),
   data: {
     all: null,
     grouped: null
@@ -107,9 +109,18 @@ function appReducer(state = initialState, action) {
     case LOCK_SELECTED_MAPS:
       return state
         .set('selectedMapsLocked', action.locked);
-    case  SET_TILE_LAYER:
+    case ADD_TILE_LAYER_MAP:
+      var id = action.feature.properties.id;
       return state
-        .set('tileUrl', action.tileUrl);
+        .update('tileLayerMaps', (tileLayerMaps) => tileLayerMaps.set(id, action.feature));
+    case REMOVE_TILE_LAYER_MAP:
+      var id = action.feature.properties.id;
+      console.log(id)
+      return state
+        .update('tileLayerMaps', (tileLayerMaps) => tileLayerMaps.delete(id));
+    case CLEAR_TILE_LAYER_MAPS:
+      return state
+        .set('tileLayerMaps', fromJS({}));
     case SHOW_LIGHTBOX:
       return state
         .set('showLightbox', action.show)

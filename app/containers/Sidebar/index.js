@@ -9,6 +9,7 @@ import { createSelector } from 'reselect';
 
 import {
   selectSelectedMaps,
+  selectTileLayerMaps,
   selectMapOptions,
   selectSelectedMapsLocked,
   selectShowLightbox,
@@ -80,7 +81,8 @@ export class Sidebar extends React.Component {
         <ul className={styles.list}>
           { this.props.selectedMaps.map((map, index) => (
             <li key={map.properties.id}>
-              <SelectedMap map={map} index={index}/>
+              <SelectedMap map={map} index={index}
+                tilesOnMap={this.props.tileLayerMaps.get(map.properties.id) ? true : false} />
             </li>
           ))}
         </ul>
@@ -113,6 +115,7 @@ function mapDispatchToProps(dispatch) {
 
 export default connect(createSelector(
   selectSelectedMaps(),
+  selectTileLayerMaps(),
   selectMapOptions('miniMap'),
   selectSelectedMapsLocked(),
   selectShowLightbox(),
@@ -120,7 +123,7 @@ export default connect(createSelector(
   selectLightboxImages(),
   selectLightboxImages('t'),
   selectLightboxTitle(),
-  (selectedMaps, options, selectedMapsLocked, lightboxShown, lightboxIndex, lightboxImages, lightboxThumbnails, lightboxTitle) => ({
-    selectedMaps, options, selectedMapsLocked, lightboxShown, lightboxIndex, lightboxImages, lightboxThumbnails, lightboxTitle
+  (selectedMaps, tileLayerMaps, options, selectedMapsLocked, lightboxShown, lightboxIndex, lightboxImages, lightboxThumbnails, lightboxTitle) => ({
+    selectedMaps, tileLayerMaps, options, selectedMapsLocked, lightboxShown, lightboxIndex, lightboxImages, lightboxThumbnails, lightboxTitle
   })
 ), mapDispatchToProps)(Sidebar);

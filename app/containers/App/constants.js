@@ -17,7 +17,10 @@ export const NEW_MINI_MAP = 'mbd/Homepage/NEW_MINI_MAP';
 
 export const SELECT_MAPS = 'mbd/DecadePage/SELECT_MAPS';
 export const LOCK_SELECTED_MAPS = 'mbd/DecadePage/LOCK_SELECTED_MAPS';
-export const SET_TILE_LAYER = 'mbd/DecadePage/SET_TILE_LAYER';
+
+export const ADD_TILE_LAYER_MAP = 'mbd/DecadePage/ADD_TILE_LAYER_MAP';
+export const REMOVE_TILE_LAYER_MAP = 'mbd/DecadePage/REMOVE_TILE_LAYER_MAP';
+export const CLEAR_TILE_LAYER_MAPS = 'mbd/DecadePage/CLEAR_TILE_LAYER_MAPS';
 
 export const SHOW_LIGHTBOX = 'mbd/DecadePage/SHOW_LIGHTBOX';
 export const LIGHTBOX_PREV = 'mbd/DecadePage/LIGHTBOX_PREV';
