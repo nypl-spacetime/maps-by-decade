@@ -43,32 +43,12 @@ const selectDecadeGeoJSON = (file, band) => createSelector(
 
 const selectPreviousDecade = (band) => createSelector(
   selectGlobal(),
-  (globalState) => {
-    if (globalState.get('loading')) {
-      return undefined;
-    }
-
-    const bandInt = parseInt(band);
-    // TODO: use/create bandSize parameter
-    const previousBand = bandInt - 10;
-    const bands = globalState.getIn(['data', 'grouped']);
-    return bands[previousBand] ? previousBand : undefined;
-  }
+  (globalState) => globalState.getIn(['bands', band, 'prev'])
 );
 
 const selectNextDecade = (band) => createSelector(
   selectGlobal(),
-  (globalState) => {
-    if (globalState.get('loading')) {
-      return undefined;
-    }
-
-    const bandInt = parseInt(band);
-    // TODO: use/create bandSize parameter
-    const previousBand = bandInt + 10;
-    const bands = globalState.getIn(['data', 'grouped']);
-    return bands[previousBand] ? previousBand : undefined;
-  }
+  (globalState) => globalState.getIn(['bands', band, 'next'])
 );
 
 const selectSelectedMaps = () => createSelector(

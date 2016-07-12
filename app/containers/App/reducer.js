@@ -42,6 +42,7 @@ const initialState = fromJS({
     all: null,
     grouped: null
   },
+  bands: fromJS({}),
   miniMaps: fromJS([]),
   config: fromJS(__CONFIG__)
 });
@@ -49,25 +50,42 @@ const initialState = fromJS({
 function appReducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_DATA_SUCCESS:
-      var bands = {}
+      var data = {};
 
       action.data.features.forEach((feature) => {
-        const band = feature.properties.band
-        if (!bands[band]) {
-          bands[band] = []
+        const band = feature.properties.band;
+        if (!data[band]) {
+          data[band] = [];
         }
 
-        bands[band].push(feature)
-      })
-
-      // TODO: Check bands for holes!
-      // all bands from min(band) to max(band) should exist in bands
+        data[band].push(feature);
+      });
 
       var newState = state
-        .setIn(['data', action.file], bands);
+        .setIn(['data', action.file], data);
+
+      if (action.file === 'grouped') {
+        var nextPrevBands = {};
+        var bands = new Set();
+
+        action.data.features.forEach((feature) => {
+          const band = feature.properties.band;
+          bands.add(band);
+        });
+
+        const sortedBands = [...bands].sort();
+
+        sortedBands.forEach((band, i) => {
+          nextPrevBands[band] = {
+            prev: sortedBands[i - 1],
+            next: sortedBands[i + 1]
+          };
+        });
+        newState = newState.set('bands', fromJS(nextPrevBands));
+      }
 
       var loaded = true
-      for(let value of newState.get('data').values()){
+      for (let value of newState.get('data').values()) {
         loaded = loaded && (value ? true : false);
       }
 
