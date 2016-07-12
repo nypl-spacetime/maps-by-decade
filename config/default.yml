@@ -1,5 +1,5 @@
 data:
-  baseUrl: https://raw.githubusercontent.com/nypl-spacetime/maps-by-decade-data/gh-pages/data/
+  baseUrl: http://maps-by-decade-data.dev/data/
 
 cssVariables:
   mobileWidth: 800px
@@ -20,6 +20,7 @@ mapOptions:
       attributionControl: false
       zoom: 13
       center: [40.75319,-73.98224]
+      maxBounds: [[40.436495, -73.424377], [41.155910, -74.347229]]
     tileLayer:
       opacity: 0.3
       tileUrl: https://api.mapbox.com/styles/v1/bertspaan/ciqawh1ss0007bzmag2ubt5tp/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmVydHNwYWFuIiwiYSI6ImR3dERiQk0ifQ.DLbScmbRohc3Sqv7prfhqw
@@ -46,6 +47,7 @@ mapOptions:
       attributionControl: false
       zoom: 10
       center: [40.75319,-73.98224]
+      maxBounds: [[40.436495, -73.424377], [41.155910, -74.347229]]
     tileLayer:
       opacity: 0.3
       tileUrl: https://api.mapbox.com/styles/v1/bertspaan/cio0gk14s000hainh1ghuhmyu/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmVydHNwYWFuIiwiYSI6ImR3dERiQk0ifQ.DLbScmbRohc3Sqv7prfhqw
