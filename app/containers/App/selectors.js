@@ -103,6 +103,11 @@ const selectMapOptions = (type) => createSelector(
   (globalState) => globalState.getIn(['config', 'mapOptions', type]).toJS()
 );
 
+const selectDataConfig = (type) => createSelector(
+  selectGlobal(),
+  (globalState) => globalState.getIn(['config', 'data']).toJS()
+)
+
 // selectLocationState expects a plain JS object for the routing state
 const selectLocationState = () => {
   let prevRoutingState;
@@ -126,6 +131,7 @@ export {
   selectGeoJSON,
   selectDecadeGeoJSON,
   selectMapOptions,
+  selectDataConfig,
   selectLocationState,
   selectMiniMaps,
   selectSelectedMaps,

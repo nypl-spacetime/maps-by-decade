@@ -11,13 +11,15 @@ import {
 } from 'containers/App/actions';
 
 import {
-  selectMiniMaps
+  selectMiniMaps,
+  selectDataConfig
 } from 'containers/App/selectors';
 
 import request from 'utils/request';
 
 function* loadData(action) {
-  const url = `https://raw.githubusercontent.com/nypl-spacetime/maps-by-decade-data/gh-pages/data/${action.file}.geojson`;
+  const dataConfig = yield select(selectDataConfig());
+  const url = `${dataConfig.baseUrl}${action.file}.geojson`;
   const result = yield call(request, url);
 
   if (!result.err) {
