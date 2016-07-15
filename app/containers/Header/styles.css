@@ -21,8 +21,7 @@
   align-items: center;
 }
 
-nav > a,
-.submissions {
+nav > a {
   margin-right: 1rem;
 }
 
@@ -46,11 +45,6 @@ header a:visited {
   color: #eee;
 }
 
-.submissions {
-  font-size: 2.8rem;
-  font-weight: bold;
-}
-
 .subtitle-spacing {
   margin-right: .2em;
 }
@@ -60,12 +54,7 @@ header a:visited {
     font-size: 24px;
   }
 
-  nav > a,
-  .submissions {
+  nav > a {
     margin-right: .5rem;
-  }
-
-  .submissions {
-    font-size: 1.5rem;
   }
 }

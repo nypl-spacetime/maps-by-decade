@@ -50,7 +50,7 @@ export class HoverMap extends React.Component {
     map.on('moveend',  () => this.mapMoving = false);
     map.on('zoomend', this.zoomEnd.bind(this));
 
-    map.on('mousemove', (event) => {
+    map.on('mousemove', this.throttle((event) => {
       if (this.mapMoving || this.props.disableHover) {
         return;
       }
@@ -66,7 +66,7 @@ export class HoverMap extends React.Component {
           this.props.onHoverMaps(hoveredMaps)
         }
       })
-    });
+    }, 50));
 
     if (this.props.mapCreated) {
       this.props.mapCreated(map);
@@ -76,7 +76,32 @@ export class HoverMap extends React.Component {
     this.map = map;
   }
 
-  zoomThreshold = 17;
+  // From: https://remysharp.com/2010/07/21/throttling-function-calls
+  throttle(fn, threshhold = 250, scope) {
+    var last;
+    var deferTimer;
+
+    return function () {
+      var context = scope || this;
+
+      var now = +new Date;
+      var args = arguments;
+
+      if (last && now < last + threshhold) {
+        // hold on to it
+        clearTimeout(deferTimer);
+        deferTimer = setTimeout(function () {
+          last = now;
+          fn.apply(context, args);
+        }, threshhold);
+      } else {
+        last = now;
+        fn.apply(context, args);
+      }
+    };
+  }
+
+  zoomThreshold = 16;
 
   selectedStyleForZoom(zoom) {
     var style = Object.assign({}, this.props.options.geojsonSelected);

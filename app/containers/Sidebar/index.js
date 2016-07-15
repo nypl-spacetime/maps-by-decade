@@ -35,7 +35,7 @@ export class Sidebar extends React.Component {
     if (!this.props.selectedMaps || this.props.selectedMaps.length === 0) {
       return (
         <div className={styles.instructions}>
-          <span>← Interact with map for more details</span>
+          <span>← Move mouse over maps to see details, click to select</span>
         </div>
       );
     }
@@ -48,8 +48,8 @@ export class Sidebar extends React.Component {
       const map = this.props.selectedMaps[index];
 
       const buttons = [
-        <a className={styles['lightbox-button']} href={`http://maps.nypl.org/warper/maps/${this.getMapId(map)}`} target='_blank'>Map Warper</a>,
-        <a className={styles['lightbox-button']} href={map.properties.url} target='_blank'>Digital Collections</a>
+        <a className={`${styles['lightbox-button']} external-link white`} href={`http://maps.nypl.org/warper/maps/${this.getMapId(map)}`} target='_blank'>Map Warper</a>,
+        <a className={`${styles['lightbox-button']} external-link white`} href={map.properties.url} target='_blank'>Digital Collections</a>
       ]
 
       let prevSrc;

@@ -48,7 +48,7 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
               Princess Firyal Map Division</a> — published between 1830 and 1950 — grouped by decade.
             </p>
             <p>
-              Maps by Decade shows only <b>large-scale maps</b> (i.e. maps depicting an area smaller than <span title='1.5 km² ≈ 0.6 mi²'>1.5 km²</span>) that are digitized, georectified,
+              Maps by Decade shows only <b>large-scale maps</b> (i.e. maps depicting an area smaller than <span title='5 km² ≈ 2 mi²'>5 km²</span>) that are digitized, georectified,
               and that are in the public domain (or of which the Library holds the copyright).
               You can browse other maps and atlases in NYPL's <a href='http://digitalcollections.nypl.org/'>Digital Collections</a> and <a href='http://maps.nypl.org/'>Map Warper</a>.
             </p>
