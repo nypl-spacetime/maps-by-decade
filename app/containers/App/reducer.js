@@ -112,10 +112,10 @@ function appReducer(state = initialState, action) {
     case ADD_TILE_LAYER_MAP:
       var id = action.feature.properties.id;
       return state
+        .set('tileLayerMaps', fromJS({}))
         .update('tileLayerMaps', (tileLayerMaps) => tileLayerMaps.set(id, action.feature));
     case REMOVE_TILE_LAYER_MAP:
       var id = action.feature.properties.id;
-      console.log(id)
       return state
         .update('tileLayerMaps', (tileLayerMaps) => tileLayerMaps.delete(id));
     case CLEAR_TILE_LAYER_MAPS:

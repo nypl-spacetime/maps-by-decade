@@ -57,21 +57,6 @@ export class DecadePage extends React.Component {
     params: {}
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (!this.context.trees) {
-      return true;
-    }
-
-    const sameProps = (nextProps.params === this.props.params) &&
-      (nextProps.selectedMapsLocked === this.props.selectedMapsLocked) &&
-      (this.props.loading === nextProps.loading) &&
-      (this.props.tileLayerMaps === nextProps.tileLayerMaps) &&
-      // TODO: .length ?!?!?!?!?!!?!?!? Does this really work?!?!!?
-      (this.props.selectedMaps.length === nextProps.selectedMaps.length);
-
-    return !sameProps;
-  }
-
   getMapId = (map) => map.properties.id.split('/')[1];
   getTileUrl = (mapId) => `http://maps.nypl.org/warper/maps/tile/${mapId}/{z}/{x}/{y}.png`;
 
@@ -79,13 +64,9 @@ export class DecadePage extends React.Component {
   tileLayerMaps = {};
 
   componentWillReceiveProps(nextProps) {
-    // kunnen dit meer zijn
-    // const tileUrl =
-
 
     if (nextProps.tileLayerMaps !== this.props.tileLayerMaps) {
       if (this.map) {
-
         for (var newMapId of nextProps.tileLayerMaps.keys()) {
           if (!this.tileLayerMaps[newMapId]) {
             const map = nextProps.tileLayerMaps.get(newMapId);
@@ -104,6 +85,11 @@ export class DecadePage extends React.Component {
             delete this.tileLayerMaps[existingMapId];
           }
         });
+      }
+
+      if (Object.keys(this.tileLayerMaps).length) {
+        const bounds = L.geoJson(Object.values(this.tileLayerMaps)).getBounds()
+        this.map.fitBounds(bounds);
       }
     }
   }
