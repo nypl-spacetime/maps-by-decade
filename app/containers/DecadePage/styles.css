@@ -50,7 +50,7 @@
   user-select: none;
   pointer-events: none;
   width: 100%;
-  bottom: 10px;
+  bottom: 12px;
   position: absolute;
   display: flex;
   flex-direction: row;
