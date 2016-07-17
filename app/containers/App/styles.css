@@ -4,10 +4,6 @@
   overflow-y: auto;
 }
 
-html {
-  font-size: 62.5%;
-}
-
 html,
 body {
   height: 100%;
@@ -16,10 +12,6 @@ body {
 
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  /*font-family: 'Kievit', 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
-  font-size: 1.3em; /* currently ems cause chrome bug misinterpreting rems on body element */
-  line-height: 1.6;
-  font-weight: 400;
 }
 
 /* Typography
@@ -62,6 +54,9 @@ a, a:visited {
   height: 100%;
   width: 100%;
   overflow: hidden;
+
+  font-size: 1.3em;
+  line-height: 1.6;
 }
 
 .contents {
