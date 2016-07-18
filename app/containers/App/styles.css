@@ -4,6 +4,11 @@
   overflow-y: auto;
 }
 
+::selection {
+  background: white;
+  color: black;
+}
+
 html,
 body {
   height: 100%;
