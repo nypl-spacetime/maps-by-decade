@@ -19,8 +19,8 @@ setup(app, {
   publicPath: '/',
 });
 
-// get the intended port number, use port 3001 if not provided
-const port = argv.port || process.env.PORT || 3001;
+// get the intended port number, use port 3101 if not provided
+const port = argv.port || process.env.PORT || 3101;
 
 // Start your app.
 app.listen(port, (err) => {
