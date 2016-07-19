@@ -15,13 +15,22 @@ const selectData = (file) => createSelector(
 const selectGeoJSON = (file) => createSelector(
   selectGlobal(),
   (globalState) => {
+    const data = globalState.getIn(['data', file]);
+
+    if (!data) {
+      return {
+        type: 'FeatureCollection',
+        features: []
+      };
+    }
+
     const flatten = list => list.reduce(
       (a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), []
     );
 
     return {
       type: 'FeatureCollection',
-      features: flatten(Object.values(globalState.getIn(['data', file])))
+      features: flatten(Object.values(data))
     };
   }
 );
