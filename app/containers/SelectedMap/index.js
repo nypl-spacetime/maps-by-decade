@@ -25,7 +25,7 @@ export class SelectedMap extends React.Component {
       );
     } else {
       tileLink = (
-        <a href='javascript:void(0)' onClick={this.addTileLayerMap.bind(this)}>Add to map</a>
+        <a href='javascript:void(0)' onClick={this.addTileLayerMap.bind(this)}>View on map</a>
       );
     }
 
