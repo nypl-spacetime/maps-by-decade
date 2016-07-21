@@ -17,6 +17,7 @@ body {
 
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
 }
 
 /* Typography
@@ -55,20 +56,16 @@ a, a:visited {
 }
 
 .container {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-
   font-size: 1.3em;
   line-height: 1.6;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .contents {
-  position: absolute;
-  width: 100%;
-  top: $headerHeight;
-  bottom: 0;
+  flex: 1;
   overflow-y: auto;
 }
 

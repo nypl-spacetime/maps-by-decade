@@ -1,7 +1,7 @@
 {
   "name": "maps-by-decade",
   "version": "1.0.0",
-  "description": "Space/Time Directory - Maps by Decade",
+  "description": "NYC Space/Time Directory - Maps by Decade",
   "repository": {
     "type": "git",
     "url": "git://github.com/nypl-spacetime/maps-by-decade.git"

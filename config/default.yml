@@ -3,7 +3,6 @@ data:
 
 cssVariables:
   mobileWidth: 800px
-  headerHeight: 52px
   homepageColor: '#aed8e6'
   singleDecadeColor: '#ffd72e'
 

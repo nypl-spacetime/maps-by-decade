@@ -169,21 +169,23 @@ export class DecadePage extends React.Component {
               onHoverMaps={this.hoverMaps.bind(this)} options={this.props.mapOptions}
               disableHover={this.props.selectedMapsLocked} mapCreated={this.mapCreated.bind(this)}
               onEachFeatureAll={this.onEachFeatureAll.bind(this)} onEachFeatureGrouped={this.onEachFeatureGrouped.bind(this)} />
-            <div className={styles.header}>
-              <div className={styles['link-container']}>
-                {previousDecade}
-              </div>
-              <div className={styles.middle}>
-                <h2>{this.decadeToPeriod(this.props.params.decade)}</h2>
-                <div className={styles.back}>
-                  <Link title='Go back to decade list - or press ESC' to={`/`}>Back to decade list</Link>
+            <div className={styles.controls}>
+              <div className={styles.header}>
+                <div className={styles['link-container']}>
+                  {previousDecade}
+                </div>
+                <div className={styles.middle}>
+                  <h2>{this.decadeToPeriod(this.props.params.decade)}</h2>
+                  <div className={styles.back}>
+                    <Link title='Go back to decade list - or press ESC' to={`/`}>Back to decade list</Link>
+                  </div>
+                </div>
+                <div className={styles['link-container']}>
+                  {nextDecade}
                 </div>
               </div>
-              <div className={styles['link-container']}>
-                {nextDecade}
-              </div>
+              {footer}
             </div>
-            {footer}
           </div>
           <div className={styles.sidebar}>
             <Sidebar />
