@@ -47,6 +47,8 @@ header a:visited {
   display: flex;
   flex-direction: column;
   margin-right: .7em;
+  padding-right: .7em;
+  border-right: 1px solid #eee;
 }
 
 .subtitles h2 {
