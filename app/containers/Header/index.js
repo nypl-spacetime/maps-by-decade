@@ -16,30 +16,6 @@ import nypl from 'images/nypl-white.svg';
 
 export class Header extends React.Component {
 
-  // <div className={`${styles['align-center']}`}>
-  //
-  //
-  //
-  //
-  //
-  //
-  //   <h1>
-  //     <span className={`orientation-horizontal ${styles['subtitle-spacing']}`}>
-  //       <span className={`${styles['main-title']}`}>
-  //         <a href='http://spacetime.nypl.org/' target='_blank'>
-  //         NYC Space/Time Directory
-  //         </a>
-  //       </span>
-  //       <span>:</span>
-  //     </span>
-  //     <span>
-  //       <Link to='/'>
-  //         Maps by Decade
-  //       </Link>
-  //     </span>
-  //   </h1>
-  // </div>
-
   render() {
     var pageClass = this.props.params && this.props.params.decade ? styles.singleDecade : ''
     return (
@@ -49,7 +25,7 @@ export class Header extends React.Component {
           </a>
           <div className={styles.subtitles}>
             <h2>
-              <a href='http://nypl.org/' target='_blank'>The New York Public Library</a>
+              <a href='http://spacetime.nypl.org/' target='_blank'>The New York Public Library</a>
             </h2>
             <h3>
               <a href='http://spacetime.nypl.org/' target='_blank'>NYC Space/Time Directory</a>
