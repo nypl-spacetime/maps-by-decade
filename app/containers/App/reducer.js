@@ -101,7 +101,7 @@ function appReducer(state = initialState, action) {
         .set('selectedMaps', [])
         .set('selectedMapsLocked', false)
         .set('ligtboxIndex', 0)
-        .set('tileUrl', null);
+        .set('tileLayerMaps', fromJS({}),);
     case SELECT_MAPS:
       return state
         .set('selectedMaps', action.maps)
