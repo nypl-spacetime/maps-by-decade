@@ -43,13 +43,22 @@ export class MiniMap extends React.Component {
     const tree = this.context.trees && this.context.trees[band];
 
     return (
-      <div className={styles.container}>
+      <div className={styles.container} tabIndex='0' onKeyDown={this.containerKeyDown.bind(this)}>
         <HoverMap decade={band} tree={tree} onEachFeatureAll={this.onEachFeature.bind(this)}
+          onEachFeatureGrouped={this.onEachFeature.bind(this)}
           groupedGeoJSON={this.props.feature} allGeoJSON={this.props.allGeoJSON}
           mapCreated={this.mapCreated.bind(this)} options={this.props.mapOptions} />
         <h2>{this.decadeToPeriod(band)}</h2>
       </div>
     );
+  }
+
+  containerKeyDown(e) {
+    if (e.keyCode !== 13) {
+      return
+    }
+
+    this.onClick();
   }
 
   mapCreated(map) {
