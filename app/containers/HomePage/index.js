@@ -46,7 +46,7 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
           <Article>
             <h1 className={styles.centered}>Maps by Decade</h1>
             <p>
-              New York City street maps from the New York Public Library's <a href='https://www.nypl.org/about/divisions/map-division'>Lionel Pincus and Princess Firyal Map Division</a> — published between 1830 and 1950 — grouped by decade.
+              New York City street maps from the New York Public Library's <a href='https://www.nypl.org/about/divisions/map-division'>Lionel Pincus and Princess Firyal Map Division</a> — published between 1810 and 1950 — grouped by decade.
             </p>
             <p>
               Maps by Decade shows {mapCount} large-scale maps (i.e. maps depicting an area smaller than 5 km²) that are digitized, georectified, and in the public domain (or of which the Library holds the copyright). You can browse 20,000 more maps and atlases in NYPL's <a href='http://digitalcollections.nypl.org/'>Digital Collections</a>, the Library's database of its digitized collections. Or visit <a href='http://maps.nypl.org/'>Map Warper</a>, our online tool for rectifying public domain maps.
