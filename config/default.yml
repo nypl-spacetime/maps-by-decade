@@ -22,7 +22,7 @@ mapOptions:
       maxBounds: [[40.436495, -73.424377], [41.155910, -74.347229]]
     tileLayer:
       opacity: 0.3
-      tileUrl: https://api.mapbox.com/styles/v1/nypllabs/ciqs7cs9w0000cwm74gb05xmq/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibnlwbGxhYnMiLCJhIjoiSFVmbFM0YyJ9.sl0CRaO71he1XMf_362FZQ
+      tileUrl: https://api.mapbox.com/styles/v1/bertspaan/ciqawh1ss0007bzmag2ubt5tp/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmVydHNwYWFuIiwiYSI6ImR3dERiQk0ifQ.DLbScmbRohc3Sqv7prfhqw
     geojson:
       color: '#39484c'
       weight: 1.5
@@ -49,7 +49,7 @@ mapOptions:
       maxBounds: [[40.436495, -73.424377], [41.155910, -74.347229]]
     tileLayer:
       opacity: 0.3
-      tileUrl: https://api.mapbox.com/styles/v1/nypllabs/ciqs7ai4a0000cwm4663mv4x7/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibnlwbGxhYnMiLCJhIjoiSFVmbFM0YyJ9.sl0CRaO71he1XMf_362FZQ
+      tileUrl: https://api.mapbox.com/styles/v1/bertspaan/cio0gk14s000hainh1ghuhmyu/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmVydHNwYWFuIiwiYSI6ImR3dERiQk0ifQ.DLbScmbRohc3Sqv7prfhqw
     geojson:
       color: '#39484c'
       weight: 1.5
