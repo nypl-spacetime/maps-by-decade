@@ -1,3 +1,20 @@
+/* Fonts
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+@font-face {
+  font-family: 'Cabin';
+  src: url('../../fonts/Cabin-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('../../fonts/Raleway-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
 /* Global styles */
 
 :root {
@@ -17,7 +34,7 @@ body {
 
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 300;
+  /*font-weight: 300;*/
 }
 
 /* Typography
@@ -48,7 +65,7 @@ p {
 }
 
 body.fontLoaded {
-  font-family: 'Kievit';
+  font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 a, a:visited {
@@ -80,5 +97,5 @@ a, a:visited {
 
 :global(.external-links .white) a[href^="http://"],
 :global(.external-link.white) {
-    background-image: url(images/external-link-white.svg);
+  background-image: url(images/external-link-white.svg);
 }

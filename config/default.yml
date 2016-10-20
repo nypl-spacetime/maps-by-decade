@@ -1,5 +1,5 @@
 data:
-  baseUrl: http://maps-by-decade-data.dev/data/
+  baseUrl: http://maps-by-decade-data.dev/
 
 cssVariables:
   mobileWidth: 800px

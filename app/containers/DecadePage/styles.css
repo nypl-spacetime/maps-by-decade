@@ -88,8 +88,8 @@
 /*TODO: make global style*/
 .header h2 {
   font-size: 40px;
-  font-family: 'MiloSlab';
-  font-weight: bold;
+  font-family: 'Raleway';
+  font-weight: 600;
 
   /*TODO: use color variable*/
   text-shadow: 0 0 4px rgb(247, 241, 217);

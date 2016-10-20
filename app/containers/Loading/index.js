@@ -1,10 +1,6 @@
 import React from 'react';
 
-// import CenteredItemPage from 'components/CenteredItemPage';
-
 import styles from './styles.css';
-
-var nypl = require('images/nypl.svg');
 
 export class Loading extends React.Component {
 
@@ -22,7 +18,6 @@ export class Loading extends React.Component {
     return (
       <div>
         <div className={styles.container}>
-          <img src={nypl} />
           <div className={styles.loading}>{loading}</div>
         </div>
       </div>

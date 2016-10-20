@@ -24,10 +24,9 @@ import 'sanitize.css/lib/sanitize.css';
 
 import styles from 'containers/App/styles.css';
 
-const kievitObserver = new FontFaceObserver('Kievit', {});
+const cabinObserver = new FontFaceObserver('Cabin', {});
 
-// When Kievit is loaded, add a font-family using Open Sans to the body
-kievitObserver.check().then(() => {
+cabinObserver.check().then(() => {
   document.body.classList.add(styles.fontLoaded);
 }, () => {
   document.body.classList.remove(styles.fontLoaded);

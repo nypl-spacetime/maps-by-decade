@@ -14,7 +14,6 @@ import { connect } from 'react-redux';
 
 import Article from 'components/Article';
 import CenteredItemPage from 'components/CenteredItemPage';
-import Footer from 'components/Footer';
 
 import Loading from 'containers/Loading';
 import DecadeList from 'containers/DecadeList';
@@ -26,6 +25,8 @@ import {
   selectGeoJSON
 } from 'containers/App/selectors';
 
+import logo from 'images/maps-by-decade.png';
+
 import styles from './styles.css';
 
 export class HomePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -36,7 +37,7 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
         <div className={`${styles.container}`}>
           <CenteredItemPage>
             <Loading />
-            </CenteredItemPage>
+          </CenteredItemPage>
         </div>
       );
     } else {
@@ -44,19 +45,18 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
       return (
         <div className={`${styles.container}`}>
           <Article>
-            <h1 className={styles.centered}>Maps by Decade</h1>
+            <img className={styles.logo} src={logo} />
             <p>
               New York City street maps from the New York Public Library's <a href='https://www.nypl.org/about/divisions/map-division'>Lionel Pincus and Princess Firyal Map Division</a> — published between 1810 and 1950 — grouped by decade.
             </p>
             <p>
-              Maps by Decade shows {mapCount} large-scale maps (i.e. maps depicting an area smaller than 5 km²) that are digitized, georectified, and in the public domain (or of which the Library holds the copyright). You can browse 20,000 more maps and atlases in NYPL's <a href='http://digitalcollections.nypl.org/'>Digital Collections</a>, the Library's database of its digitized collections. Or visit <a href='http://maps.nypl.org/'>Map Warper</a>, our online tool for rectifying public domain maps.
+              Maps by Decade shows {mapCount} large-scale maps (i.e. maps depicting an area smaller than 5 km²) that are digitized, georectified, and in the public domain (or of which the Library holds the copyright). You can browse 20,000 more maps and atlases in <a href='http://digitalcollections.nypl.org/'>Digital Collections</a>, the Library's database of its digitized collections. Or visit <a href='http://maps.nypl.org/'>Map Warper</a>, NYPL's online tool for rectifying public domain maps.
             </p>
             <p className={styles.centered}>
-              Click on a map for more details or <a href='https://github.com/nypl-spacetime/maps-by-decade'>view the source code on Github</a>.
+              Click on a map for more details or <a href='https://github.com/bertspaan/maps-by-decade'>view the source code and data on Github</a>.
             </p>
             <DecadeList />
           </Article>
-          <Footer />
         </div>
       );
     }

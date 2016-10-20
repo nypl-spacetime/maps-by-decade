@@ -21,3 +21,9 @@
 .centered {
   text-align: center;
 }
+
+.logo {
+  width: 400px;
+  display: block;
+  margin: 40px auto;
+}

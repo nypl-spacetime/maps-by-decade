@@ -25,8 +25,6 @@ import {
   selectData
 } from 'containers/App/selectors';
 
-import Header from 'containers/Header';
-
 import styles from './styles.css';
 
 export class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -85,7 +83,6 @@ export class App extends React.Component { // eslint-disable-line react/prefer-s
   render() {
     return (
       <div className={styles.container}>
-        <Header params={this.props.params} />
         <div className={styles.contents}>
           {this.props.children}
         </div>
