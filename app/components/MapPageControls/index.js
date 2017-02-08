@@ -7,9 +7,6 @@ import { decadeToPeriod } from 'utils/utils'
 function MapPageControls (props) {
   let previousDecade
   if (props.previousDecade) {
-    // <div title='Go to previous decade - or press [' className={`${styles['decade-link']} ${styles.previous}`}>
-      //    <Link to={`/${this.props.previousDecade}`}>← previous</Link>
-        // </div>
     previousDecade = (
       <Link title='Go to previous decade - or press [' to={`/${props.previousDecade}`}>← previous</Link>
     )
@@ -24,11 +21,6 @@ function MapPageControls (props) {
     nextDecade = (
       <Link title='Go to next decade - or press ]' to={`/${props.nextDecade}`}>next →</Link>
     )
-//       nextDecade = (
-//         <div title='Go to next decade - or press ]' className={`${styles['decade-link']} ${styles.next}`}>
-//           <Link to={`/${this.props.nextDecade}`}>next →</Link>
-//         </div>
-//       );
   } else {
     nextDecade = (
       <div />
