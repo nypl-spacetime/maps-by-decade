@@ -7,6 +7,8 @@ import ReactPaginate from 'react-paginate'
 import NoMapsFound from 'components/NoMapsFound'
 import MapListItem from 'containers/MapListItem'
 
+import { formatNumber } from 'utils/utils'
+
 import {
   selectGroupBounds
 } from 'containers/App/selectors'
@@ -60,7 +62,7 @@ export class DataPageList extends React.Component {
       return (
         <div>
           <p>
-            Found {this.props.features.length} maps:
+            Found {formatNumber(this.props.features.length)} maps:
           </p>
           {paginate}
           <StyledList>
