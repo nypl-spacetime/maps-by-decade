@@ -46,7 +46,7 @@ export class MapListItem extends React.Component {
           </MapHeading>
         </DataContainer>
         <ImageLink href='javascript:void(0)' onClick={this.showLightbox.bind(this)}>
-          <img src={imageUrl} />
+          <img src={imageUrl} alt={this.props.map.properties.name} />
         </ImageLink>
       </Item>
     )
