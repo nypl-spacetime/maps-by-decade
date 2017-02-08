@@ -85,9 +85,9 @@ export class AboutPage extends React.Component {
 
           <h4>Data</h4>
           <p>
-          The data for Maps by Decade comes from the <a href="http://maps.nypl.org/">NYPL Map Warper</a>, an online tool for browsing and georectifying thousands of the Library's public domain maps. 
+          The data for Maps by Decade comes from the <a href='http://maps.nypl.org/'>NYPL Map Warper</a>, an online tool for browsing and georectifying thousands of the Library's public domain maps.
           </p>
-          <p>For more datasets, see the Data section of the NYPL Space/Time Directory site. Or for examples on how to use the open data from this tool and many others, see the <a href='https://github.com/nypl-spacetime/spacetime-data/'>spacetime-data repository</a>. 
+          <p>For more datasets, see the Data section of the NYPL Space/Time Directory site. Or for examples on how to use the open data from this tool and many others, see the <a href='https://github.com/nypl-spacetime/spacetime-data/'>spacetime-data repository</a>.
           </p>
 
           <h4>GitHub</h4>
@@ -99,7 +99,7 @@ export class AboutPage extends React.Component {
           Maps by Decade is part of the <a href='http://spacetime.nypl.org/'>NYPL Space/Time Directory</a>, making urban history accessible through a wide variety of resources. Major support for the NYC Space/Time Directory is provided by the <a href='http://www.knightfoundation.org/grants/6715'>Knight News Challenge</a>, an initiative of the John S. and James L. Knight Foundation.
           </p>
           <p>
-          <img src={knight_foundation_logo} alt='Knight Foundation Logo' />
+            <img src='images/knight_foundation_logo.png' alt='Knight Foundation Logo' />
           </p>
           <hr />
           <h3>Accessibility</h3>
@@ -107,7 +107,7 @@ export class AboutPage extends React.Component {
 
           <p>Maps by Decade, with its collection of digitized street maps, is inherently visual in nature. It also includes an interactive, map-based interface that can present challenges from an accessibility perspective. To meet WCAG success criteria, we worked to provide text alternatives for visual aspects of the Maps by Decade tool. We also made its <a href='/mbd-test/'>'map'</a> and <a href='/list'>'list'</a> interfaces navigable by keyboard, as well as by mouse. These features help fulfill the mission of the NYC Space/Time Directory: to allow everyone to travel through time and space to explore urban history.</p>
 
-          <p>If you encounter issues using Maps by Decade or would like to provide feedback regarding its accessibility, please email <a href='mailto:spacetime@nypl.org'>spacetime@nypl.org</a>.       </p>
+          <p>If you encounter issues using Maps by Decade or would like to provide feedback regarding its accessibility, please email <a href='mailto:spacetime@nypl.org'>spacetime@nypl.org</a>.</p>
 
           <p>For further information about assistive technologies and accommodations available for people with disabilities at the research centers and branch libraries of <a href='https://www.nypl.org/locations/'>The New York Public Library</a>, please visit <a href='https://www.nypl.org/accessibility'>nypl.org/accessibility</a> or email <a href='mailto:accessibility@nypl.org'>accessibility@nypl.org</a>.</p>
 
