@@ -1,8 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { createSelector } from 'reselect'
 
 import ReactPaginate from 'react-paginate'
+
+import NoMapsFound from 'components/NoMapsFound'
 import MapListItem from 'containers/MapListItem'
+
+import {
+  selectGroupBounds
+} from 'containers/App/selectors'
 
 import {
   selectMaps
@@ -48,11 +55,7 @@ export class DataPageList extends React.Component {
     }
 
     if (count === 0) {
-      return (
-        <p>
-          No maps found
-        </p>
-      )
+      return <NoMapsFound groupBounds={this.props.groupBounds} />
     } else {
       return (
         <div>
@@ -85,5 +88,9 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(DataPageList)
-
+export default connect(createSelector(
+  selectGroupBounds(),
+  (groupBounds) => ({
+    groupBounds
+  })
+), mapDispatchToProps)(DataPageList)
