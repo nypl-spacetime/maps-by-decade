@@ -10,13 +10,9 @@ export const PaginateContainer = styled.div`
     padding: 0;
 
     display: flex;
-    // justify-content: space-between;
     justify-content: center;
-    // padding: .5em;
-    // padding-left: 15px;
-    // padding-right: 15px;
 
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
 
   & li {

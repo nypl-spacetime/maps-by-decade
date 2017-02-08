@@ -7,7 +7,7 @@ const mobileWidth = __CONFIG__.cssVariables.mobileWidth
 export const Item = styled.li`
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 5px;
   margin-bottom: 10px;
 
   @media (max-width: ${mobileWidth}) {
@@ -18,6 +18,8 @@ export const Item = styled.li`
 `
 
 export const ImageLink = styled.a`
+  padding: 5px;
+  box-sizing: border-box;
   flex-shrink: 0;
   cursor: zoom-in;
   height: 140px;

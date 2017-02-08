@@ -6,6 +6,7 @@ export const TitleContainer = styled.h3`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  padding: 5px;
 `
 
 export const Title = styled.span`
@@ -23,4 +24,5 @@ export const Year = styled.span`
 
 export const Links = styled.div`
   font-size: 16px;
+  padding: 5px;
 `
