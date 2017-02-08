@@ -123,11 +123,6 @@ const selectLightboxTitle = () => createSelector(
   }
 )
 
-const selectShowIntro = () => createSelector(
-  selectGlobal(),
-  (globalState) => globalState.get('showIntro')
-)
-
 const selectFilters = () => createSelector(
   selectGlobal(),
   (globalState) => globalState.get('filters').toJS()
@@ -187,6 +182,5 @@ export {
   selectLightboxIndex,
   selectLightboxImages,
   selectLightboxTitle,
-  selectFilters,
-  selectShowIntro
+  selectFilters
 }

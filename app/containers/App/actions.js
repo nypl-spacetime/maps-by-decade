@@ -119,10 +119,3 @@ export function resetFilters () {
     type: RESET_FILTERS
   }
 }
-
-export function hideIntro () {
-  return {
-    type: HIDE_INTRO
-  }
-}
-
