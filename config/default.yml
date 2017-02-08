@@ -1,5 +1,5 @@
 data:
-  baseUrl: http://maps-by-decade-data.dev/data/
+  baseUrl: http://maps-by-decade-data.dev/
 
 cssVariables:
   mobileWidth: 800px
@@ -13,7 +13,7 @@ mapOptions:
       scrollWheelZoom: true
       doubleClickZoom: true
       boxZoom: true
-      keyboard: false
+      keyboard: true
       minZoom: 10
       maxZoom: 18
       attributionControl: false
@@ -39,14 +39,16 @@ mapOptions:
       zoomControl: false
       scrollWheelZoom: false
       doubleClickZoom: false
-      keyboard: false
+      keyboard: true
       boxZoom: false
       minZoom: 10
       maxZoom: 10
       attributionControl: false
       zoom: 10
       center: [40.75319,-73.98224]
-      maxBounds: [[40.436495, -73.424377], [41.155910, -74.347229]]
+      # With maxBounds enabled Leaflet.Sync is hangs browser when moving one
+      #   out of set bounds
+      # maxBounds: [[40.436495, -73.424377], [41.155910, -74.347229]]
     tileLayer:
       opacity: 0.3
       tileUrl: https://api.mapbox.com/styles/v1/nypllabs/ciqs7ai4a0000cwm4663mv4x7/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibnlwbGxhYnMiLCJhIjoiSFVmbFM0YyJ9.sl0CRaO71he1XMf_362FZQ

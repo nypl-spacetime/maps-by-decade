@@ -1,31 +1,31 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from 'react'
+import { connect } from 'react-redux'
 
-import MiniMap from 'containers/MiniMap';
+import MiniMap from 'containers/MiniMap'
 
-import { createSelector } from 'reselect';
+import { createSelector } from 'reselect'
 
 import {
   selectGeoJSON
-} from 'containers/App/selectors';
+} from 'containers/App/selectors'
 
-import styles from './styles.css';
+import { List, ItemWrapper, Item, MiniMapContainer } from './styles'
 
 export class DecadeList extends React.Component {
-  render() {
+  render () {
     return (
-      <ul className={styles.list}>
+      <List>
         { this.props.groupedGeoJSON.features.map((feature, i) => (
-          <li key={i} className={styles['item-wrapper']}>
-            <div className={styles.item}>
-              <div className={styles.container}>
+          <ItemWrapper key={i}>
+            <Item>
+              <MiniMapContainer>
                 <MiniMap feature={feature} />
-              </div>
-            </div>
-          </li>
+              </MiniMapContainer>
+            </Item>
+          </ItemWrapper>
         ))}
-      </ul>
-    );
+      </List>
+    )
   }
 }
 
@@ -34,4 +34,4 @@ export default connect(createSelector(
   (groupedGeoJSON) => ({
     groupedGeoJSON
   })
-))(DecadeList);
+))(DecadeList)

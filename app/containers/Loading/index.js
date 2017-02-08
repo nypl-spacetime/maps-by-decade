@@ -1,47 +1,63 @@
-import React from 'react';
+import React from 'react'
 
-// import CenteredItemPage from 'components/CenteredItemPage';
+import styled from 'styled-components'
 
-import styles from './styles.css';
+import CenteredItemPage from 'components/CenteredItemPage'
 
-var nypl = require('images/nypl.svg');
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & img {
+    width: 150px;
+  }
+`
+
+const Text = styled.div`
+  margin: 0 auto;
+  width: 195px;
+  white-space: nowrap;
+`
+
+const nypl = require('images/nypl.svg')
 
 export class Loading extends React.Component {
 
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       dots: 0,
-      maxDots: 3
-    };
+      maxDots: 3,
+      mbs: '3MB'
+    }
   }
 
-  render() {
-
-    var loading = `Loading${(new Array(this.state.dots + 1).join('.'))}`;
+  render () {
+    var loading = `Loading maps (${this.state.mbs})${(new Array(this.state.dots + 1).join('.'))}`
     return (
-      <div>
-        <div className={styles.container}>
+      <CenteredItemPage>
+        <Container>
           <img src={nypl} />
-          <div className={styles.loading}>{loading}</div>
-        </div>
-      </div>
-    );
+          <Text>{loading}</Text>
+        </Container>
+      </CenteredItemPage>
+    )
   }
 
-  componentDidMount() {
-    this.interval = setInterval(()=> {
+  componentDidMount () {
+    this.interval = setInterval(() => {
       this.setState({
         dots: (this.state.dots + 1) % (this.state.maxDots + 1)
       })
-    }, 500);
+    }, 500)
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     if (this.interval) {
       clearInterval(this.interval)
     }
   }
 }
 
-export default Loading;
+export default Loading

@@ -1,21 +1,23 @@
-/**
- * NotFoundPage
- *
- * This is the page we show when the user visits a url that doesn't have a route
- *
- * NOTE: while this component should technically be a stateless functional
- * component (SFC), hot reloading does not currently support SFCs. If hot
- * reloading is not a neccessity for you then you can refactor it and remove
- * the linting exception.
- */
+import React from 'react'
+import { Link } from 'react-router'
+import styled from 'styled-components'
 
-import React from 'react';
+import CenteredItemPage from 'components/CenteredItemPage'
 
-export default class NotFound extends React.Component { // eslint-disable-line react/prefer-stateless-function
+const Container = styled.div`
+  text-align: center;
+`
 
-  render() {
+export default class NotFound extends React.Component {
+
+  render () {
     return (
-      <h1>Page Not Found</h1>
-    );
+      <CenteredItemPage>
+        <Container>
+          <p>Page Not Found</p>
+          <Link to='/'>Return to homepage</Link>
+        </Container>
+      </CenteredItemPage>
+    )
   }
 }

@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 
-import Article from 'components/Article';
+import Article from 'components/Article'
 
-import nypl from 'images/nypl.svg';
+import { StyledFooter } from './styles'
 
-import styles from './styles.css';
+import nypl from 'images/nypl.svg'
 
-function Footer(props) {
+function Footer (props) {
   return (
-    <footer className={styles.footer}>
+    <StyledFooter>
       <nav>
         <a href='http://www.nypl.org/help/about-nypl/legal-notices/privacy-policy' target='_blank'>Privacy Policy</a>
         <a href='http://www.nypl.org/help/about-nypl/legal-notices/rules-and-regulations' target='_blank'>Rules and Regulations</a>
@@ -20,14 +20,14 @@ function Footer(props) {
           A <a href='http://spacetime.nypl.org/'>NYC Space/Time Directory</a> project
         </p>
         <p>
-          © The New York Public Library, Astor, Lenox, and Tilden Foundation 2013-2016
+          © The New York Public Library, Astor, Lenox, and Tilden Foundation 2013-2017
         </p>
         <p>
-          <img src={nypl} />
+          <img src={nypl} alt='The New York Public Library' />
         </p>
       </Article>
-    </footer>
-  );
+    </StyledFooter>
+  )
 }
 
-export default Footer;
+export default Footer

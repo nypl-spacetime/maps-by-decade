@@ -1,129 +1,72 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
+import React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router'
+import { push } from 'react-router-redux'
 
-import Lightbox from 'react-image-lightbox';
-
-import { createSelector } from 'reselect';
+import { createSelector } from 'reselect'
 
 import {
+  selectHasTouch,
   selectSelectedMaps,
   selectTileLayerMaps,
   selectMapOptions,
-  selectSelectedMapsLocked,
-  selectShowLightbox,
-  selectLightboxIndex,
-  selectLightboxImages,
-  selectLightboxTitle
-} from 'containers/App/selectors';
+  selectSelectedMapsLocked
+} from 'containers/App/selectors'
 
-import {
-  showLightbox,
-  lightboxPrev,
-  lightboxNext
-} from 'containers/App/actions';
-
-import SelectedMap from 'containers/SelectedMap';
-
-import styles from './styles.css';
+import SelectedMap from 'containers/SelectedMap'
+import MapLightbox from 'containers/MapLightbox'
+import { Container, List, Instructions } from './styles'
 
 export class Sidebar extends React.Component {
 
-  getMapId = (map) => map.properties.id.split('/')[1];
-
-  render() {
+  render () {
     if (!this.props.selectedMaps || this.props.selectedMaps.length === 0) {
-      return (
-        <div className={styles.instructions}>
-          <span>← Move mouse over maps to see details, click to select</span>
-        </div>
-      );
-    }
-
-    let lightbox;
-    if (this.props.lightboxShown) {
-      const images = this.props.lightboxImages;
-      const thumbnails = this.props.lightboxThumbnails;
-      const index = this.props.lightboxIndex;
-      const map = this.props.selectedMaps[index];
-
-      const buttons = [
-        <a className={`${styles['lightbox-button']} external-link white`} href={`http://maps.nypl.org/warper/maps/${this.getMapId(map)}`} target='_blank'>Map Warper</a>,
-        <a className={`${styles['lightbox-button']} external-link white`} href={map.properties.url} target='_blank'>Digital Collections</a>
-      ]
-
-      let prevSrc;
-      let nextSrc;
-      if (images.length > 1) {
-        nextSrc = images[(index + 1) % images.length];
-        prevSrc = images[(index + images.length - 1) % images.length];
+      let text
+      if (this.props.hasTouch) {
+        text = 'Drag map to see details; tap to lock selection.'
+      } else {
+        text = 'Move mouse over map to see details, or use your arrow keys; click to lock selection.'
       }
 
-      lightbox = (
-        <Lightbox
-          imageTitle={this.props.lightboxTitle}
-          mainSrc={images[index % images.length]}
-          nextSrc={nextSrc}
-          prevSrc={prevSrc}
-          mainSrcThumbnail={thumbnails[index % thumbnails.length]}
-          prevSrcThumbnail={thumbnails[(index + 1) % thumbnails.length]}
-          nextSrcThumbnail={thumbnails[(index + thumbnails.length - 1) % thumbnails.length]}
-          toolbarButtons={buttons}
-          onCloseRequest={this.closeLightbox.bind(this)}
-          onMovePrevRequest={this.lightboxPrev.bind(this)}
-          onMoveNextRequest={this.lightboxNext.bind(this)} />
-      );
+      return (
+        <Instructions>
+          <span>
+            ←
+          </span>
+          <span>
+            {text} See the <Link to='/about'>About page</Link> for more information.
+          </span>
+        </Instructions>
+      )
     }
 
     return (
-      <div className={styles.container} ref='sidebar'>
-        <ul className={styles.list}>
+      <Container ref='sidebar'>
+        <List>
           { this.props.selectedMaps.map((map, index) => (
-            <li key={map.properties.id}>
-              <SelectedMap map={map} index={index}
-                tilesOnMap={this.props.tileLayerMaps.get(map.properties.id) ? true : false} />
-            </li>
+            <SelectedMap map={map} index={index} key={map.properties.id}
+              tilesOnMap={this.props.tileLayerMaps.get(String(map.properties.id)) !== undefined} />
           ))}
-        </ul>
-        {lightbox}
-      </div>
-    );
-  }
-
-  closeLightbox() {
-    this.props.showLightbox(false);
-  }
-
-  lightboxPrev() {
-    this.props.lightboxPrev()
-  }
-
-  lightboxNext() {
-    this.props.lightboxNext()
+        </List>
+        <MapLightbox />
+      </Container>
+    )
   }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
-    changeRoute: (url) => dispatch(push(url)),
-    showLightbox: (show) => dispatch(showLightbox(show)),
-    lightboxPrev: () => dispatch(lightboxPrev()),
-    lightboxNext: () => dispatch(lightboxNext())
-  };
+    changeRoute: (url) => dispatch(push(url))
+  }
 }
 
 export default connect(createSelector(
+  selectHasTouch(),
   selectSelectedMaps(),
   selectTileLayerMaps(),
   selectMapOptions('miniMap'),
   selectSelectedMapsLocked(),
-  selectShowLightbox(),
-  selectLightboxIndex(),
-  selectLightboxImages(),
-  selectLightboxImages('t'),
-  selectLightboxTitle(),
-  (selectedMaps, tileLayerMaps, options, selectedMapsLocked, lightboxShown, lightboxIndex, lightboxImages, lightboxThumbnails, lightboxTitle) => ({
-    selectedMaps, tileLayerMaps, options, selectedMapsLocked, lightboxShown, lightboxIndex, lightboxImages, lightboxThumbnails, lightboxTitle
+  (hasTouch, selectedMaps, tileLayerMaps, options, selectedMapsLocked) => ({
+    hasTouch, selectedMaps, tileLayerMaps, options, selectedMapsLocked
   })
-), mapDispatchToProps)(Sidebar);
+), mapDispatchToProps)(Sidebar)

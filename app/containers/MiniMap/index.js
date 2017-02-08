@@ -1,104 +1,105 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
+import React from 'react'
+import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
+import { createSelector } from 'reselect'
 
-import { createSelector } from 'reselect';
+import { decadeToPeriod } from 'utils/utils'
 
 import {
   newMiniMap
-} from 'containers/App/actions';
+} from 'containers/App/actions'
 
 import {
+  selectHasTouch,
   selectDecadeGeoJSON,
   selectMapOptions
-} from 'containers/App/selectors';
+} from 'containers/App/selectors'
 
-import HoverMap from 'containers/HoverMap';
+import HoverMap from 'containers/HoverMap'
 
-import styles from './styles.css';
+import { StyledMiniMap, Title } from './styles'
 
 export class MiniMap extends React.Component {
 
-  maps = [];
-
-  openDecade = (decade, mapId) => {
-    this.props.changeRoute(`/${decade}`);
-    // if (mapId) {
-    //   this.props.changeRoute(`/${decade}/${mapId}`);
-    // } else {
-    //   this.props.changeRoute(`/${decade}`);
-    // }
-  };
-
-  decadeToPeriod(decade) {
-  	return decade + ' - ' + (decade + 9);
-  }
-
   static contextTypes = {
-    trees: React.PropTypes.object,
+    trees: React.PropTypes.object
   }
 
-  render() {
-    const band = this.props.feature.properties.band;
-    const tree = this.context.trees && this.context.trees[band];
+  constructor (props) {
+    super(props)
+
+    this.maps = []
+  }
+
+  render () {
+    const group = this.props.feature.properties.group
+    const tree = this.context.trees && this.context.trees[group]
 
     return (
-      <div className={styles.container} tabIndex='0' onKeyDown={this.containerKeyDown.bind(this)}>
-        <HoverMap decade={band} tree={tree} onEachFeatureAll={this.onEachFeature.bind(this)}
-          onEachFeatureGrouped={this.onEachFeature.bind(this)}
+      <StyledMiniMap onKeyDown={this.containerKeyDown.bind(this)}>
+        <HoverMap decade={group} tree={tree} onEachFeatureAll={this.onEachFeature.bind(this)}
+          onEachFeatureGrouped={this.onEachFeature.bind(this)} hasTouch={this.props.hasTouch}
           groupedGeoJSON={this.props.feature} allGeoJSON={this.props.allGeoJSON}
           mapCreated={this.mapCreated.bind(this)} options={this.props.mapOptions} />
-        <h2>{this.decadeToPeriod(band)}</h2>
-      </div>
-    );
+        <Title>{decadeToPeriod(group)}</Title>
+      </StyledMiniMap>
+    )
   }
 
-  containerKeyDown(e) {
+  openDecade (decade) {
+    this.props.changeRoute(`/${decade}`)
+    // if (mapId) {
+    //   this.props.changeRoute(`/${decade}/${mapId}`)
+    // } else {
+    //   this.props.changeRoute(`/${decade}`)
+    // }
+  }
+
+  containerKeyDown (e) {
     if (e.keyCode !== 13) {
       return
     }
 
-    this.onClick();
+    this.onClick()
   }
 
-  mapCreated(map) {
-    map.on('click', this.onClick.bind(this));
-    this.props.newMiniMap(map);
+  mapCreated (map) {
+    map.on('click', this.onClick.bind(this))
+    this.props.newMiniMap(map)
   }
 
-  getMapId = (map) => map.properties.id.split('/')[1];
-
-  onEachFeature(feature, layer) {
+  onEachFeature (feature, layer) {
     layer.on({
       click: () => {
-        const decade = this.props.feature.properties.band;
-        this.openDecade(decade, this.getMapId(feature));
+        const decade = this.props.feature.properties.group
+        this.openDecade(decade)
       }
-    });
+    })
   }
 
-  onClick() {
-    const decade = this.props.feature.properties.band;
+  onClick () {
+    const decade = this.props.feature.properties.group
     this.openDecade(decade)
   }
 }
 
-function mapStateToProps(state, ownProps) {
-  const band = ownProps.feature.properties.band;
+function mapStateToProps (state, ownProps) {
+  const group = ownProps.feature.properties.group
   return createSelector(
-    selectDecadeGeoJSON('all', band),
+    selectHasTouch(),
+    selectDecadeGeoJSON('all', group),
     selectMapOptions('miniMap'),
-    (allGeoJSON, mapOptions) => ({
-      allGeoJSON, mapOptions
+    (hasTouch, allGeoJSON, mapOptions) => ({
+      hasTouch, allGeoJSON, mapOptions
     })
-  )(state);
+  )(state)
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
     newMiniMap: (map) => dispatch(newMiniMap(map)),
     changeRoute: (url) => dispatch(push(url))
-  };
+  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MiniMap);
+export default connect(mapStateToProps, mapDispatchToProps)(MiniMap)

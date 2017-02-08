@@ -1,159 +1,222 @@
-import React from 'react';
+import React from 'react'
+import styled from 'styled-components'
 
-import turfInside from 'turf-inside';
+import turfInside from 'turf-inside'
+import L from 'leaflet'
 
-import Map from 'containers/Map';
+import Crosshair from 'components/Crosshair'
+import Map from 'containers/Map'
 
-import styles from './styles.css';
+const Container = styled.div`
+  flex-basis: 100%;
+  display: flex;
+`
 
 export class HoverMap extends React.Component {
 
-  componentWillReceiveProps(nextProps) {
+  constructor (props) {
+    super(props)
+
+    this.throttleMs = 75
+    this.highlightMapsLatLng = null
+
+    this.state = {
+      showCrosshair: props.crosshair && props.hasTouch
+    }
+  }
+
+  componentWillReceiveProps (nextProps) {
     if (nextProps.decade !== this.props.decade) {
       if (this.groupedDataLayer) {
-        this.groupedDataLayer.clearLayers();
+        this.groupedDataLayer.clearLayers()
         if (nextProps.groupedGeoJSON) {
-          this.groupedDataLayer.addData(nextProps.groupedGeoJSON);
+          this.groupedDataLayer.addData(nextProps.groupedGeoJSON)
         }
       }
 
       if (this.allDataLayer) {
-        this.allDataLayer.clearLayers();
+        this.allDataLayer.clearLayers()
+
+        if (this.map && this.highlightMapsLatLng) {
+          this.updateHighlightedMaps(this.highlightMapsLatLng, nextProps.tree, nextProps.allGeoJSON)
+        }
       }
     }
   }
 
-  render() {
+  render () {
+    let crosshair
+    if (this.props.crosshair && this.state.showCrosshair) {
+      crosshair = (
+        <Crosshair />
+      )
+    }
+
     return (
-      <Map mapCreated={this.mapCreated.bind(this)} options={this.props.options.map} />
-    );
+      <Container>
+        <Map mapCreated={this.mapCreated.bind(this)} options={this.props.options.map} />
+        {crosshair}
+      </Container>
+    )
   }
 
-  mapMoving = false;
+  mapMoving = false
 
-  mapCreated(map) {
-    var options = this.props.options.tileLayer;
+  mapCreated (map) {
+    var options = this.props.options.tileLayer
 
-    L.tileLayer(options.tileUrl, options).addTo(map);
+    L.tileLayer(options.tileUrl, options).addTo(map)
 
     this.groupedDataLayer = L.geoJson(this.props.groupedGeoJSON, {
       style: this.props.options.geojson,
       onEachFeature: this.props.onEachFeatureGrouped
-    }).addTo(map);
+    }).addTo(map)
 
     this.allDataLayer = L.geoJson(null, {
       style: () => this.selectedStyleForZoom(map.getZoom()),
       onEachFeature: this.props.onEachFeatureAll
-    }).addTo(map);
+    }).addTo(map)
 
-    map.on('movestart', () => this.mapMoving = true);
-    map.on('moveend',  () => this.mapMoving = false);
-    map.on('zoomend', this.zoomEnd.bind(this));
+    map.on('movestart', () => {
+      this.mapMoving = true
+    })
+
+    map.on('move', this.throttle(() => {
+      if (this.state.showCrosshair) {
+        this.updateHighlightedMaps(map.getCenter())
+      }
+    }, this.throttleMs * 2))
+    map.on('moveend', () => {
+      this.mapMoving = false
+    })
+
+    map.on('zoomend', this.zoomEnd.bind(this))
 
     map.on('mousemove', this.throttle((event) => {
       if (this.mapMoving || this.props.disableHover) {
-        return;
+        return
       }
 
-      this.highlightMaps(event.latlng, (hoveredMaps) => {
+      this.setState({
+        showCrosshair: false
+      })
 
-        this.allDataLayer.clearLayers();
-        if (hoveredMaps.length) {
-        	this.allDataLayer.addData(hoveredMaps);
-        }
+      this.updateHighlightedMaps(event.latlng)
+    }, this.throttleMs))
 
-        if (this.props.onHoverMaps) {
-          this.props.onHoverMaps(hoveredMaps)
+    if (this.props.crosshair) {
+      const container = map._container
+      container.addEventListener('keydown', (event) => {
+        if (event.keyCode >= 37 && event.keyCode <= 40) {
+          this.setState({
+            showCrosshair: true
+          })
         }
       })
-    }, 50));
-
-    if (this.props.mapCreated) {
-      this.props.mapCreated(map);
     }
 
-    this.lastZoom = map.getZoom();
-    this.map = map;
+    if (this.props.mapCreated) {
+      this.props.mapCreated(map)
+    }
+
+    this.lastZoom = map.getZoom()
+    this.map = map
+  }
+
+  setHoveredMaps (hoveredMaps) {
+    this.allDataLayer.clearLayers()
+    if (hoveredMaps.length) {
+      this.allDataLayer.addData(hoveredMaps)
+    }
+
+    if (this.props.onHoverMaps) {
+      this.props.onHoverMaps(hoveredMaps)
+    }
+  }
+
+  updateHighlightedMaps (latlng, tree, allGeoJSON) {
+    this.highlightMapsLatLng = latlng
+    const hoveredMaps = this.highlightMaps(latlng, tree || this.props.tree, allGeoJSON || this.props.allGeoJSON)
+    this.setHoveredMaps(hoveredMaps)
   }
 
   // From: https://remysharp.com/2010/07/21/throttling-function-calls
-  throttle(fn, threshhold = 250, scope) {
-    var last;
-    var deferTimer;
+  throttle (fn, threshhold = 250, scope) {
+    var last
+    var deferTimer
 
     return function () {
-      var context = scope || this;
+      var context = scope || this
 
-      var now = +new Date;
-      var args = arguments;
+      var now = +new Date()
+      var args = arguments
 
       if (last && now < last + threshhold) {
         // hold on to it
-        clearTimeout(deferTimer);
+        clearTimeout(deferTimer)
         deferTimer = setTimeout(function () {
-          last = now;
-          fn.apply(context, args);
-        }, threshhold);
+          last = now
+          fn.apply(context, args)
+        }, threshhold)
       } else {
-        last = now;
-        fn.apply(context, args);
+        last = now
+        fn.apply(context, args)
       }
-    };
+    }
   }
 
   zoomThreshold = 16;
 
-  selectedStyleForZoom(zoom) {
-    var style = Object.assign({}, this.props.options.geojsonSelected);
+  selectedStyleForZoom (zoom) {
+    var style = Object.assign({}, this.props.options.geojsonSelected)
     if (zoom >= this.zoomThreshold) {
-      style.fillOpacity = 0;
+      style.fillOpacity = 0
     }
-    return style;
+    return style
   }
 
-  zoomEnd() {
-    const zoom = this.map.getZoom();
+  zoomEnd () {
+    const zoom = this.map.getZoom()
     if ((this.lastZoom < this.zoomThreshold && zoom >= this.zoomThreshold) ||
       (this.lastZoom >= this.zoomThreshold && zoom < this.zoomThreshold)) {
-      this.allDataLayer.setStyle(this.selectedStyleForZoom(zoom));
+      this.allDataLayer.setStyle(this.selectedStyleForZoom(zoom))
     }
-    this.lastZoom = zoom;
+    this.lastZoom = zoom
   }
 
-  highlightMaps(latlng, callback) {
-    if (!this.props.tree) {
-      callback([]);
-      return;
+  highlightMaps (latlng, tree, allGeoJSON) {
+    if (!tree || !allGeoJSON) {
+      return []
     }
 
-  	var results = this.props.tree.search({
-			minX: latlng.lng,
-			minY: latlng.lat,
-			maxX: latlng.lng,
-			maxY: latlng.lat
-		});
+    const results = tree.search({
+      minX: latlng.lng,
+      minY: latlng.lat,
+      maxX: latlng.lng,
+      maxY: latlng.lat
+    })
 
-  	if (results.length) {
-      var hoveredMaps = results.map((result) => this.props.allGeoJSON.features[result.index])
-  			.filter((feature) => {
-          const point = {
-  					type: 'Feature',
-  					geometry: {
-  						type: 'Point',
-  						coordinates: [
-  							latlng.lng,
-  							latlng.lat
-  						]
-  					}
-          };
-          return turfInside(point, feature)
-        });
+    if (results.length) {
+      const hoveredMaps = results.map((result) => allGeoJSON.features[result.index])
+      .filter((feature) => {
+        const point = {
+          type: 'Feature',
+          geometry: {
+            type: 'Point',
+            coordinates: [
+              latlng.lng,
+              latlng.lat
+            ]
+          }
+        }
+        return turfInside(point, feature)
+      })
 
-      callback(hoveredMaps)
-		} else {
-			callback([])
-		}
-	}
+      return hoveredMaps
+    }
+
+    return []
+  }
 }
 
-export default HoverMap;
+export default HoverMap

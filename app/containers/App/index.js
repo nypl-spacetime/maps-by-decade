@@ -1,110 +1,123 @@
-/**
- *
- * App.react.js
- *
- * This component is the skeleton around the actual pages, and should only
- * contain code that should be seen on all pages. (e.g. navigation bar)
- *
- * NOTE: while this component should technically be a stateless functional
- * component (SFC), hot reloading does not currently support SFCs. If hot
- * reloading is not a neccessity for you then you can refactor it and remove
- * the linting exception.
- */
+/* global __CONFIG__ */
 
-import React from 'react';
-import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
-
-import rbush from 'rbush';
+import React from 'react'
+import { connect } from 'react-redux'
+import { createSelector } from 'reselect'
+import rbush from 'rbush'
 
 import {
   loadData
-} from '../App/actions';
+} from '../App/actions'
 
 import {
+  selectShowIntro,
+  selectLoading,
   selectData
-} from 'containers/App/selectors';
+} from 'containers/App/selectors'
 
-import Header from 'containers/Header';
+import Header from 'components/Header'
+import Loading from 'containers/Loading'
+import IntroDialog from 'containers/IntroDialog'
 
-import styles from './styles.css';
+import { Container, Contents } from './styles'
 
-export class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class App extends React.Component {
 
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       treesComputed: false
-    };
+    }
   }
 
-  componentWillMount() {
-    this.props.loadData('grouped');
-    this.props.loadData('all');
+  componentWillMount () {
+    this.props.loadData('grouped')
+    this.props.loadData('all')
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (!this.props.dataAll && nextProps.dataAll) {
-      this.computeTrees(nextProps.dataAll);
+      this.computeTrees(nextProps.dataAll)
     }
   }
 
   static childContextTypes = {
-    trees: React.PropTypes.object,
+    trees: React.PropTypes.object
   }
 
-  trees = {};
+  trees = {}
 
-  getChildContext() {
+  getChildContext () {
     return {
       trees: this.trees
-    };
+    }
   }
 
-  computeTrees(data) {
-    Object.keys(data).forEach((band) => {
-      const features = data[band];
-      var tree = rbush(features.length);
+  computeTrees (data) {
+    Object.keys(data).forEach((group) => {
+      const features = data[group]
+      var tree = rbush(features.length)
       tree.load(
         features.map((feature, i) => ({
-          minX: feature.properties.boundingbox[0],
-          minY: feature.properties.boundingbox[1],
-          maxX: feature.properties.boundingbox[2],
-          maxY: feature.properties.boundingbox[3],
+          minX: feature.properties.bbox[0],
+          minY: feature.properties.bbox[1],
+          maxX: feature.properties.bbox[2],
+          maxY: feature.properties.bbox[3],
           index: i
         }))
-      );
-      this.trees[band] = tree;
-    });
+      )
+      this.trees[group] = tree
+    })
 
     this.setState({
       treesComputed: true
-    });
+    })
   }
 
-  render() {
-    return (
-      <div className={styles.container}>
-        <Header params={this.props.params} />
-        <div className={styles.contents}>
+  render () {
+    const backgroundColor = (this.props.params && this.props.params.decade) ? __CONFIG__.cssVariables.singleDecadeColor : __CONFIG__.cssVariables.homepageColor
+
+    let intro
+    let contents
+
+    if (this.props.showIntro) {
+      intro = <IntroDialog backgroundColor={backgroundColor} />
+    }
+
+    if (this.props.loading) {
+      contents = (
+        <Loading />
+      )
+    } else {
+      contents = (
+        <Contents>
           {this.props.children}
-        </div>
-      </div>
-    );
+        </Contents>
+      )
+    }
+
+    return (
+      <Container backgroundColor={backgroundColor}>
+        <Header path={this.props.location.pathname.slice(1)} />
+        {intro}
+        {contents}
+      </Container>
+    )
   }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
     loadData: (file) => dispatch(loadData(file)),
     dispatch
-  };
+  }
 }
 
-// Wrap the component to inject dispatch and state into it
 export default connect(createSelector(
+  selectShowIntro(),
+  selectLoading(),
   selectData('all'),
-  (dataAll) => ({
-    dataAll
+  (showIntro, loading, dataAll) => ({
+    showIntro, loading, dataAll
   })
-), mapDispatchToProps)(App);
+), mapDispatchToProps)(App)
