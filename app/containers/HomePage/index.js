@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 
 import Article from 'components/Article'
 
@@ -8,19 +9,22 @@ import DecadeList from 'containers/DecadeList'
 import { createSelector } from 'reselect'
 
 import {
-  selectGeoJSON
+  selectGroupBounds
 } from 'containers/App/selectors'
 
 export class HomePage extends React.Component {
 
   render () {
-    const mapCount = this.props.geojsonAll.features.length.toString().split('').reverse().join('').match(/.{1,3}/g).join(',').split('').reverse().join('')
+    const yearMin = this.props.groupBounds[0]
+    const yearMax = this.props.groupBounds[1]
     return (
       <div>
         <Article>
           <p>
-            {mapCount} New York City street maps from the New York Public Library's <a href='https://www.nypl.org/about/divisions/map-division'>Lionel Pincus and Princess Firyal Map Division</a>, grouped by decade.
-            Click on a map to browse that decade's maps.
+            Maps by Decade shows digitized New York City street maps from the New York Public Library's <a href='https://www.nypl.org/about/divisions/map-division'>Map Division</a> published between {yearMin} and {yearMax}, grouped by decade.
+          </p>
+          <p>
+            Use it to compare urban geography across time, and marvel at the countours of New York City's past. For more information, see the <Link to='/about'>About page</Link>.
           </p>
           <DecadeList />
         </Article>
@@ -30,8 +34,8 @@ export class HomePage extends React.Component {
 }
 
 export default connect(createSelector(
-  selectGeoJSON('all'),
-  (geojsonAll) => ({
-    geojsonAll
+  selectGroupBounds(),
+  (groupBounds) => ({
+    groupBounds
   })
 ))(HomePage)

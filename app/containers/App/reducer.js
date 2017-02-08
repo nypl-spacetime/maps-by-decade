@@ -15,8 +15,7 @@ import {
   LIGHTBOX_PREV,
   LIGHTBOX_NEXT,
   SET_FILTER,
-  RESET_FILTERS,
-  HIDE_INTRO
+  RESET_FILTERS
 } from './constants'
 
 import { fromJS } from 'immutable'
@@ -24,7 +23,6 @@ import { fromJS } from 'immutable'
 // The initial state of the App
 const initialState = fromJS({
   hasTouch: 'ontouchstart' in window,
-  showIntro: true,
   loading: true,
   error: null,
   decade: null,
@@ -86,7 +84,10 @@ function appReducer (state = initialState, action) {
         })
 
         newState = newState
-          .set('groupBounds', [sortedGroups[0], sortedGroups[sortedGroups.length - 1]])
+          .set('groupBounds', [
+            parseInt(sortedGroups[0]),
+            parseInt(sortedGroups[sortedGroups.length - 1]) + 10
+          ])
           .set('groups', fromJS(sortedGroups))
           .set('nextPrevGroups', fromJS(nextPrevGroups))
       } else if (action.file === 'all') {
@@ -141,9 +142,6 @@ function appReducer (state = initialState, action) {
       let nextLength = state.get('selectedMaps').length
       return state
         .update('lightboxIndex', (lightboxIndex) => (lightboxIndex + 1) % nextLength)
-    case HIDE_INTRO:
-      return state
-        .set('showIntro', false)
     case SET_FILTER:
       return state
         .setIn(['filters', action.filter], action.value)

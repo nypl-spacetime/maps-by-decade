@@ -17,9 +17,7 @@ import {
   LIGHTBOX_NEXT,
 
   SET_FILTER,
-  RESET_FILTERS,
-
-  HIDE_INTRO
+  RESET_FILTERS
 } from './constants'
 
 export function loadData (file) {
@@ -119,10 +117,3 @@ export function resetFilters () {
     type: RESET_FILTERS
   }
 }
-
-export function hideIntro () {
-  return {
-    type: HIDE_INTRO
-  }
-}
-

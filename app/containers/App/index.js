@@ -10,14 +10,12 @@ import {
 } from '../App/actions'
 
 import {
-  selectShowIntro,
   selectLoading,
   selectData
 } from 'containers/App/selectors'
 
 import Header from 'components/Header'
 import Loading from 'containers/Loading'
-import IntroDialog from 'containers/IntroDialog'
 
 import { Container, Contents } from './styles'
 
@@ -80,10 +78,6 @@ export class App extends React.Component {
     let intro
     let contents
 
-    if (this.props.showIntro) {
-      intro = <IntroDialog backgroundColor={backgroundColor} />
-    }
-
     if (this.props.loading) {
       contents = (
         <Loading />
@@ -114,10 +108,9 @@ function mapDispatchToProps (dispatch) {
 }
 
 export default connect(createSelector(
-  selectShowIntro(),
   selectLoading(),
   selectData('all'),
-  (showIntro, loading, dataAll) => ({
-    showIntro, loading, dataAll
+  (loading, dataAll) => ({
+    loading, dataAll
   })
 ), mapDispatchToProps)(App)

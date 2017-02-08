@@ -17,5 +17,3 @@ export const LIGHTBOX_NEXT = 'mbd/MapPage/LIGHTBOX_NEXT'
 
 export const SET_FILTER = 'mbd/DataPage/SET_FILTER'
 export const RESET_FILTERS = 'mbd/DataPage/RESET_FILTERS'
-
-export const HIDE_INTRO = 'mbd/App/HIDE_INTRO'
