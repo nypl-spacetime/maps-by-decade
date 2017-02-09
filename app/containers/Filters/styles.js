@@ -26,6 +26,12 @@ export const StyledForm = styled.form`
   }
 `
 
+export const Fieldset = styled.fieldset`
+  border: none;
+  margin: 0;
+  padding: 0;
+`
+
 export const Decades = styled.div`
   padding: 10px;
   display: flex;

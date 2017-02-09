@@ -13,7 +13,7 @@ import {
   selectGroups
 } from 'containers/App/selectors'
 
-import { StyledForm, Decades } from './styles'
+import { StyledForm, Fieldset, Decades } from './styles'
 
 export class Filters extends React.Component {
   render () {
@@ -22,26 +22,28 @@ export class Filters extends React.Component {
     return (
       <StyledForm onSubmit={this.handleSubmit.bind(this)} ref='form'>
         <span>Filter by decade:</span>
-        <Decades>
-          { groups.map((group, index) => {
-            let checked = true
-            const filtered = this.props.filters[`decades-${group}`]
-            if (filtered !== undefined) {
-              checked = filtered
-            }
+        <Fieldset>
+          <Decades>
+            { groups.map((group, index) => {
+              let checked = true
+              const filtered = this.props.filters[`decades-${group}`]
+              if (filtered !== undefined) {
+                checked = filtered
+              }
 
-            return (
-              <div key={index}>
-                <input type='checkbox' name='decades' id={`filter-decades-${index}`}
-                  checked={checked} value={group}
-                  onChange={this.handleChange.bind(this)} />
-                <label htmlFor={`filter-decades-${index}`}>
-                  {group}s
-                </label>
-              </div>
-            )
-          }) }
-        </Decades>
+              return (
+                <div key={index}>
+                  <input type='checkbox' name='decades' id={`filter-decades-${index}`}
+                    checked={checked} value={group}
+                    onChange={this.handleChange.bind(this)} />
+                  <label htmlFor={`filter-decades-${index}`}>
+                    {group}s
+                  </label>
+                </div>
+              )
+            }) }
+          </Decades>
+        </Fieldset>
         <label>
           <span>Filter by title</span>
           <input type='text' name='title' value={this.props.filters.title || ''}
