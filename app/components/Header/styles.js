@@ -43,6 +43,14 @@ export const StyledHeader = styled.header`
       font-size: 1.5em;
     }
   }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+
+    & div:first-child {
+      margin-bottom: 10px;
+    }
+  }
 `
 
 export const Logo = styled.a`
