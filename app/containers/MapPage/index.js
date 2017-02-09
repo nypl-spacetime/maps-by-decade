@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 
@@ -102,6 +103,7 @@ export class MapPage extends React.Component {
 
     return (
       <Container>
+        <Helmet title={decade} />
         <div>
           <HoverMap decade={decade} tree={tree} crosshair hasTouch={this.props.hasTouch}
             groupedGeoJSON={this.props.groupedGeoJSON} allGeoJSON={this.props.allGeoJSON}

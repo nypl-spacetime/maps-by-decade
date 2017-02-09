@@ -1,6 +1,7 @@
 /* global __CONFIG__ */
 
 import React from 'react'
+import Helmet from 'react-helmet'
 import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
 import rbush from 'rbush'
@@ -90,8 +91,12 @@ export class App extends React.Component {
       )
     }
 
+    const defaultTitle = 'Maps by Decade - NYC Space/Time Directory'
+
     return (
       <Container backgroundColor={backgroundColor}>
+        <Helmet titleTemplate={`%s - ${defaultTitle}`}
+          defaultTitle={defaultTitle} />
         <Header path={this.props.location.pathname.slice(1)} />
         {intro}
         {contents}

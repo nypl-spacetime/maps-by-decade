@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
 
@@ -24,6 +25,7 @@ export class DataPage extends React.Component {
 
     return (
       <Page>
+        <Helmet title='List' />
         <Article>
           <Container>
             <FiltersContainer>

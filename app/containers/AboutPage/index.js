@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
+import Helmet from 'react-helmet'
 
 import Page from 'components/Page'
 import Footer from 'components/Footer'
@@ -23,6 +24,7 @@ export class AboutPage extends React.Component {
 
     return (
       <Page>
+        <Helmet title='About' />
         <Article>
           <h4>About Maps by Decade</h4>
           <p>
@@ -102,7 +104,7 @@ export class AboutPage extends React.Component {
             <img src='images/knight_foundation_logo.png' alt='Knight Foundation Logo' />
           </p>
           <hr />
-          <h3>Accessibility</h3>
+          <h4>Accessibility</h4>
           <p><a href='https://www.nypl.org/'>The New York Public Library</a> strives to ensure that anyone can access the information and services it provides. Our digital teams seek to conform to <a href='https://www.w3.org/TR/WCAG20/'>Web Content Accessibility Guidelines (WCAG) 2.0</a> success criteria of at least Level AA. Even when surpassing those criteria, we acknowledge that we might not meet the specific needs of all users. As techniques and technologies evolve that better address those needs, we are committed to adopting them into our development processes.</p>
 
           <p>Maps by Decade, with its collection of digitized street maps, is inherently visual in nature. It also includes an interactive, map-based interface that can present challenges from an accessibility perspective. To meet WCAG success criteria, we worked to provide text alternatives for visual aspects of the Maps by Decade tool. We also made its <a href='/mbd-test/'>'map'</a> and <a href='/list'>'list'</a> interfaces navigable by keyboard, as well as by mouse. These features help fulfill the mission of the NYC Space/Time Directory: to allow everyone to travel through time and space to explore urban history.</p>
