@@ -28,7 +28,7 @@ export class AboutPage extends React.Component {
         <Article>
           <h4>About Maps by Decade</h4>
           <p>
-            Maps by Decade shows New York City street maps from the New York Public Library's <a href='https://www.nypl.org/about/divisions/map-division'>Lionel Pincus and Princess Firyal Map Division</a> — published between {yearMin} and {yearMax} — grouped by decade.
+            Maps by Decade shows New York City street maps from the New York Public Library's <a href='https://www.nypl.org/about/divisions/map-division'>Lionel Pincus and Princess Firyal Map Division</a> &mdash; published between {yearMin} and {yearMax} &mdash; grouped by decade.
           </p>
           <p>
             Maps by Decade shows {mapCount} large-scale maps (i.e. maps depicting an area smaller than 5 km²) of New York City that are digitized, georectified, and in the public domain (or of which the Library holds the copyright). You can browse 20,000 more maps and atlases in NYPL's <a href='http://digitalcollections.nypl.org/'>Digital Collections</a>, the Library's database of its digitized collections. Or visit <a href='http://maps.nypl.org/'>Map Warper</a>, our online tool for rectifying public domain maps.
@@ -88,6 +88,12 @@ export class AboutPage extends React.Component {
           <h4>Data</h4>
           <p>
           The data for Maps by Decade comes from the <a href='http://maps.nypl.org/'>NYPL Map Warper</a>, an online tool for browsing and georectifying thousands of the Library's public domain maps.
+          </p>
+          <p>
+            <img src='images/qgis-mapwarper.png' alt='All Map Warper maps in QGIS' />
+          </p>
+          <p>
+          The data for Maps by Decade is available in <a href='https://en.wikipedia.org/wiki/GeoJSON'>GeoJSON</a> in the <a href='https://github.com/nypl-spacetime/maps-by-decade-data'>Maps by Decade Data github repository</a>. Among other tools, you can use <a href='http://geojson.io/'>GeoJSON.io</a> to work with the dataset.
           </p>
           <p>For more datasets, see the Data section of the NYPL Space/Time Directory site. Or for examples on how to use the open data from this tool and many others, see the <a href='https://github.com/nypl-spacetime/spacetime-data/'>spacetime-data repository</a>.
           </p>
