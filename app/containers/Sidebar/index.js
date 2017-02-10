@@ -49,7 +49,7 @@ export class Sidebar extends React.Component {
       <Container ref='sidebar'>
         <GoBack>
           <ArrowLink direction='left' onClick={this.goBack.bind(this)}
-          title='Go back to map - or press Escape' >
+            title='Go back to map - or press Escape' >
             Go back to map
           </ArrowLink>
         </GoBack>

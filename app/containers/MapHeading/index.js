@@ -30,7 +30,9 @@ export class MapHeading extends React.Component {
         <TitleContainer>
           <Title tabIndex={0} style={titleStyle} onClick={this.titleClick.bind(this)}
             onKeyDown={this.titleKeyDown.bind(this)} title={this.props.map.properties.name}>
-            {this.props.map.properties.name}
+            <span aria-hidden='true'>
+              {this.props.map.properties.name}
+            </span>
           </Title>
           <Year>({this.props.map.properties.year})</Year>
         </TitleContainer>

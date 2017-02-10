@@ -49,9 +49,6 @@ function ArrowLink (props) {
       </StyledLink>
     )
   }
-
-
-
 }
 
 export default ArrowLink
