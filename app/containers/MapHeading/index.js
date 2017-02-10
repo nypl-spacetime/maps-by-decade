@@ -19,6 +19,12 @@ export class MapHeading extends React.Component {
       }
     }
 
+    let links
+    if (this.props.children && this.props.children.length) {
+      links = this.props.children
+        .map((child, index) => <div key={index}>{child}</div>)
+    }
+
     return (
       <div>
         <TitleContainer>
@@ -29,7 +35,7 @@ export class MapHeading extends React.Component {
           <Year>({this.props.map.properties.year})</Year>
         </TitleContainer>
         <Links>
-          {this.props.children.map((child, index) => <div key={index}>{child}</div>)}
+          {links}
         </Links>
       </div>
     )

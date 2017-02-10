@@ -1,4 +1,8 @@
+/* global __CONFIG__ */
+
 import styled from 'styled-components'
+
+const mobileWidth = __CONFIG__.cssVariables.mobileWidth
 
 export const Container = styled.div`
   flex-basis: 100%;
@@ -25,5 +29,13 @@ export const Instructions = styled.div`
 
   & > span {
     padding: 10px;
+  }
+`
+
+export const GoBack = styled.div`
+  display: none;
+
+  @media (max-width: ${mobileWidth}) {
+    display: block;
   }
 `

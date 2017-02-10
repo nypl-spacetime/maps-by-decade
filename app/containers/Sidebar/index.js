@@ -13,9 +13,14 @@ import {
   selectSelectedMapsLocked
 } from 'containers/App/selectors'
 
+import {
+  lockSelectedMaps
+} from 'containers/App/actions'
+
+import ArrowLink from 'components/ArrowLink'
 import SelectedMap from 'containers/SelectedMap'
 import MapLightbox from 'containers/MapLightbox'
-import { Container, List, Instructions } from './styles'
+import { Container, List, Instructions, GoBack } from './styles'
 
 export class Sidebar extends React.Component {
 
@@ -42,6 +47,12 @@ export class Sidebar extends React.Component {
 
     return (
       <Container ref='sidebar'>
+        <GoBack>
+          <ArrowLink direction='left' onClick={this.goBack.bind(this)}
+          title='Go back to map - or press Escape' >
+            Go back to map
+          </ArrowLink>
+        </GoBack>
         <List>
           { this.props.selectedMaps.map((map, index) => (
             <SelectedMap map={map} index={index} key={map.properties.id}
@@ -52,10 +63,15 @@ export class Sidebar extends React.Component {
       </Container>
     )
   }
+
+  goBack () {
+    this.props.lockSelectedMaps(false)
+  }
 }
 
 function mapDispatchToProps (dispatch) {
   return {
+    lockSelectedMaps: (locked) => dispatch(lockSelectedMaps(locked)),
     changeRoute: (url) => dispatch(push(url))
   }
 }

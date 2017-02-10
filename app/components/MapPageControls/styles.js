@@ -1,4 +1,8 @@
+/* global __CONFIG__ */
+
 import styled from 'styled-components'
+
+const mobileWidth = __CONFIG__.cssVariables.mobileWidth
 
 export const Container = styled.div`
 position: absolute;
@@ -37,7 +41,7 @@ export const Footer = styled.div`
 export const PreviousNext = styled.div`
   width: 120px;
 
-  & > a {
+  & a {
     display: inline-block;
     font-size: 16px;
     background-color: rgba(255, 255, 255, 0.8);
@@ -45,14 +49,31 @@ export const PreviousNext = styled.div`
     border-radius: 20px;
     pointer-events: all;
   }
+
+  @media (max-width: ${mobileWidth}) {
+    width: 50px;
+
+    & span.hide-on-mobile {
+      display: none;
+    }
+
+    & span::before,
+    & span::after {
+      margin: 0;
+    }
+  }
 `
 
 export const Previous = styled(PreviousNext)`
-  float: right;
+  & a {
+    float: right;
+  }
 `
 
 export const Next = styled(PreviousNext)`
-  float: left;
+  & a {
+    float: left;
+  }
 `
 
 export const Middle = styled.div`

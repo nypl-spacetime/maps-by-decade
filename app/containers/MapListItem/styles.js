@@ -26,6 +26,10 @@ export const ImageLink = styled.a`
   max-width: 300px;
   overflow: hidden;
   margin-left: 10px;
+
+  @media (max-width: ${mobileWidth}) {
+    margin-left: 0;
+  }
 `
 
 export const DataContainer = styled.div`

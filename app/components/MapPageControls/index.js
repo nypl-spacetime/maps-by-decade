@@ -4,11 +4,16 @@ import { Container, Header, Footer, Previous, Next, Middle, Back } from './style
 
 import { decadeToPeriod } from 'utils/utils'
 
+import ArrowLink from 'components/ArrowLink'
+
 function MapPageControls (props) {
   let previousDecade
   if (props.previousDecade) {
     previousDecade = (
-      <Link title='Go to previous decade - or press [' to={`/${props.previousDecade}`}>← previous</Link>
+      <ArrowLink direction='left'
+        title='Go to previous decade - or press [' to={`/${props.previousDecade}`}>
+        previous
+      </ArrowLink>
     )
   } else {
     previousDecade = (
@@ -19,7 +24,10 @@ function MapPageControls (props) {
   let nextDecade
   if (props.nextDecade) {
     nextDecade = (
-      <Link title='Go to next decade - or press ]' to={`/${props.nextDecade}`}>next →</Link>
+      <ArrowLink direction='right'
+        title='Go to next decade - or press ]' to={`/${props.nextDecade}`}>
+        next
+      </ArrowLink>
     )
   } else {
     nextDecade = (

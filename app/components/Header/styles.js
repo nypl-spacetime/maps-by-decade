@@ -1,4 +1,4 @@
-/* global __CONFIG__ */
+ /* global __CONFIG__ */
 
 import styled from 'styled-components'
 

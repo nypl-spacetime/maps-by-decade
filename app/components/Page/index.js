@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   flex-basis: 100%;
+  min-width: 0;
 `
 
 function Page (props) {
