@@ -21,7 +21,7 @@ mapOptions:
       center: [40.75319,-73.98224]
       maxBounds: [[40.436495, -73.424377], [41.155910, -74.347229]]
     tileLayer:
-      opacity: 0.3
+      opacity: 0.4
       tileUrl: https://api.mapbox.com/styles/v1/nypllabs/ciqs7cs9w0000cwm74gb05xmq/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibnlwbGxhYnMiLCJhIjoiSFVmbFM0YyJ9.sl0CRaO71he1XMf_362FZQ
     geojson:
       color: '#39484c'
