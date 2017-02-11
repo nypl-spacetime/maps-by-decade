@@ -47,15 +47,11 @@ export const Decades = styled.div`
     display: inline-block;
     text-align: center;
     // width: 100%;
+    margin-left: 0.5em;
     padding: 0.5em 0.2em;
     cursor: pointer;
     opacity: 0.5;
   }
-
-  // & input:checked + label {
-  //   background-color: rgba(255, 255, 255, 0.5);
-  //   opacity: 1;
-  // }
 
   & input:focus ~ label {
     outline-color: #ffd72e;

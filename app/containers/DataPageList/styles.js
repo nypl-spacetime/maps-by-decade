@@ -47,7 +47,7 @@ export const PaginateContainer = styled.div`
   }
 `
 
-export const StyledList = styled.ol`
+export const StyledList = styled.ul`
   margin: 0;
   padding: 0;
 `

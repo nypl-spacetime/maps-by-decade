@@ -6,10 +6,7 @@ const mobileWidth = __CONFIG__.cssVariables.mobileWidth
 
 export const Container = styled.div`
   flex-basis: 100%;
-
   overflow-y: scroll;
-
-  padding: 10px;
   box-sizing: border-box;
 `
 

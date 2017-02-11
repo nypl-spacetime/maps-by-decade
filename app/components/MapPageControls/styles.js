@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const mobileWidth = __CONFIG__.cssVariables.mobileWidth
 
 export const Container = styled.div`
-position: absolute;
+  position: absolute;
   left: 0;
   top: 0;
 
@@ -14,6 +14,7 @@ position: absolute;
   pointer-events: none;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   z-index: 999;
 
   & > * {

@@ -27,6 +27,10 @@ export const ImageLink = styled.a`
   overflow: hidden;
   margin-left: 10px;
 
+  & img {
+    height: 100%;
+  }
+
   @media (max-width: ${mobileWidth}) {
     margin-left: 0;
   }
