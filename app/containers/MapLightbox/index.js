@@ -32,8 +32,8 @@ export class MapLightbox extends React.Component {
       const map = this.props.selectedMaps[index]
 
       const buttons = [
-        <Button className='external-link white' href={`http://maps.nypl.org/warper/maps/${map.properties.id}`} target='_blank'>Map Warper</Button>,
-        <Button className='external-link white' href={`http://digitalcollections.nypl.org/items/${map.properties.uuid}`} target='_blank'>Digital Collections</Button>
+        <Button href={`http://maps.nypl.org/warper/maps/${map.properties.id}`} target='_blank'>Map Warper</Button>,
+        <Button href={`http://digitalcollections.nypl.org/items/${map.properties.uuid}`} target='_blank'>Digital Collections</Button>
       ]
 
       let prevSrc

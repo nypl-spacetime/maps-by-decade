@@ -11,7 +11,7 @@ export const Container = styled.div`
 `
 
 export const List = styled.ul`
-  margin: 0;
+  margin: 5px;
   padding: 0;
   list-style-type: none;
   max-width: 800px;
@@ -31,8 +31,11 @@ export const Instructions = styled.div`
 
 export const GoBack = styled.div`
   display: none;
+  padding: 0 10px;
+  margin-right: 1.5em;
 
   @media (max-width: ${mobileWidth}) {
-    display: block;
+        display: flex;
+    justify-content: center;
   }
 `

@@ -28,7 +28,7 @@ export class MapHeading extends React.Component {
     return (
       <div>
         <TitleContainer>
-          <Title tabIndex={0} style={titleStyle} onClick={this.titleClick.bind(this)}
+          <Title tabIndex={0} style={titleStyle} onClick={this.titleClick.bind(this)} className='list-item'
             onKeyDown={this.titleKeyDown.bind(this)} title={this.props.map.properties.name}>
             <span aria-hidden='true'>
               {this.props.map.properties.name}

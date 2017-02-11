@@ -8,9 +8,6 @@ require('./Map.KeyboardEsc')
 require('leaflet.sync')
 
 const StyledMap = styled.div`
-  // width: 100%;
-  // height: 100%;
-  // background-color: orange;
   bottom: 0;
   top: 0;
   flex-basis: 100%;
@@ -22,7 +19,7 @@ export class Map extends React.Component {
 
   render () {
     return (
-      <StyledMap ref='map' />
+      <StyledMap ref='map' className='map' />
     )
   }
 

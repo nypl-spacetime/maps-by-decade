@@ -2,7 +2,8 @@ import { takeEvery } from 'redux-saga'
 import { call, put, select } from 'redux-saga/effects'
 import {
   LOAD_DATA,
-  NEW_MINI_MAP
+  NEW_MINI_MAP,
+  LOCK_SELECTED_MAPS
 } from 'containers/App/constants'
 
 import {
@@ -55,7 +56,24 @@ function* newMiniMapSaga () {
   yield * takeEvery(NEW_MINI_MAP, newMiniMap)
 }
 
+function* lockSelectedMaps (action) {
+  if (action.locked) {
+    // Focus first tabIndexable item in list (all have class 'list-item')
+    let element = document.querySelector('.list-item')
+    element.focus()
+  } else {
+    // Focus map!
+    let element = document.querySelector('.map')
+    element.focus()
+  }
+}
+
+function* lockSelectedMapsSaga () {
+  yield * takeEvery(LOCK_SELECTED_MAPS, lockSelectedMaps)
+}
+
 export default [
   loadDataSaga,
-  newMiniMapSaga
+  newMiniMapSaga,
+  lockSelectedMapsSaga
 ]

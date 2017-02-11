@@ -16,12 +16,9 @@ export const Title = styled.span`
   flex: 1;
   min-width: 0;
 
-
-
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-
 `
 
 export const Year = styled.span`

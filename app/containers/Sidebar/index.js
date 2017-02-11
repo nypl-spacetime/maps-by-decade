@@ -53,7 +53,7 @@ export class Sidebar extends React.Component {
             Go back to map
           </ArrowLink>
         </GoBack>
-        <List tabIndex={0}>
+        <List>
           { this.props.selectedMaps.map((map, index) => (
             <SelectedMap map={map} index={index} key={map.properties.id}
               tilesOnMap={this.props.tileLayerMaps.get(String(map.properties.id)) !== undefined} />

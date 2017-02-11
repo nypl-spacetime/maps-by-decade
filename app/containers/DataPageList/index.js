@@ -65,7 +65,7 @@ export class DataPageList extends React.Component {
             Found {formatNumber(this.props.features.length)} maps:
           </p>
           {paginate}
-          <StyledList tabIndex={0}>
+          <StyledList>
             { features.map((map, index) =>
               <MapListItem key={`${index}-${map.properties.id}`} map={map} index={index} />
             ) }
