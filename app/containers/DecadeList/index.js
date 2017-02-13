@@ -9,14 +9,25 @@ import {
   selectGeoJSON
 } from 'containers/App/selectors'
 
-import { List, ItemWrapper, Item, MiniMapContainer } from './styles'
+import { List, ItemWrapper, Item, MiniMapContainer, ChildContainer } from './styles'
 
 export class DecadeList extends React.Component {
   render () {
     return (
       <List>
+        { this.props.children.map((child, i) => (
+          <ItemWrapper key={`child-${i}`}>
+            <Item>
+              <MiniMapContainer>
+                <ChildContainer>
+                  {child}
+                </ChildContainer>
+              </MiniMapContainer>
+            </Item>
+          </ItemWrapper>
+        ))}
         { this.props.groupedGeoJSON.features.map((feature, i) => (
-          <ItemWrapper key={i}>
+          <ItemWrapper key={`map-${i}`}>
             <Item>
               <MiniMapContainer>
                 <MiniMap feature={feature} />

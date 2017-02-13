@@ -23,19 +23,18 @@ export const StyledMiniMap = styled.div`
 `
 
 export const Title = styled.h2`
-  z-index: 1000;
-  left: 0;
-  font-family: 'MiloSlab';
-  font-weight: bold;
-
-  width: 100%;
-  top: 8px;
-
-  /*TODO: use color variable*/
-  text-shadow: 0 0 4px rgb(196, 224, 232);
-  text-align: center;
-  margin: 0;
   position: absolute;
   pointer-events: none;
-  font-size: 25px;
+  z-index: 1000;
+  font-family: 'MiloSlab';
+  font-weight: bold;
+  font-size: 1.5em;
+
+  width: 100%;
+  padding: 10px;
+  margin: 0;
+
+  /*TODO: use color variable*/
+  text-shadow: 0 0 8px rgb(196, 224, 232);
+  text-align: center;
 `

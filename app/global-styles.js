@@ -12,7 +12,9 @@ injectGlobal`
   }
 
   body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Kievit', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+    font-weight: 300;
+    line-height: 1.5em;
   }
 
   #app {

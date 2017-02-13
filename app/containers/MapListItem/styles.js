@@ -7,7 +7,7 @@ const mobileWidth = __CONFIG__.cssVariables.mobileWidth
 export const Item = styled.li`
   display: flex;
   justify-content: space-between;
-  padding: 5px;
+  // padding: 5px;
   margin-bottom: 10px;
 
   @media (max-width: ${mobileWidth}) {
@@ -25,7 +25,6 @@ export const ImageLink = styled.a`
   height: 140px;
   max-width: 300px;
   overflow: hidden;
-  margin-left: 10px;
 
   & img {
     height: 100%;

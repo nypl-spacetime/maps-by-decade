@@ -34,8 +34,8 @@ export const Footer = styled.div`
   & > span {
     font-size: 16px;
     background-color: rgba(255, 255, 255, 0.8);
-    padding: 6px 13px 6px 13px;
-    border-radius: 20px;
+    padding: 6px 13px 4px 13px;
+    border-radius: 3px;
   }
 `
 
@@ -46,8 +46,8 @@ export const PreviousNext = styled.div`
     display: inline-block;
     font-size: 16px;
     background-color: rgba(255, 255, 255, 0.8);
-    padding: 6px 13px 6px 13px;
-    border-radius: 20px;
+    padding: 6px 13px 4px 13px;
+    border-radius: 3px;
     pointer-events: all;
   }
 
@@ -78,11 +78,12 @@ export const Next = styled(PreviousNext)`
 `
 
 export const Middle = styled.div`
-  width: 230px;
+  // width: 230px;
+  margin: 0 10px;
   pointer-events: none;
 
   & h2 {
-    font-size: 40px;
+    font-size: 2em;
     font-family: 'MiloSlab';
     font-weight: bold;
 
@@ -90,6 +91,12 @@ export const Middle = styled.div`
     text-shadow: 0 0 4px rgb(247, 241, 217);
     text-align: center;
     margin: 0;
+  }
+
+  @media (max-width: ${mobileWidth}) {
+    & h2 {
+      font-size: 1.5em;
+    }
   }
 `
 

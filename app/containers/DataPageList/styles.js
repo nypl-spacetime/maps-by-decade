@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const PaginateContainer = styled.div`
   & ul {
     background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 40px;
+    border-radius: 3px;
 
     list-style-type: none;
     margin: 0;
@@ -23,15 +23,14 @@ export const PaginateContainer = styled.div`
     text-align: center;
 
     display: inline-block
-    border-radius: 40px;
+    border-radius: 3px;
 
     padding: 10px;
     width: 60px;
   }
 
   & li.active a {
-    border-style: solid;
-    border-width: 1px;
+    background-color: rgba(255, 255, 255, 0.5);
   }
 
   & li:not(.disabled) > a {

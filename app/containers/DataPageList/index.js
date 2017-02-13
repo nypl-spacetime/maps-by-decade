@@ -50,7 +50,7 @@ export class DataPageList extends React.Component {
         <PaginateContainer>
           <ReactPaginate previousLabel='<' nextLabel='>' key={count} initialPage={0}
             breakLabel={<span>...</span>} breakClassName={'break'}
-            pageCount={count} marginPagesDisplayed={2} pageRangeDisplayed={4}
+            pageCount={count} marginPagesDisplayed={1} pageRangeDisplayed={2}
             onPageChange={this.handlePageClick.bind(this)} activeClassName={'active'} />
         </PaginateContainer>
       )
@@ -70,7 +70,6 @@ export class DataPageList extends React.Component {
               <MapListItem key={`${index}-${map.properties.id}`} map={map} index={index} />
             ) }
           </StyledList>
-          {paginate}
         </div>
       )
     }

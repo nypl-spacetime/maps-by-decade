@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const StyledForm = styled.form`
   background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
+  border-radius: 3px;
   padding: 10px;
 
   & > * {
@@ -14,7 +14,7 @@ export const StyledForm = styled.form`
     background-color: white;
     padding: .3em .5em;
     margin-bottom: 1em;
-    border-radius: 5px;
+    border-radius: 3px;
     border-style: solid;
     border-width: 2px;
     border-color: #999;

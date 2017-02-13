@@ -32,7 +32,7 @@ export const ItemWrapper = styled.li`
     }
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 550px) {
     & {
       width: 100%;
     }
@@ -46,6 +46,21 @@ export const Item = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
+`
+
+export const ChildContainer = styled(Item)`
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+
+  & > p {
+    margin: 0;
+    text-align: center;
+  }
 `
 
 export const MiniMapContainer = styled.div`

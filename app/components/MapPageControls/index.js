@@ -11,7 +11,7 @@ function MapPageControls (props) {
   if (props.previousDecade) {
     previousDecade = (
       <ArrowLink direction='left'
-        title='Go to previous decade - or press [' to={`/${props.previousDecade}`}>
+        title='Go to previous decade — or press [' to={`/${props.previousDecade}`}>
         previous
       </ArrowLink>
     )
@@ -25,7 +25,7 @@ function MapPageControls (props) {
   if (props.nextDecade) {
     nextDecade = (
       <ArrowLink direction='right'
-        title='Go to next decade - or press ]' to={`/${props.nextDecade}`}>
+        title='Go to next decade — or press ]' to={`/${props.nextDecade}`}>
         next
       </ArrowLink>
     )

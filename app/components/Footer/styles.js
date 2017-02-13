@@ -27,7 +27,6 @@ export const StyledFooter = styled.footer`
   & nav a,
   & nav a:visited {
     margin: 0 .5em;
-    // color: white;
   }
 
   & nav a:hover {

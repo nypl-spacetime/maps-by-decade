@@ -30,7 +30,6 @@ export class AboutPage extends React.Component {
       <Page>
         <Helmet title='About' />
         <Article>
-          <h4>About Maps by Decade</h4>
           <p>
             Maps by Decade shows New York City street maps from the New York Public Library's <a href='https://www.nypl.org/about/divisions/map-division'>
             Lionel Pincus and Princess Firyal Map Division</a> &mdash; published between {yearMin} and {yearMax} &mdash;
@@ -110,10 +109,10 @@ export class AboutPage extends React.Component {
             <img src={qgisMapwarper} alt='All Map Warper maps in QGIS' />
           </p>
           <p>
-            The data for Maps by Decade is available in <a href='https://en.wikipedia.org/wiki/GeoJSON'>GeoJSON</a>
-            in the <a href='https://github.com/nypl-spacetime/maps-by-decade-data'>Maps by Decade Data
-            GitHub repository</a>. Among other tools, you can use <a href='http://geojson.io/'>GeoJSON.io</a> to work
-            with the dataset.
+            The data for Maps by Decade is available in <a href='https://en.wikipedia.org/wiki/GeoJSON'>GeoJSON</a> in
+            the <a href='https://github.com/nypl-spacetime/maps-by-decade-data'>Maps by Decade Data
+            GitHub repository</a>. Among other tools, you can use <a href='http://geojson.io/'>GeoJSON.io</a> to
+            work with the dataset.
           </p>
           <p>
             For more datasets, see the Data section of the NYPL Space/Time Directory site. Or for
@@ -123,8 +122,7 @@ export class AboutPage extends React.Component {
 
           <h4>GitHub</h4>
           <p>
-            The source code for Maps by Decade is available on
-            <a href='https://github.com/nypl-spacetime/maps-by-decade'>GitHub</a>,
+            The source code for Maps by Decade is available on <a href='https://github.com/nypl-spacetime/maps-by-decade'>GitHub</a>,
             along with more than <a href='https://github.com/nypl-spacetime/'>120 other open repositories</a> that make up the
             NYC Space/Time Directory project.
           </p>
@@ -138,7 +136,7 @@ export class AboutPage extends React.Component {
             James L. Knight Foundation</a>.
           </p>
           <p>
-            <img src={knightFoundation} alt='Knight Foundation Logo' />
+            <img src={knightFoundation} alt='Knight Foundation Logo' style={{width: '50%'}} />
           </p>
           <h4>Accessibility</h4>
           <p>
