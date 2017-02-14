@@ -78,7 +78,7 @@ export const Next = styled(PreviousNext)`
 `
 
 export const Middle = styled.div`
-  width: 200px;
+  width: 220px;
   margin: 0 10px;
   pointer-events: none;
 
@@ -98,7 +98,7 @@ export const Middle = styled.div`
       font-size: 1.2em;
     }
 
-    width: 120px;
+    width: 140px;
   }
 `
 

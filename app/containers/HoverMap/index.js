@@ -165,7 +165,7 @@ export class HoverMap extends React.Component {
     }
   }
 
-  zoomThreshold = 16;
+  zoomThreshold = 16
 
   selectedStyleForZoom (zoom) {
     var style = Object.assign({}, this.props.options.geojsonSelected)

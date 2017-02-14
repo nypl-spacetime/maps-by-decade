@@ -35,12 +35,18 @@ export class MiniMap extends React.Component {
     const group = this.props.feature.properties.group
     const tree = this.context.trees && this.context.trees[group]
 
+    let mapOptions = Object.assign(this.props.mapOptions, {
+      map: Object.assign(this.props.mapOptions.map, {
+        dragging: !this.props.hasTouch
+      })
+    })
+
     return (
       <StyledMiniMap onKeyDown={this.containerKeyDown.bind(this)}>
         <HoverMap decade={group} tree={tree} onEachFeatureAll={this.onEachFeature.bind(this)}
           onEachFeatureGrouped={this.onEachFeature.bind(this)} hasTouch={this.props.hasTouch}
           groupedGeoJSON={this.props.feature} allGeoJSON={this.props.allGeoJSON}
-          mapCreated={this.mapCreated.bind(this)} options={this.props.mapOptions} />
+          mapCreated={this.mapCreated.bind(this)} options={mapOptions} />
         <Title>{decadeToPeriod(group)}</Title>
       </StyledMiniMap>
     )
@@ -65,7 +71,9 @@ export class MiniMap extends React.Component {
 
   mapCreated (map) {
     map.on('click', this.onClick.bind(this))
-    this.props.newMiniMap(map)
+    if (!this.props.hasTouch) {
+      this.props.newMiniMap(map)
+    }
   }
 
   onEachFeature (feature, layer) {

@@ -9,6 +9,8 @@ export const Container = styled.div`
   flex-direction: row;
   flex-basis: 100%;
   min-width: 0;
+  // min-height: 0;
+  // height: 100%;
 
   & > * {
     position: relative;
