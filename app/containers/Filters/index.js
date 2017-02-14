@@ -13,6 +13,9 @@ import {
   selectGroups
 } from 'containers/App/selectors'
 
+import Button from 'components/Button'
+import DataPageHeading from 'components/DataPageHeading'
+
 import { StyledForm, Fieldset, Decades } from './styles'
 
 export class Filters extends React.Component {
@@ -20,51 +23,54 @@ export class Filters extends React.Component {
     const groups = this.props.groups || []
 
     return (
-      <StyledForm onSubmit={this.handleSubmit.bind(this)} ref='form'>
-        <span>Filter by decade:</span>
-        <Fieldset>
-          <Decades>
-            { groups.map((group, index) => {
-              let checked = true
-              const filtered = this.props.filters[`decades-${group}`]
-              if (filtered !== undefined) {
-                checked = filtered
-              }
+      <div>
+        <DataPageHeading>Filter maps:</DataPageHeading>
+        <StyledForm onSubmit={this.handleSubmit.bind(this)} ref='form'>
+          <span>Filter by decade:</span>
+          <Fieldset>
+            <Decades>
+              { groups.map((group, index) => {
+                let checked = true
+                const filtered = this.props.filters[`decades-${group}`]
+                if (filtered !== undefined) {
+                  checked = filtered
+                }
 
-              return (
-                <div key={index}>
-                  <input type='checkbox' name='decades' id={`filter-decades-${index}`}
-                    checked={checked} value={group}
-                    onChange={this.handleChange.bind(this)} />
-                  <label htmlFor={`filter-decades-${index}`}>
-                    {group}s
-                  </label>
-                </div>
-              )
-            }) }
-          </Decades>
-        </Fieldset>
-        <label>
-          <span>Filter by title</span>
-          <input type='text' name='title' value={this.props.filters.title || ''}
-            autoComplete='off' placeholder='Map title' onChange={this.handleChange.bind(this)} />
-        </label>
-
-        <button onClick={this.resetFilters.bind(this)}>Reset filters</button>
-        { /*
-        <div>
+                return (
+                  <div key={index}>
+                    <input type='checkbox' name='decades' id={`filter-decades-${index}`}
+                      checked={checked} value={group}
+                      onChange={this.handleChange.bind(this)} />
+                    <label htmlFor={`filter-decades-${index}`}>
+                      {group}s
+                    </label>
+                  </div>
+                )
+              }) }
+            </Decades>
+          </Fieldset>
           <label>
-            Coordinates
-            <input type='text' name='coordinates' onChange={this.handleChange.bind(this)} />
+            <span>Filter by title</span>
+            <input type='text' name='title' value={this.props.filters.title || ''}
+              autoComplete='off' placeholder='Map title' onChange={this.handleChange.bind(this)} />
           </label>
 
-          <label>
-            Radius
-            <input type='range' name='radius' onChange={this.handleChange.bind(this)} />
-          </label>
-        </div>
-        */}
-      </StyledForm>
+          <Button onClick={this.resetFilters.bind(this)}>Reset filters</Button>
+          { /*
+          <div>
+            <label>
+              Coordinates
+              <input type='text' name='coordinates' onChange={this.handleChange.bind(this)} />
+            </label>
+
+            <label>
+              Radius
+              <input type='range' name='radius' onChange={this.handleChange.bind(this)} />
+            </label>
+          </div>
+          */}
+        </StyledForm>
+      </div>
     )
   }
 

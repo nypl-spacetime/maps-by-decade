@@ -31,8 +31,9 @@ export const Instructions = styled.div`
 
 export const GoBack = styled.div`
   display: none;
-  padding: 0 10px;
+  padding: 5px 10px;
   margin-right: 1.5em;
+  // padding: 5px;
 
   @media (max-width: ${mobileWidth}) {
         display: flex;

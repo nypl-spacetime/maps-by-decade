@@ -13,9 +13,9 @@ export const Container = styled.div`
 `
 
 export const FiltersContainer = styled.div`
-  width: 240px;
+  width: calc(33.33% - 10px);
   flex-shrink: 0;
-  margin-right: 30px;
+  margin-right: 10px;
 
   @media (max-width: ${mobileWidth}) {
     width: auto;

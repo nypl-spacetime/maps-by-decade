@@ -78,7 +78,7 @@ export const Next = styled(PreviousNext)`
 `
 
 export const Middle = styled.div`
-  // width: 230px;
+  width: 200px;
   margin: 0 10px;
   pointer-events: none;
 
@@ -95,8 +95,10 @@ export const Middle = styled.div`
 
   @media (max-width: ${mobileWidth}) {
     & h2 {
-      font-size: 1.5em;
+      font-size: 1.2em;
     }
+
+    width: 120px;
   }
 `
 

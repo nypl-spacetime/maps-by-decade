@@ -4,6 +4,7 @@ import { createSelector } from 'reselect'
 
 import ReactPaginate from 'react-paginate'
 
+import DataPageHeading from 'components/DataPageHeading'
 import NoMapsFound from 'components/NoMapsFound'
 import MapListItem from 'containers/MapListItem'
 
@@ -61,9 +62,9 @@ export class DataPageList extends React.Component {
     } else {
       return (
         <div>
-          <p>
+          <DataPageHeading>
             Found {formatNumber(this.props.features.length)} maps:
-          </p>
+          </DataPageHeading>
           {paginate}
           <StyledList>
             { features.map((map, index) =>

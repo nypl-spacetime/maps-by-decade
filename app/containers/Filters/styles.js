@@ -5,15 +5,11 @@ export const StyledForm = styled.form`
   border-radius: 3px;
   padding: 10px;
 
-  & > * {
-    padding-bottom: 1em;
-  }
-
   & input[type=text] {
     width: 100%;
     background-color: white;
     padding: .3em .5em;
-    margin-bottom: 1em;
+    margin-bottom: 10px;
     border-radius: 3px;
     border-style: solid;
     border-width: 2px;
@@ -35,22 +31,21 @@ export const Fieldset = styled.fieldset`
 export const Decades = styled.div`
   padding: 10px;
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
   flex-wrap: wrap;
   user-select: none;
 
-  & div:first-child {
-    border-radius: 40px;
+  & > div {
+    padding: 0 10px;
   }
 
   & label {
     display: inline-block;
     text-align: center;
-    // width: 100%;
-    margin-left: 0.5em;
-    padding: 0.5em 0.2em;
+    margin-left: 10px;
+    // padding: 0.5em 0.2em;
+    // padding: 5px 10px;
     cursor: pointer;
-    opacity: 0.5;
   }
 
   & input:focus ~ label {

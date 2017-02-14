@@ -67,8 +67,10 @@ injectGlobal`
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
   button {
-    border: 2px solid rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
+    border-radius: 3px;
+    margin: 0 auto;
   }
 
   .align-center {

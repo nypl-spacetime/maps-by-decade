@@ -30,6 +30,7 @@ export class AboutPage extends React.Component {
       <Page>
         <Helmet title='About' />
         <Article>
+          <h4>About</h4>
           <p>
             Maps by Decade shows New York City street maps from the New York Public Library's <a href='https://www.nypl.org/about/divisions/map-division'>
             Lionel Pincus and Princess Firyal Map Division</a> &mdash; published between {yearMin} and {yearMax} &mdash;
