@@ -23,6 +23,7 @@ export const StyledMiniMap = styled.div`
 `
 
 export const Title = styled.h2`
+  left: 0;
   position: absolute;
   pointer-events: none;
   z-index: 1000;
