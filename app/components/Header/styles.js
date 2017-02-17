@@ -3,14 +3,18 @@
 import styled from 'styled-components'
 
 const mobileWidth = __CONFIG__.cssVariables.mobileWidth
+const mainColor = __CONFIG__.cssVariables.mainColor
 
 export const StyledHeader = styled.header`
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: ${mainColor};
   line-height: 1.5;
+  overflow: hidden;
 
   padding: 5px;
-  flex-shrink: 0;
-  flex-wrap: wrap;
+
+  // border-bottom-style: solid;
+  // border-bottom-width: 1px;
+  // border-bottom-color: white;
 
   &,
   & a,
@@ -18,14 +22,9 @@ export const StyledHeader = styled.header`
     text-decoration: none;
   }
 
-  & h1,
-  & h2,
-  & h3 {
+  & h1 {
     margin: 0;
     display: inline-block;
-  }
-
-  & h1 {
     font-weight: lighter;
     font-size: 40px;
   }
@@ -88,13 +87,14 @@ export const Subtitles = styled.div`
 
   & > * {
     font-size: 17px;
+    line-height: 1.2em;
   }
 
-  & h2 {
+  & div:first-child {
     font-weight: normal;
   }
 
-  .& h3 {
+  & div:last-child {
     font-weight: 200;
   }
 

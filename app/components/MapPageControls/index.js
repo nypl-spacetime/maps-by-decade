@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { Container, Header, Footer, Previous, Next, Middle, Back } from './styles'
+import { Container, Header, Footer, Previous, Next, Middle, Back, Title } from './styles'
 
 import { decadeToPeriod } from 'utils/utils'
 
@@ -12,7 +12,7 @@ function MapPageControls (props) {
     previousDecade = (
       <ArrowLink direction='left'
         title='Go to previous decade — or press [' to={`/${props.previousDecade}`}>
-        previous
+        {props.previousDecade}s
       </ArrowLink>
     )
   } else {
@@ -26,7 +26,7 @@ function MapPageControls (props) {
     nextDecade = (
       <ArrowLink direction='right'
         title='Go to next decade — or press ]' to={`/${props.nextDecade}`}>
-        next
+        {props.nextDecade}s
       </ArrowLink>
     )
   } else {
@@ -62,7 +62,7 @@ function MapPageControls (props) {
           {previousDecade}
         </Previous>
         <Middle>
-          <h2>{decadeToPeriod(props.decade)}</h2>
+          <Title>{decadeToPeriod(props.decade)}</Title>
           <Back>
             <Link title='Go back to overview - or press Escape' to={`/`}>Back to overview</Link>
           </Back>

@@ -30,7 +30,7 @@ export class AboutPage extends React.Component {
       <Page>
         <Helmet title='About' />
         <Article>
-          <h4>About</h4>
+          <h2>About this project</h2>
           <p>
             Maps by Decade shows New York City street maps from the New York Public Library's <a href='https://www.nypl.org/about/divisions/map-division'>
             Lionel Pincus and Princess Firyal Map Division</a> &mdash; published between {yearMin} and {yearMax} &mdash;
@@ -45,7 +45,7 @@ export class AboutPage extends React.Component {
             Or visit <a href='http://maps.nypl.org/'>Map Warper</a>, our online tool for rectifying
             public domain maps.
           </p>
-          <h4>Collection Resources</h4>
+          <h3>Collection Resources</h3>
           <p>
             Maps by Decade is just a subset from NYPL's full map collection. To view more digitized
             maps, visit our Digital Collections. To arrange for viewing maps in-person, for more
@@ -53,7 +53,33 @@ export class AboutPage extends React.Component {
             questions, contact the staff of the <a href='https://www.nypl.org/locations/divisions/map-division'>Lionel
             Pincus and Princess Firyal Map Division</a>.
           </p>
-          <h4>Keyboard</h4>
+
+          <h3>Data</h3>
+          <p>
+            The data for Maps by Decade comes from the <a href='http://maps.nypl.org/'>NYPL Map Warper</a>, an online tool for browsing and georectifying thousands of the Library's public domain maps.
+          </p>
+          <p>
+            <img src={qgisMapwarper} alt='All Map Warper maps in QGIS' />
+          </p>
+          <p>
+            The data for Maps by Decade is available in <a href='https://en.wikipedia.org/wiki/GeoJSON'>GeoJSON</a> in
+            the <a href='https://github.com/nypl-spacetime/maps-by-decade-data'>Maps by Decade Data
+            GitHub repository</a>. Among other tools, you can use <a href='http://geojson.io/'>GeoJSON.io</a> to
+            work with the dataset.
+          </p>
+          <p>
+            For more datasets, see the Data section of the NYPL Space/Time Directory site. Or for
+            examples on how to use the open data from this tool and many others, see
+            the <a href='https://github.com/nypl-spacetime/spacetime-data/'>spacetime-data repository</a>.
+          </p>
+
+          <h3>Source Code</h3>
+          <p>
+            The source code for Maps by Decade is available on <a href='https://github.com/nypl-spacetime/maps-by-decade'>GitHub</a>,
+            along with more than <a href='https://github.com/nypl-spacetime/'>120 other open repositories</a> that make up the
+            NYC Space/Time Directory project.
+          </p>
+          <h2>Keyboard Navigation</h2>
           <KeyboardTable>
             <thead>
               <tr>
@@ -102,32 +128,7 @@ export class AboutPage extends React.Component {
             </tbody>
           </KeyboardTable>
 
-          <h4>Data</h4>
-          <p>
-            The data for Maps by Decade comes from the <a href='http://maps.nypl.org/'>NYPL Map Warper</a>, an online tool for browsing and georectifying thousands of the Library's public domain maps.
-          </p>
-          <p>
-            <img src={qgisMapwarper} alt='All Map Warper maps in QGIS' />
-          </p>
-          <p>
-            The data for Maps by Decade is available in <a href='https://en.wikipedia.org/wiki/GeoJSON'>GeoJSON</a> in
-            the <a href='https://github.com/nypl-spacetime/maps-by-decade-data'>Maps by Decade Data
-            GitHub repository</a>. Among other tools, you can use <a href='http://geojson.io/'>GeoJSON.io</a> to
-            work with the dataset.
-          </p>
-          <p>
-            For more datasets, see the Data section of the NYPL Space/Time Directory site. Or for
-            examples on how to use the open data from this tool and many others, see
-            the <a href='https://github.com/nypl-spacetime/spacetime-data/'>spacetime-data repository</a>.
-          </p>
-
-          <h4>GitHub</h4>
-          <p>
-            The source code for Maps by Decade is available on <a href='https://github.com/nypl-spacetime/maps-by-decade'>GitHub</a>,
-            along with more than <a href='https://github.com/nypl-spacetime/'>120 other open repositories</a> that make up the
-            NYC Space/Time Directory project.
-          </p>
-          <h4>Acknowledgements</h4>
+          <h2>Acknowledgements</h2>
           <p>
             Maps by Decade is part of the <a href='http://spacetime.nypl.org/'>NYC Space/Time
             Directory</a>, making urban history accessible through a wide variety of resources.
@@ -139,7 +140,7 @@ export class AboutPage extends React.Component {
           <p>
             <img src={knightFoundation} alt='Knight Foundation Logo' style={{width: '50%'}} />
           </p>
-          <h4>Accessibility</h4>
+          <h2>Accessibility</h2>
           <p>
             <a href='https://www.nypl.org/'>The New York Public Library</a> strives to ensure
             that anyone can access the information and services it provides. Our digital teams
@@ -151,13 +152,13 @@ export class AboutPage extends React.Component {
           </p>
           <p>
             Maps by Decade, with its collection of digitized street maps, is inherently visual in nature.
-            It also includes an interactive, map-based interface that can present challenges from
+            It includes an interactive, map-based interface that can present challenges from
             an accessibility perspective. To meet WCAG success criteria, we worked to provide text
-             alternatives for visual aspects of the Maps by Decade tool. We also made its <Link to='/map'>
-             Map</Link> and <Link to='/list'>List</Link> interfaces
-             navigable by keyboard, as well as by mouse. These features help fulfill the mission
-             of the NYC Space/Time Directory: to allow everyone to travel through time and space
-             to explore urban history.
+            alternatives for visual aspects of the Maps by Decade tool.
+            We also made its <Link to='/map'> Map</Link> and <Link to='/list'>List</Link> interfaces
+            navigable by keyboard, as well as by mouse. These features help fulfill the mission
+            of the NYC Space/Time Directory: to allow everyone to travel through time and space
+            to explore urban history.
           </p>
           <p>
             If you encounter issues using Maps by Decade or would like to provide feedback regarding
@@ -165,8 +166,8 @@ export class AboutPage extends React.Component {
           </p>
           <p>
             For further information about assistive technologies and accommodations available for
-            people with disabilities at the research centers and branch libraries of
-            <a href='https://www.nypl.org/locations/'>The New York Public Library</a>, please
+            people with disabilities at the research centers and branch libraries
+            of <a href='https://www.nypl.org/locations/'>The New York Public Library</a>, please
             visit <a href='https://www.nypl.org/accessibility'>nypl.org/accessibility</a> or
             email <a href='mailto:accessibility@nypl.org'>accessibility@nypl.org</a>.
           </p>

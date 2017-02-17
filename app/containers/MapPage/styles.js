@@ -3,24 +3,27 @@
 import styled from 'styled-components'
 
 const mobileWidth = __CONFIG__.cssVariables.mobileWidth
+const mapColor = __CONFIG__.cssVariables.mapColor
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-basis: 100%;
-
-  @media (max-width: ${mobileWidth}) {
-    flex-direction: column;
-  }
+  width: 100%;
+  height: 100%;
 `
 
 export const Pane = styled.div`
-  position: relative;
-  display: flex;
   width: 50%;
+  height: 100%;
+  float: left;
+  position: relative;
 
   @media (max-width: ${mobileWidth}) {
     width: 100%;
     display: ${(props) => props.active ? 'flex' : 'none'};
+  }
+`
+
+export const MapPane = styled(Pane)`
+  & .map {
+    background-color: ${mapColor};
   }
 `

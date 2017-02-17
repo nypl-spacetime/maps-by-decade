@@ -1,4 +1,8 @@
+/* global __CONFIG__ */
+
 import { injectGlobal } from 'styled-components'
+
+const textColor = __CONFIG__.cssVariables.textColor
 
 injectGlobal`
   :root {
@@ -12,29 +16,32 @@ injectGlobal`
   }
 
   body {
-    font-family: 'Kievit', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
-    font-weight: 300;
-    line-height: 1.5em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 16px;
+    line-height: 1.65;
   }
 
   #app {
-    background-color: #fafafa;
     min-height: 100%;
     min-width: 100%;
+    height: 100%;
   }
 
   ::selection {
-    background: white;
-    color: black;
+    /* background: white;
+    color: black; */
   }
 
+  /*
   :focus {
-    outline-color: #ffd72e;
+    // outline-color: #ffd72e;
   }
+  */
 
   /* Typography
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
   h1, h2, h3, h4, h5, h6 {
+    word-break: break-word;
     margin-top: 0;
     margin-bottom: 2rem;
     font-weight: 300; }
@@ -59,8 +66,13 @@ injectGlobal`
     margin-top: 0;
   }
 
+  p, table {
+    margin-bottom: 1rem;
+  }
+
+  body,
   a, a:visited {
-    color: black;
+    color: ${textColor};
   }
 
   /* Input & Buttons
@@ -95,7 +107,7 @@ injectGlobal`
     padding-right: 16px;
   }
 
- .external-link.white,
+  .external-link.white,
   .external-links .white a[href^="http://"] {
     background-image: url(images/external-link-white.svg);
   }

@@ -1,20 +1,32 @@
+/* global __CONFIG__ */
+
 import styled from 'styled-components'
 
-export const Container = styled.div`
-  background-color: ${(props) => props.backgroundColor};
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+const backgroundColor = __CONFIG__.cssVariables.backgroundColor
+const mobileWidth = __CONFIG__.cssVariables.mobileWidth
 
-  font-size: 1.3em;
-  line-height: 1.6;
+const headerHeight = '58px'
+const headerHeightMobile1 = '50px'
+const headerHeightMobile2 = '94px'
+
+export const Container = styled.div`
+  height: 100%;
+  background-color: ${backgroundColor};
 `
 
 export const Contents = styled.div`
-  flex: 1 1 auto;
   overflow-y: auto;
-  height: 100%;
-  display: flex;
+
+  position: absolute;
   width: 100%;
-  justify-content: center;
+  top: ${headerHeight};
+  bottom: 0;
+
+  @media (max-width: ${mobileWidth}) {
+    top: ${headerHeightMobile1};
+  }
+
+  @media (max-width: 600px) {
+    top: ${headerHeightMobile2};
+  }
 `

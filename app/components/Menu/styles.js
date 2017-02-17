@@ -1,12 +1,15 @@
+ /* global __CONFIG__ */
+
 import styled from 'styled-components'
+
+const backgroundColor = __CONFIG__.cssVariables.backgroundColor
 
 export const Buttons = styled.nav`
   margin: 0 5px;
 
   & > * {
     display: inline-block;
-    padding: 3px 12px 1px 12px;
-    opacity: 0.7;
+    padding: 5px 12px 5px 12px;
     background-color: rgba(255, 255, 255, 0.5);
   }
 
@@ -21,6 +24,6 @@ export const Buttons = styled.nav`
   & a.selected,
   & a:hover {
     opacity: 1;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: ${backgroundColor};
   }
 `

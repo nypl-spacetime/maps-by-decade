@@ -55,7 +55,7 @@ export class Filters extends React.Component {
               autoComplete='off' placeholder='Map title' onChange={this.handleChange.bind(this)} />
           </label>
 
-          <Button onClick={this.resetFilters.bind(this)}>Reset filters</Button>
+          <Button onClick={this.resetFilters.bind(this)}>Remove filters</Button>
           { /*
           <div>
             <label>

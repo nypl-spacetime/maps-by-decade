@@ -7,7 +7,6 @@ const mobileWidth = __CONFIG__.cssVariables.mobileWidth
 export const Item = styled.li`
   display: flex;
   justify-content: space-between;
-  // padding: 5px;
   margin-bottom: 10px;
 
   @media (max-width: ${mobileWidth}) {

@@ -8,8 +8,8 @@ import Crosshair from 'components/Crosshair'
 import Map from 'containers/Map'
 
 const Container = styled.div`
-  flex-basis: 100%;
-  display: flex;
+  width: 100%;
+  height: 100%;
 `
 
 export class HoverMap extends React.Component {

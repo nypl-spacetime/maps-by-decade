@@ -10,10 +10,18 @@ function Footer (props) {
   return (
     <StyledFooter>
       <nav>
-        <a href='http://www.nypl.org/help/about-nypl/legal-notices/privacy-policy' target='_blank'>Privacy Policy</a>
-        <a href='http://www.nypl.org/help/about-nypl/legal-notices/rules-and-regulations' target='_blank'>Rules and Regulations</a>
-        <a href='http://www.nypl.org/policy-patron-generated-web-content' target='_blank'>Policy on Patron-Generated Web Content</a>
-        <a href='http://www.nypl.org/help/about-nypl/legal-notices/website-terms-and-conditions' target='_blank'>Terms and Conditions</a>
+        <a href='http://www.nypl.org/help/about-nypl/legal-notices/privacy-policy' target='_blank'>
+          Privacy Policy
+        </a>
+        <a href='http://www.nypl.org/help/about-nypl/legal-notices/rules-and-regulations' target='_blank'>
+          Rules and Regulations
+        </a>
+        <a href='http://www.nypl.org/policy-patron-generated-web-content' target='_blank'>
+          Policy on Patron-Generated Web Content
+        </a>
+        <a href='http://www.nypl.org/help/about-nypl/legal-notices/website-terms-and-conditions' target='_blank'>
+          Terms and Conditions
+        </a>
       </nav>
       <Article>
         <p>

@@ -20,7 +20,6 @@ import {
 
 import { fromJS } from 'immutable'
 
-// The initial state of the App
 const initialState = fromJS({
   hasTouch: 'ontouchstart' in window,
   loading: true,
@@ -52,6 +51,14 @@ function appReducer (state = initialState, action) {
         .set('error', action.error)
     case LOAD_DATA_SUCCESS:
       var data = {}
+
+      if (action.file === 'all') {
+        action.data.features.sort((a, b) => {
+          const aYear = parseInt(a.properties.year)
+          const bYear = parseInt(b.properties.year)
+          return aYear - bYear
+        })
+      }
 
       action.data.features.forEach((feature) => {
         const group = feature.properties.group

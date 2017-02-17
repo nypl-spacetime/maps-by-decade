@@ -5,7 +5,9 @@ import styled from 'styled-components'
 const mobileWidth = __CONFIG__.cssVariables.mobileWidth
 
 export const Container = styled.div`
-  flex-basis: 100%;
+  width: 100%;
+  height: 100%;
+
   overflow-y: scroll;
   box-sizing: border-box;
 `
@@ -14,11 +16,12 @@ export const List = styled.ul`
   margin: 5px;
   padding: 0;
   list-style-type: none;
+
   max-width: 800px;
 `
 
 export const Instructions = styled.div`
-  flex-basis: 100%;
+  height: 100%;
   display: flex;
   padding: 10px;
   flex-direction: row;

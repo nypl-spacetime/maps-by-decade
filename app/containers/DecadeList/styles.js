@@ -3,8 +3,9 @@
 import styled from 'styled-components'
 
 const mobileWidth = __CONFIG__.cssVariables.mobileWidth
+const mapColor = __CONFIG__.cssVariables.mapColor
 
-export const List = styled.ul`
+export const List = styled.ol`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -39,6 +40,14 @@ export const ItemWrapper = styled.li`
   }
 `
 
+export const ChildWrapper = styled(ItemWrapper)`
+  @media (max-width: 550px) {
+    &:before {
+      padding-top: 50%;
+    }
+  }
+`
+
 export const Item = styled.div`
   position: relative;
   position: absolute;
@@ -46,6 +55,7 @@ export const Item = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
+  padding-bottom: 10px;
 `
 
 export const ChildContainer = styled(Item)`
@@ -54,8 +64,6 @@ export const ChildContainer = styled(Item)`
   box-sizing: border-box;
   padding: 10px;
   margin-bottom: 10px;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 3px;
 
   & > p {
     margin: 0;
@@ -66,5 +74,7 @@ export const ChildContainer = styled(Item)`
 export const MiniMapContainer = styled.div`
   width: 100%;
   height: 100%;
-  padding-bottom: 10px;
+  border-radius: 3px
+
+  background-color: ${mapColor};
 `

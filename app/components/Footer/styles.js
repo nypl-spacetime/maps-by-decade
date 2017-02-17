@@ -3,19 +3,20 @@
 import styled from 'styled-components'
 
 const mobileWidth = __CONFIG__.cssVariables.mobileWidth
+const mapColor = __CONFIG__.cssVariables.mapColor
 
 export const StyledFooter = styled.footer`
   width: 100%;
   align-items: center;
   display: flex;
   flex-direction: column;
-  font-size: 0.8em;
   margin-top: 1em;
   margin-bottom: 1em;
+  font-size: 0.8rem;
 
   & nav {
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: ${mapColor};
     display: flex;
     flex-direction: row;
     justify-content: center;

@@ -1,19 +1,21 @@
+/* global __CONFIG__ */
+
 import styled from 'styled-components'
 
+const backgroundColor = __CONFIG__.cssVariables.backgroundColor
+const mapColor = __CONFIG__.cssVariables.mapColor
+
 export const StyledForm = styled.form`
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: ${mapColor};
   border-radius: 3px;
   padding: 10px;
 
   & input[type=text] {
     width: 100%;
-    background-color: white;
+    background-color: ${backgroundColor};
     padding: .3em .5em;
     margin-bottom: 10px;
     border-radius: 3px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: #999;
   }
 
   & label > span:after {

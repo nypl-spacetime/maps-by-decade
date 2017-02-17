@@ -40,8 +40,8 @@ export class MapListItem extends React.Component {
         <DataContainer>
           <MapHeading map={this.props.map}>
             {this.props.children}
-            <a href={`http://maps.nypl.org/warper/maps/${this.props.map.properties.id}`} target='_blank'>Map Warper</a>
-            <a href={`http://digitalcollections.nypl.org/items/${this.props.map.properties.uuid}`} target='_blank'>Digital Collections</a>
+            <a href={`http://maps.nypl.org/warper/maps/${this.props.map.properties.id}`} target='_blank'>View in Map Warper</a>
+            <a href={`http://digitalcollections.nypl.org/items/${this.props.map.properties.uuid}`} target='_blank'>View in Digital Collections</a>
             <a href={geojsonUrl} target='_blank'>View data on geojson.io</a>
           </MapHeading>
         </DataContainer>

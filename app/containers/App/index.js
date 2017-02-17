@@ -1,5 +1,3 @@
-/* global __CONFIG__ */
-
 import React from 'react'
 import Helmet from 'react-helmet'
 import { connect } from 'react-redux'
@@ -74,9 +72,6 @@ export class App extends React.Component {
   }
 
   render () {
-    const backgroundColor = (this.props.params && this.props.params.decade) ? __CONFIG__.cssVariables.singleDecadeColor : __CONFIG__.cssVariables.homepageColor
-
-    let intro
     let contents
 
     if (this.props.loading) {
@@ -84,22 +79,19 @@ export class App extends React.Component {
         <Loading />
       )
     } else {
-      contents = (
-        <Contents>
-          {this.props.children}
-        </Contents>
-      )
+      contents = this.props.children
     }
 
     const defaultTitle = 'Maps by Decade - NYC Space/Time Directory'
 
     return (
-      <Container backgroundColor={backgroundColor}>
+      <Container>
         <Helmet titleTemplate={`%s - ${defaultTitle}`}
           defaultTitle={defaultTitle} />
         <Header path={this.props.location.pathname.slice(1)} />
-        {intro}
-        {contents}
+        <Contents>
+          {contents}
+        </Contents>
       </Container>
     )
   }

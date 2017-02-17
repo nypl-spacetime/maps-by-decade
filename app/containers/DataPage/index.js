@@ -3,7 +3,6 @@ import Helmet from 'react-helmet'
 import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
 
-import Page from 'components/Page'
 import Article from 'components/Article'
 import DataPageList from 'containers/DataPageList'
 import Filters from 'containers/Filters'
@@ -24,20 +23,18 @@ export class DataPage extends React.Component {
       // .filter(this.filterCoordinates.bind(this))
 
     return (
-      <Page>
+      <Article>
         <Helmet title='List' />
-        <Article>
-          <Container>
-            <FiltersContainer>
-              <Filters />
-            </FiltersContainer>
-            <DataPageListContainer>
-              <DataPageList features={features} />
-            </DataPageListContainer>
-          </Container>
-        </Article>
+        <Container>
+          <FiltersContainer>
+            <Filters />
+          </FiltersContainer>
+          <DataPageListContainer>
+            <DataPageList features={features} />
+          </DataPageListContainer>
+        </Container>
         <MapLightbox />
-      </Page>
+      </Article>
     )
   }
 

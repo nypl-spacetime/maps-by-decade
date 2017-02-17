@@ -29,7 +29,7 @@ import MapPageControls from 'components/MapPageControls'
 import Sidebar from 'containers/Sidebar'
 import NotFoundPage from 'containers/NotFoundPage'
 
-import { Container, Pane } from './styles.js'
+import { Container, MapPane, Pane } from './styles.js'
 
 export class MapPage extends React.Component {
 
@@ -104,7 +104,7 @@ export class MapPage extends React.Component {
     return (
       <Container>
         <Helmet title={decade} />
-        <Pane active={!this.props.selectedMapsLocked}>
+        <MapPane active={!this.props.selectedMapsLocked}>
           <HoverMap decade={decade} tree={tree} crosshair hasTouch={this.props.hasTouch}
             groupedGeoJSON={this.props.groupedGeoJSON} allGeoJSON={this.props.allGeoJSON}
             onHoverMaps={this.hoverMaps.bind(this)} options={this.props.mapOptions}
@@ -112,7 +112,7 @@ export class MapPage extends React.Component {
             onEachFeatureAll={this.onEachFeatureAll.bind(this)} onEachFeatureGrouped={this.onEachFeatureGrouped.bind(this)} />
           <MapPageControls previousDecade={this.props.previousDecade} nextDecade={this.props.nextDecade}
             decade={decade} locked={this.props.selectedMapsLocked} selectedCount={this.props.selectedMaps.length} />
-        </Pane>
+        </MapPane>
         <Pane active={this.props.selectedMapsLocked}>
           <Sidebar />
         </Pane>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { TitleContainer, Title, Year, Links } from './styles'
+import { Title, Year, Links } from './styles'
 
 export class MapHeading extends React.Component {
 
@@ -27,15 +27,13 @@ export class MapHeading extends React.Component {
 
     return (
       <div>
-        <TitleContainer>
-          <Title tabIndex={0} style={titleStyle} onClick={this.titleClick.bind(this)} className='list-item'
-            onKeyDown={this.titleKeyDown.bind(this)} title={this.props.map.properties.name}>
-            <span aria-hidden='true'>
-              {this.props.map.properties.name}
-            </span>
-          </Title>
-          <Year>{this.props.map.properties.year}</Year>
-        </TitleContainer>
+        <Title tabIndex={0} style={titleStyle} onClick={this.titleClick.bind(this)} className='list-item'
+          onKeyDown={this.titleKeyDown.bind(this)} title={this.props.map.properties.name}>
+          <span aria-hidden='true'>
+            {this.props.map.properties.name}
+          </span>
+        </Title>
+        <Year>Year published: <strong>{this.props.map.properties.year}</strong></Year>
         <Links>
           {links}
         </Links>
