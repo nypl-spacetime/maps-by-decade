@@ -16,7 +16,7 @@ const Container = styled.div`
 
 const Text = styled.div`
   margin: 0 auto;
-  width: 195px;
+  width: 157px;
   white-space: nowrap;
 `
 
