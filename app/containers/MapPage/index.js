@@ -178,7 +178,9 @@ export class MapPage extends React.Component {
         this.backToDecadeList()
       }
     } else if (event.keyCode === 13) {
-      this.props.lockSelectedMaps(true)
+      if (!this.props.selectedMapsLocked) {
+        this.props.lockSelectedMaps(true)
+      }
     }
   }
 }
