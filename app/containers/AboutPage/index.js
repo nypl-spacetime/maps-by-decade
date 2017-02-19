@@ -138,7 +138,7 @@ export class AboutPage extends React.Component {
             James L. Knight Foundation</a>.
           </p>
           <p>
-            <img src={knightFoundation} alt='Knight Foundation Logo' style={{width: '50%'}} />
+            <img src={knightFoundation} alt='Knight Foundation Logo' style={{width: '50%', opacity: 0.88}} />
           </p>
           <h2>Accessibility</h2>
           <p>
