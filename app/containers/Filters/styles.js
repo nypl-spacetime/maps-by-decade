@@ -14,13 +14,20 @@ export const StyledForm = styled.form`
     width: 100%;
     background-color: ${backgroundColor};
     padding: .3em .5em;
-    margin-bottom: 10px;
     border-radius: 3px;
   }
 
   & label > span:after {
     content: ':';
     margin-right: 0.5em;
+  }
+
+  & label div {
+    padding: 10px;
+  }
+
+  & button {
+    margin-top: 10px;
   }
 `
 
@@ -38,7 +45,8 @@ export const Decades = styled.div`
   user-select: none;
 
   & > div {
-    padding: 0 10px;
+    width: 100px;
+    // padding: 0 10px;
   }
 
   & label {

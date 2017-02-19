@@ -1,4 +1,8 @@
+/* global __CONFIG__ */
+
 import styled from 'styled-components'
+
+const outlineColor = __CONFIG__.cssVariables.outlineColor
 
 export const StyledMiniMap = styled.div`
   position: relative;
@@ -8,13 +12,9 @@ export const StyledMiniMap = styled.div`
   cursor: pointer;
   border-radius: 3px;
 
-  &:hover .leaflet-container,
   & .leaflet-container:focus {
-    // border-color: #ffd72e;
-  }
-
-  & .leaflet-container:focus {
-    // border-color: #ffd72e;
+    outline: 2px solid;
+    outline-color: ${outlineColor};
   }
 `
 

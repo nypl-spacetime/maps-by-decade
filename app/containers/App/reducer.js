@@ -115,6 +115,7 @@ function appReducer (state = initialState, action) {
         .update('miniMaps', (miniMaps) => miniMaps.push(action.map))
     case LOCATION_CHANGE:
       return state
+        .set('selectedMaps', [])
         .set('selectedMapsLocked', false)
         .set('ligtboxIndex', 0)
         .set('tileLayerMaps', fromJS({}))
@@ -150,8 +151,16 @@ function appReducer (state = initialState, action) {
       return state
         .update('lightboxIndex', (lightboxIndex) => (lightboxIndex + 1) % nextLength)
     case SET_FILTER:
-      return state
-        .setIn(['filters', action.filter], action.value)
+      if (action.filter === 'title' && !action.value) {
+        return state
+          .deleteIn(['filters', action.filter])
+      } else if (action.filter.startsWith('decades') && action.value) {
+        return state
+          .deleteIn(['filters', action.filter])
+      } else {
+        return state
+          .setIn(['filters', action.filter], action.value)
+      }
     case RESET_FILTERS:
       return state
         .set('filters', fromJS({}))

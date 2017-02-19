@@ -6,6 +6,7 @@ const backgroundColor = __CONFIG__.cssVariables.backgroundColor
 
 export const Buttons = styled.nav`
   margin: 0 5px;
+  display: flex;
 
   & > * {
     display: inline-block;

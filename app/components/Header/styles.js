@@ -4,17 +4,14 @@ import styled from 'styled-components'
 
 const mobileWidth = __CONFIG__.cssVariables.mobileWidth
 const mainColor = __CONFIG__.cssVariables.mainColor
+const headerHeight = __CONFIG__.cssVariables.headerHeight
 
 export const StyledHeader = styled.header`
   background-color: ${mainColor};
-  line-height: 1.5;
+  line-height: 1;
   overflow: hidden;
-
   padding: 5px;
-
-  // border-bottom-style: solid;
-  // border-bottom-width: 1px;
-  // border-bottom-color: white;
+  height: ${headerHeight};
 
   &,
   & a,
@@ -27,6 +24,7 @@ export const StyledHeader = styled.header`
     display: inline-block;
     font-weight: lighter;
     font-size: 40px;
+    line-height: 1;
   }
 
   @media (max-width: ${mobileWidth}) {
@@ -39,15 +37,13 @@ export const StyledHeader = styled.header`
     }
 
     & h1 {
-      font-size: 1.5em;
+      font-size: 2rem;
     }
   }
 
-  @media (max-width: 600px) {
-    flex-direction: column;
-
-    & div:first-child {
-      margin-bottom: 10px;
+  @media (max-width: 500px) {
+    & h1 {
+      font-size: 1rem;
     }
   }
 `

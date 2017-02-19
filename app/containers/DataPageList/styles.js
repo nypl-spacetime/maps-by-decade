@@ -1,8 +1,11 @@
+/* global __CONFIG__ */
+
 import styled from 'styled-components'
+
+const mapColor = __CONFIG__.cssVariables.mapColor
 
 export const PaginateContainer = styled.div`
   & ul {
-    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 3px;
 
     list-style-type: none;
@@ -30,7 +33,7 @@ export const PaginateContainer = styled.div`
   }
 
   & li.active a {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: ${mapColor};
   }
 
   & li:not(.disabled) > a {
@@ -38,7 +41,7 @@ export const PaginateContainer = styled.div`
   }
 
   & li:not(.disabled) > a:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: ${mapColor};
   }
 
   & li.disabled > * {

@@ -10,6 +10,7 @@ import {
 
 import {
   selectFilters,
+  selectHasFilters,
   selectGroups
 } from 'containers/App/selectors'
 
@@ -22,9 +23,14 @@ export class Filters extends React.Component {
   render () {
     const groups = this.props.groups || []
 
+    let removeFilters
+    if (this.props.hasFilters) {
+      removeFilters = <Button onClick={this.resetFilters.bind(this)}>Remove filters</Button>
+    }
+
     return (
       <div>
-        <DataPageHeading>Filter maps:</DataPageHeading>
+        <DataPageHeading>Search maps by decade and title:</DataPageHeading>
         <StyledForm onSubmit={this.handleSubmit.bind(this)} ref='form'>
           <span>Filter by decade:</span>
           <Fieldset>
@@ -51,11 +57,11 @@ export class Filters extends React.Component {
           </Fieldset>
           <label>
             <span>Filter by title</span>
-            <input type='text' name='title' value={this.props.filters.title || ''}
-              autoComplete='off' placeholder='Map title' onChange={this.handleChange.bind(this)} />
+            <div>
+              <input type='text' name='title' value={this.props.filters.title || ''}
+                autoComplete='off' placeholder='Map title' onChange={this.handleChange.bind(this)} />
+            </div>
           </label>
-
-          <Button onClick={this.resetFilters.bind(this)}>Remove filters</Button>
           { /*
           <div>
             <label>
@@ -69,6 +75,7 @@ export class Filters extends React.Component {
             </label>
           </div>
           */}
+          {removeFilters}
         </StyledForm>
       </div>
     )
@@ -108,8 +115,9 @@ function mapDispatchToProps (dispatch) {
 
 export default connect(createSelector(
   selectFilters(),
+  selectHasFilters(),
   selectGroups(),
-  (filters, groups) => ({
-    filters, groups
+  (filters, hasFilters, groups) => ({
+    filters, hasFilters, groups
   })
 ), mapDispatchToProps)(Filters)

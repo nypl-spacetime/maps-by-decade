@@ -1,13 +1,15 @@
 data:
   # baseUrl: http://maps-by-decade-data.dev/
-  baseUrl: http://localhost:52831/
+  baseUrl: http://localhost:54638/
 
 cssVariables:
+  headerHeight: 50px
   mobileWidth: 800px
   backgroundColor: '#fefefe'
   textColor: '#333'
   mainColor: '#aed8e6'
   mapColor: '#d7ecf3'
+  outlineColor: '#ffd72e'
 
 mapOptions:
   singleDecade:

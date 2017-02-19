@@ -63,7 +63,7 @@ export class DataPageList extends React.Component {
       return (
         <div>
           <DataPageHeading>
-            {formatNumber(this.props.features.length)} maps found:
+            {formatNumber(this.props.features.length)} maps found
           </DataPageHeading>
           {paginate}
           <StyledList>

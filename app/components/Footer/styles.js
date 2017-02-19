@@ -41,6 +41,9 @@ export const StyledFooter = styled.footer`
 
   & p {
     text-align: center;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 1rem;
   }
 
   @media (max-width: ${mobileWidth}) {

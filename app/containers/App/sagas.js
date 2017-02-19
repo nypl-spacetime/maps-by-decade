@@ -57,13 +57,16 @@ function* newMiniMapSaga () {
 }
 
 function* lockSelectedMaps (action) {
+  let element
   if (action.locked) {
     // Focus first tabIndexable item in list (all have class 'list-item')
-    let element = document.querySelector('.list-item')
-    element.focus()
+    element = document.querySelector('.list-item')
   } else {
     // Focus map!
-    let element = document.querySelector('.map')
+    element = document.querySelector('.map')
+  }
+
+  if (element) {
     element.focus()
   }
 }

@@ -3,6 +3,7 @@
 import { injectGlobal } from 'styled-components'
 
 const textColor = __CONFIG__.cssVariables.textColor
+const outlineColor = __CONFIG__.cssVariables.outlineColor
 
 injectGlobal`
   :root {
@@ -28,15 +29,12 @@ injectGlobal`
   }
 
   ::selection {
-    /* background: white;
-    color: black; */
+    background: ${outlineColor};
   }
 
-  /*
   :focus {
-    // outline-color: #ffd72e;
+    outline-color: ${outlineColor};
   }
-  */
 
   /* Typography
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -45,21 +43,21 @@ injectGlobal`
     margin-top: 0;
     margin-bottom: 2rem;
     font-weight: 300; }
-  h1 { font-size: 4.0rem; line-height: 1.2;  /*letter-spacing: -.1rem;*/ }
-  h2 { font-size: 3.6rem; line-height: 1.25; /*letter-spacing: -.1rem;*/ }
-  h3 { font-size: 3.0rem; line-height: 1.3;  /*letter-spacing: -.1rem;*/ }
-  h4 { font-size: 2.4rem; line-height: 1.35; /*letter-spacing: -.08rem;*/ }
-  h5 { font-size: 1.8rem; line-height: 1.5;  /*letter-spacing: -.05rem;*/ }
-  h6 { font-size: 1.5rem; line-height: 1.6;  /*letter-spacing: 0;*/ }
+  // h1 { font-size: 4.0rem; line-height: 1.2;  /*letter-spacing: -.1rem;*/ }
+  // h2 { font-size: 3.6rem; line-height: 1.25; /*letter-spacing: -.1rem;*/ }
+  // h3 { font-size: 3.0rem; line-height: 1.3;  /*letter-spacing: -.1rem;*/ }
+  h1 { font-size: 2.4rem; line-height: 1.35; /*letter-spacing: -.08rem;*/ }
+  h2 { font-size: 1.8rem; line-height: 1.5;  /*letter-spacing: -.05rem;*/ }
+  h3 { font-size: 1.5rem; line-height: 1.6;  /*letter-spacing: 0;*/ }
 
   /* Larger than phablet */
   @media (min-width: 550px) {
-    h1 { font-size: 5.0rem; }
-    h2 { font-size: 4.2rem; }
-    h3 { font-size: 3.6rem; }
-    h4 { font-size: 3.0rem; }
-    h5 { font-size: 2.4rem; }
-    h6 { font-size: 1.5rem; }
+    // h1 { font-size: 5.0rem; }
+    // h2 { font-size: 4.2rem; }
+    // h3 { font-size: 3.6rem; }
+    h1 { font-size: 3.0rem; }
+    h2 { font-size: 2.4rem; }
+    h3 { font-size: 1.5rem; }
   }
 
   p {
