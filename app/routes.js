@@ -50,7 +50,7 @@ export default function createRoutes (store) {
         importModules.catch(errorLoading)
       }
     }, {
-      path: '/list(/:decades)',
+      path: '/list',
       name: 'list',
       getComponent (nextState, cb) {
         const importModules = Promise.all([
@@ -66,8 +66,7 @@ export default function createRoutes (store) {
         importModules.catch(errorLoading)
       }
     }, {
-      path: '/:decade(/:mapId)',
-      // path: '/:decade(/:mapId)',
+      path: '/:decade',
       name: 'decade',
       getComponent (nextState, cb) {
         const importModules = Promise.all([
