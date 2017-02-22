@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { Container, Header, Footer, Previous, Next, Middle, Back, Title } from './styles'
+import { Container, Box, Previous, Next, Middle, Back, Title } from './styles'
 
 import { decadeToPeriod } from 'utils/utils'
 
@@ -39,38 +39,38 @@ function MapPageControls (props) {
   const mapString = props.selectedCount === 1 ? 'map' : 'maps'
   if (props.locked) {
     footer = (
-      <Footer>
+      <Box>
         <span>
           {`${props.selectedCount} ${mapString} selected — click again to unlock selection`}
         </span>
-      </Footer>
+      </Box>
     )
   } else if (props.selectedCount) {
     footer = (
-      <Footer>
+      <Box>
         <span>
           {`${props.selectedCount} ${mapString} found — click to lock selection`}
         </span>
-      </Footer>
+      </Box>
     )
   }
 
   return (
     <Container>
-      <Header>
+      <div>
         <Previous>
           {previousDecade}
         </Previous>
         <Middle>
           <Title>{decadeToPeriod(props.decade)}</Title>
-          <Back>
+          <Box>
             <Link title='Go back to overview - or press Escape' to={`/`}>Back to overview</Link>
-          </Back>
+          </Box>
         </Middle>
         <Next>
           {nextDecade}
         </Next>
-      </Header>
+      </div>
       {footer}
     </Container>
   )

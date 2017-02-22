@@ -27,14 +27,18 @@ export const Container = styled.div`
   }
 `
 
-export const Header = styled.div`
-`
+export const Box = styled.div`
+  text-align: center;
 
-export const Footer = styled.div`
-  & > span {
+  & > * {
+    display: inline-block;
     background-color: rgba(255, 255, 255, 0.9);
     padding: 6px 13px 6px 13px;
     border-radius: 3px;
+  }
+
+  & > a {
+    pointer-events: all;
   }
 `
 
@@ -86,27 +90,17 @@ export const Middle = styled.div`
 `
 
 export const Title = styled.div`
-  font-size: 2em;
-    font-family: 'MiloSlab';
-    font-weight: bold;
+  font-size: 2.5rem;
+  font-family: 'MiloSlab';
+  font-weight: bold;
 
-    /*TODO: use color variable*/
-    text-shadow: 0 0 4px rgb(247, 241, 217);
-    text-align: center;
-    margin: 0;
+  text-shadow: 0 0 4px white;
+  text-align: center;
+  margin: 0;
 
- @media (max-width: ${mobileWidth}) {
+  @media (max-width: ${mobileWidth}) {
     & {
       font-size: 1.2em;
     }
   }
-
-`
-
-export const Back = styled.div`
-  font-size: 16px;
-  text-align: center;
-  display: block;
-  text-decoration: underline;
-  pointer-events: all;
 `
