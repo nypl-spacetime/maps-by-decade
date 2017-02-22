@@ -18,6 +18,8 @@ import Loading from 'containers/Loading'
 
 import { Container, Contents } from './styles'
 
+import favIcon from 'images/favicon.png' // eslint-disable-line
+
 export class App extends React.Component {
 
   constructor (props) {

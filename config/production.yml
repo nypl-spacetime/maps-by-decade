@@ -1,2 +1,4 @@
+publicPath: /mbd-test/
+
 data:
   baseUrl: https://raw.githubusercontent.com/bertspaan/maps-by-decade-data/new-group-maps/

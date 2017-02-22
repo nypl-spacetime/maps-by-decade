@@ -14,7 +14,7 @@ module.exports = require('./webpack.base.babel')({
 
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets
   output: {
-    publicPath: '/mbd-test/',
+    publicPath: config.publicPath,
     filename: '[name].[chunkhash].js',
     chunkFilename: '[name].[chunkhash].chunk.js'
   },
@@ -36,6 +36,7 @@ module.exports = require('./webpack.base.babel')({
 
     // Minify and optimize the index.html
     new HtmlWebpackPlugin({
+      favicon: 'app/images/favicon.png',
       template: 'app/index.html',
       minify: {
         removeComments: true,
