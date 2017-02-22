@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { Container, Box, Previous, Next, Middle, Back, Title } from './styles'
+import { Container, Box, Previous, Next, Middle, Title } from './styles'
 
 import { decadeToPeriod } from 'utils/utils'
 
