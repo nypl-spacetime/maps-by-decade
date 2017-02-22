@@ -1,15 +1,15 @@
 {
-  "name": "maps-by-decade",
-  "version": "3.3.3",
-  "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
+  "name": "spacetime-maps-by-decade",
+  "version": "1.0.0",
+  "description": "New York City street maps from the New York Public Library, grouped by decade",
   "repository": {
     "type": "git",
-    "url": "git://github.com/nypl-spacetime/react-boilerplate.git"
+    "url": "git://github.com/nypl-spacetime/maps-by-decade.git"
   },
   "engines": {
     "npm": ">=3"
   },
-  "author": "Max Stoiber",
+  "author": "Bert Spaan",
   "license": "MIT",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
