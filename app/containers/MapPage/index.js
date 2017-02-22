@@ -103,7 +103,7 @@ export class MapPage extends React.Component {
 
     return (
       <Container>
-        <Helmet title={decade} />
+        <Helmet title={`${decade}s`} />
         <MapPane active={!this.props.selectedMapsLocked}>
           <HoverMap decade={decade} tree={tree} crosshair hasTouch={this.props.hasTouch}
             groupedGeoJSON={this.props.groupedGeoJSON} allGeoJSON={this.props.allGeoJSON}
