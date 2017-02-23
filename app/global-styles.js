@@ -4,6 +4,7 @@ import { injectGlobal } from 'styled-components'
 
 const textColor = __CONFIG__.cssVariables.textColor
 const outlineColor = __CONFIG__.cssVariables.outlineColor
+const mobileWidth = __CONFIG__.cssVariables.mobileWidth
 
 injectGlobal`
   :root {
@@ -96,6 +97,9 @@ injectGlobal`
     background: none;
   }
 
+  /* External links
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
   .external-link,
   .external-links a[href^="http://"] {
     background-image: url(images/external-link.svg);
@@ -108,5 +112,14 @@ injectGlobal`
   .external-link.white,
   .external-links .white a[href^="http://"] {
     background-image: url(images/external-link-white.svg);
+  }
+
+  /* Mobile classes
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+  @media (max-width: ${mobileWidth}) {
+    .hide-on-mobile {
+      display: none;
+    }
   }
 `

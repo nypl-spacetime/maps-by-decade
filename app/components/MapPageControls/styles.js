@@ -56,10 +56,6 @@ export const PreviousNext = styled.div`
   @media (max-width: ${mobileWidth}) {
     width: 50px;
 
-    & span.hide-on-mobile {
-      display: none;
-    }
-
     & span::before,
     & span::after {
       margin: 0;

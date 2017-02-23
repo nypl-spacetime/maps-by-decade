@@ -64,7 +64,9 @@ function MapPageControls (props) {
         <Middle>
           <Title>{decadeToPeriod(props.decade)}</Title>
           <Box>
-            <Link title='Go back to overview - or press Escape' to={`/`}>Back to overview</Link>
+            <Link title='Go back to overview - or press Escape' to={`/`}>
+              Back<span className='hide-on-mobile'> to overview</span>
+            </Link>
           </Box>
         </Middle>
         <Next>
