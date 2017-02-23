@@ -12,7 +12,9 @@ For more information, see Map by Decade's [About page](http://spacetime.nypl.org
 
 ## NYC Space/Time Directory
 
-Maps by Decade is part of the [NYC Space/Time Directory](http://spacetime.nypl.org), an NYLP project which makes urban history accessible through a wide variety of resources. Major support for the NYC Space/Time Directory is provided by the [Knight News Challenge](http://www.knightfoundation.org/grants/6715), an initiative of the [John S. and James L. Knight Foundation](http://www.knightfoundation.org/).
+Maps by Decade is part of the [NYC Space/Time Directory](http://spacetime.nypl.org/). The goal of this project is to&mdash;through a variety of resources&mdash;unlock the potential of historical maps and provide opportunities to explore urban history across space and time.
+
+Major support for the NYC Space/Time Directory is provided by the [Knight News Challenge](http://www.knightfoundation.org/grants/6715), an initiative of the [John S. and James L. Knight Foundation](http://www.knightfoundation.org/).
 
 <img src="app/images/knight-foundation.png" width="50%">
 

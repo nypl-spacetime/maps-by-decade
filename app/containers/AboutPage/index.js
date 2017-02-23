@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
 import Helmet from 'react-helmet'
-import { Link } from 'react-router'
 
 import Page from 'components/Page'
 import Footer from 'components/Footer'
@@ -32,31 +31,30 @@ export class AboutPage extends React.Component {
         <Article>
           <h2>About this project</h2>
           <p>
-            Maps by Decade shows New York City street maps from the New York Public Library's <a href='https://www.nypl.org/about/divisions/map-division'>
-            Lionel Pincus and Princess Firyal Map Division</a> &mdash; published between {yearMin} and {yearMax} &mdash;
-            grouped by decade.
+            Maps by Decade shows New York City street maps from <a href='https://www.nypl.org/'>The New York Public Library</a>'s
+            Lionel Pincus and Princess Firyal <a href='https://nypl.org/locations/divisions/map-division'>Map Division</a>&mdash;published
+            between {yearMin} and {yearMax}&mdash;grouped by decade. It contains {mapCount} large-scale maps
+            (i.e. maps depicting an area smaller than 5 km²) that are digitized, georectified, and in the
+            public domain (or for which the Library holds the copyright).
           </p>
-          <p>
-            Maps by Decade shows {mapCount} large-scale maps (i.e. maps depicting an area smaller
-            than 5 km²) of New York City that are digitized, georectified, and in the public domain
-            (or of which the Library holds the copyright). You can browse 20,000 more maps and
-            atlases in NYPL's <a href='http://digitalcollections.nypl.org/'>Digital Collections</a>,
-            the Library's database of its digitized collections.
-            Or visit <a href='http://maps.nypl.org/'>Map Warper</a>, our online tool for rectifying
-            public domain maps.
-          </p>
+
           <h3>Collection Resources</h3>
           <p>
-            Maps by Decade is just a subset from NYPL's full map collection. To view more digitized
-            maps, visit our Digital Collections. To arrange for viewing maps in-person, for more
-            information on the full collection of digitized and non-digitized maps, or for additional
-            questions, contact the staff of the <a href='https://www.nypl.org/locations/divisions/map-division'>Lionel
-            Pincus and Princess Firyal Map Division</a>.
+            Maps by Decade represents just a subset of NYPL's full map collection.
+            You can browse 20,000 more maps and atlases in our <a href='https://digitalcollections.nypl.org/'>Digital Collections</a>.
+          </p>
+          <p>
+            To plan a research visit to view maps in person or for more information about
+            both digitized and non-digitized maps, contact the staff of
+            the <a href='https://www.nypl.org/locations/divisions/map-division'>Lionel Pincus and Princess Firyal Map Division</a>.
           </p>
 
           <h3>Data</h3>
           <p>
-            The data for Maps by Decade comes from the <a href='http://maps.nypl.org/'>NYPL Map Warper</a>, an online tool for browsing and georectifying thousands of the Library's public domain maps.
+            The data for Maps by Decade comes from <a href='http://maps.nypl.org/'>Map Warper</a>, a tool for browsing and georectifying thousands of the Library's public domain maps.
+          </p>
+          <p>
+          GQIGS:
           </p>
           <p>
             <img src={qgisMapwarper} alt='All Map Warper maps in QGIS' />
@@ -79,6 +77,7 @@ export class AboutPage extends React.Component {
             along with more than <a href='https://github.com/nypl-spacetime/'>120 other open repositories</a> that make up the
             NYC Space/Time Directory project.
           </p>
+
           <h2>Keyboard Navigation</h2>
           <KeyboardTable>
             <thead>
@@ -93,7 +92,7 @@ export class AboutPage extends React.Component {
                   <kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd> <kbd>↓</kbd>
                 </td>
                 <td>
-                  Move map east, north, west and south — hold <kbd>Shift</kbd> for a larger
+                  Move map east, north, west and south &mdash; hold <kbd>Shift</kbd> for a larger
                   distance
                 </td>
               </tr>
@@ -131,15 +130,18 @@ export class AboutPage extends React.Component {
           <h2>Acknowledgements</h2>
           <p>
             Maps by Decade is part of the <a href='http://spacetime.nypl.org/'>NYC Space/Time
-            Directory</a>, making urban history accessible through a wide variety of resources.
-            Major support for the NYC Space/Time Directory is provided by the <a href='http://www.knightfoundation.org/grants/6715'>
-            Knight News Challenge</a>,
-            an initiative of the <a href='http://www.knightfoundation.org'>John S. and
-            James L. Knight Foundation</a>.
+            Directory</a>. The goal of this project is to&mdash;through a
+            variety of resources&mdash;unlock the potential of historical maps and provide
+            opportunities to explore urban history across space and time.
           </p>
           <p>
-            <img src={knightFoundation} alt='Knight Foundation Logo' style={{width: '50%', opacity: 0.88}} />
+            Major support for the NYC Space/Time Directory is provided by
+            the <a href='http://www.knightfoundation.org/grants/6715'>Knight News Challenge</a>,
+            an initiative of the <a href='http://www.knightfoundation.org/'>John S. and James
+            L. Knight Foundation</a>.
           </p>
+          <img src={knightFoundation} alt='Knight Foundation Logo' style={{width: '50%', opacity: 0.88}} />
+
           <h2>Accessibility</h2>
           <p>
             <a href='https://www.nypl.org/'>The New York Public Library</a> strives to ensure
@@ -151,25 +153,20 @@ export class AboutPage extends React.Component {
             we are committed to adopting them into our development processes.
           </p>
           <p>
-            Maps by Decade, with its collection of digitized street maps, is inherently visual in nature.
-            It includes an interactive, map-based interface that can present challenges from
-            an accessibility perspective. To meet WCAG success criteria, we worked to provide text
-            alternatives for visual aspects of the Maps by Decade tool.
-            We also made its <Link to='/map'> Map</Link> and <Link to='/list'>List</Link> interfaces
-            navigable by keyboard, as well as by mouse. These features help fulfill the mission
-            of the NYC Space/Time Directory: to allow everyone to travel through time and space
-            to explore urban history.
+            Some items in our collections present accessibility challenges. In such cases, we
+            look at using metadata in different ways to improve accessibility. Additionally, as
+            part of our efforts, we actively work on projects that enrich our metadata. As a
+            result, we are increasingly able to provide better experiences of our collections to
+            all users&mdash;regardless of their abilities.
           </p>
           <p>
-            If you encounter issues using Maps by Decade or would like to provide feedback regarding
-            its accessibility, please email <a href='mailto:spacetime@nypl.org'>spacetime@nypl.org</a>.
+            If you encounter any accessibility shortfalls when using Maps by Decade or would like
+            to provide other feedback, please email <a href='mailto:spacetime@nypl.org'>spacetime@nypl.org</a>.
           </p>
           <p>
             For further information about assistive technologies and accommodations available for
-            people with disabilities at the research centers and branch libraries
-            of <a href='https://www.nypl.org/locations/'>The New York Public Library</a>, please
-            visit <a href='https://www.nypl.org/accessibility'>nypl.org/accessibility</a> or
-            email <a href='mailto:accessibility@nypl.org'>accessibility@nypl.org</a>.
+            people with disabilities at the <a href='https://www.nypl.org/locations/'>research centers and branch libraries</a> of The New York
+            Public Library, please visit <a href='http://nypl.org/accessibility'>nypl.org/accessibility</a> or email <a href='mailto:accessibility@nypl.org'>accessibility@nypl.org</a>.
           </p>
         </Article>
         <Footer />
