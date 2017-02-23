@@ -1,6 +1,5 @@
 data:
-  # baseUrl: http://maps-by-decade-data.dev/
-  baseUrl: http://localhost:54638/
+  baseUrl: http://maps-by-decade-data.dev/
 
 cssVariables:
   headerHeight: 50px

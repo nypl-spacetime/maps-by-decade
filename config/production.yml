@@ -1,4 +1,4 @@
 publicPath: /mbd-test/
 
 data:
-  baseUrl: https://raw.githubusercontent.com/bertspaan/maps-by-decade-data/new-group-maps/
+  baseUrl: https://raw.githubusercontent.com/nypl-spacetime/maps-by-decade-data/master/
