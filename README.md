@@ -30,20 +30,18 @@ Maps by Decade is built using the following open source projects:
 
 Maps by Decade makes the Library's collection of digitized and georectified historical maps more accessible by displaying their outlines on a map of modern-day New York City.
 
-In [Map Warper](http://maps.nypl.org/warper/), maps are both rectified and cropped:
+In NYPL's [Map Warper](http://maps.nypl.org/warper/), maps are both rectified and cropped:
 
-1. [Rectifying a map by placing control point on original map, and on OpenStreetMaps](http://maps.nypl.org/warper/maps/15640#Rectify_tab)
-2. [Cropping a map by removing non-cartographic parts of scanned map](http://maps.nypl.org/warper/maps/15640#Crop_tab)
+1. [Rectifying a map](http://maps.nypl.org/warper/maps/15640#Rectify_tab)  by placing control point on original map, and on OpenStreetMap
+2. [Cropping a map](http://maps.nypl.org/warper/maps/15640#Crop_tab) by removing non-cartographic parts of scanned map
 
-Each map for which this is done is available via [Map Warper's API](http://maps.nypl.org/warper/maps.json).
-
-Data from Map Warper will appear in Maps by Decade through the following steps:
+Each map for which this is done is available via [Map Warper's API](http://maps.nypl.org/warper/maps.json). Data from Map Warper will appear in Maps by Decade through the following steps:
 
 1. Using the [Space/Time's ETL tool](https://github.com/nypl-spacetime/spacetime-etl) (Extract, Transform, Load), [`etl-mapwarper`](https://github.com/nypl-spacetime/etl-mapwarper) is run
   - This ETL module reads all maps from the Map Warper API and converts them to a [NYC Space/Time Directory dataset](http://spacetime.nypl.org/#data-mapwarper)
   - `etl-mapwarper` uses [mask-to-geojson](https://github.com/nypl-spacetime/mask-to-geojson ) to convert the outlines of cropped maps to GeoJSON
 2. Another ETL module, [`etl-group-maps`](https://github.com/nypl-spacetime/etl-group-maps) is executed; this module processes Space/Time's Map Warper dataset, groups all maps by decade, and uses [Turf](http://turfjs.org/) to compute the geospatial union per decade
-3. The two resulting GeoJSON files are [published on GitHub](https://github.com/nypl-spacetime/maps-by-decade-data)
+3. The two resulting GeoJSON files are [published on GitHub](https://github.com/nypl-spacetime/maps-by-decade-data):
 
 [![Screenshot of Maps by Decade data on GitHub](images/github-data.png)](See https://github.com/nypl-spacetime/maps-by-decade-data/all.geojson)
 
