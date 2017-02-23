@@ -4,8 +4,17 @@ import React from 'react'
 import styled from 'styled-components'
 
 const mobileWidth = __CONFIG__.cssVariables.mobileWidth
+const mapColor = __CONFIG__.cssVariables.mapColor
 
 const Container = styled.div`
+  & h2 {
+    border-bottom: solid 5px ${mapColor};
+  }
+
+  & h3 {
+    border-bottom: solid 2px ${mapColor};
+  }
+
   @media (min-width: ${mobileWidth}) {
     & p,
     & table,
