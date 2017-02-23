@@ -26,6 +26,27 @@ Maps by Decade is built using the following open source projects:
 - __[Turf](http://turfjs.org/)__: geospatial analysis and algorithms for JavaScript
 - __[`react-boilerplate`](https://github.com/react-boilerplate/react-boilerplate)__: I like React and Redux and webpack but I'm not smart enough to set up my own project and combine everything together. `react-boilerplate` does this for me. It has 10,000 dependencies and seems a bit too complicated, but maybe there's no way around that.
 
+## Data
+
+Maps by Decade makes the Library's collection of digitized and georectified historical maps more accessible by displaying their outlines on a map of modern-day New York City.
+
+In [Map Warper](http://maps.nypl.org/warper/), maps are both rectified and cropped:
+
+1. [Rectifying a map by placing control point on original map, and on OpenStreetMaps](http://maps.nypl.org/warper/maps/15640#Rectify_tab)
+2. [Cropping a map by removing non-cartographic parts of scanned map](http://maps.nypl.org/warper/maps/15640#Crop_tab)
+
+Each map for which this is done is available via [Map Warper's API](http://maps.nypl.org/warper/maps.json).
+
+Data from Map Warper will appear in Maps by Decade through the following steps:
+
+1. Using the [Space/Time's ETL tool](https://github.com/nypl-spacetime/spacetime-etl) (Extract, Transform, Load), [`etl-mapwarper`](https://github.com/nypl-spacetime/etl-mapwarper) is run
+  - This ETL module reads all maps from the Map Warper API and converts them to a [NYC Space/Time Directory dataset](http://spacetime.nypl.org/#data-mapwarper)
+  - `etl-mapwarper` uses [mask-to-geojson](https://github.com/nypl-spacetime/mask-to-geojson ) to convert the outlines of cropped maps to GeoJSON
+2. Another ETL module, [`etl-group-maps`](https://github.com/nypl-spacetime/etl-group-maps) is executed; this module processes Space/Time's Map Warper dataset, groups all maps by decade, and uses [Turf](http://turfjs.org/) to compute the geospatial union per decade
+3. The two resulting GeoJSON files are [published on GitHub](https://github.com/nypl-spacetime/maps-by-decade-data)
+
+[![Screenshot of Maps by Decade data on GitHub](images/github-data.png)](See https://github.com/nypl-spacetime/maps-by-decade-data/all.geojson)
+
 ## Installation
 
 To run Maps by Decade locally, first clone this repository:
@@ -41,6 +62,8 @@ To start Maps by Decade, run:
 
     npm run start-no-local-data
 
+Maps by Decade is now running on [localhost:3223](http://localhost:3223/)!
+
 By running `start-no-local-data`, Maps by Decade will load its data [from GitHub](https://github.com/nypl-spacetime/maps-by-decade-data).
 
 It's also possible to serve Maps by Decade's data files locally. To do this, run:
@@ -49,9 +72,7 @@ It's also possible to serve Maps by Decade's data files locally. To do this, run
 
 By default, Maps by Decade expects its two data files (e.g. `all.geojson` and `grouped.geojson`) to be available on http://maps-by-decade-data.dev/, but you can change this by editing [`config/default.yml`](config/default.yml).
 
-To use the `.dev` domain, Maps by Decade uses [Hotel](https://github.com/typicode/hotel):
-
-Install Hotel:
+To use the `.dev` domain, Maps by Decade uses [Hotel](https://github.com/typicode/hotel). Install Hotel:
 
     npm install -g hotel && hotel start
 
@@ -74,4 +95,4 @@ To build Maps by Decade, run:
 
     npm run build
 
-The `build` directory will now contain HTML, JS and CSS files you can distribute.
+The `build` directory will now contain HTML, JS, CSS and image files you can distribute.
