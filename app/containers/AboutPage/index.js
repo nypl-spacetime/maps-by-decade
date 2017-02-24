@@ -51,24 +51,21 @@ export class AboutPage extends React.Component {
 
           <h3>Data</h3>
           <p>
-            The data for Maps by Decade comes from <a href='http://maps.nypl.org/'>Map Warper</a>, a tool for browsing and georectifying thousands of the Library's public domain maps.
+            The data for Maps by Decade comes from <a href='http://maps.nypl.org/'>Map Warper</a>,
+            a tool for browsing and georectifying thousands of the Library's public domain maps.
+            To explore, download and use this dataset (and many others), see
+            the <a href='http://spacetime.nypl.org/#data'>Data section</a> on the website of
+            the NYC Space/Time Directory site.
           </p>
           <p>
-          GQIGS:
+            For detailed information about how data from Map Warper is used in Maps by Decade,
+            see <a href='https://github.com/nypl-spacetime/maps-by-decade/#data'>GitHub</a>.
           </p>
           <p>
-            <img src={qgisMapwarper} alt='All Map Warper maps in QGIS' />
+            Screenshot of displaying the outlines of all Map Warper maps in <a href='http://www.qgis.org/'>QGIS</a>:
           </p>
           <p>
-            The data for Maps by Decade is available in <a href='https://en.wikipedia.org/wiki/GeoJSON'>GeoJSON</a> in
-            the <a href='https://github.com/nypl-spacetime/maps-by-decade-data'>Maps by Decade Data
-            GitHub repository</a>. Among other tools, you can use <a href='http://geojson.io/'>GeoJSON.io</a> to
-            work with the dataset.
-          </p>
-          <p>
-            For more datasets, see the Data section of the NYPL Space/Time Directory site. Or for
-            examples on how to use the open data from this tool and many others, see
-            the <a href='https://github.com/nypl-spacetime/spacetime-data/'>spacetime-data repository</a>.
+            <img src={qgisMapwarper} alt='Displaying the Map Warper dataset in QGIS' />
           </p>
 
           <h3>Source Code</h3>
