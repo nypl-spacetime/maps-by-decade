@@ -2,11 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
 
-import ReactPaginate from 'react-paginate'
-
 import DataPageHeading from 'components/DataPageHeading'
 import NoMapsFound from 'components/NoMapsFound'
 import MapListItem from 'containers/MapListItem'
+import Paginate from 'containers/Paginate'
 
 import { formatNumber } from 'utils/utils'
 
@@ -18,7 +17,7 @@ import {
   selectMaps
 } from 'containers/App/actions'
 
-import { PaginateContainer, StyledList } from './styles'
+import { StyledList } from './styles'
 
 export class DataPageList extends React.Component {
 
@@ -42,18 +41,15 @@ export class DataPageList extends React.Component {
 
   render () {
     const count = Math.ceil(this.props.features.length / this.state.perPage)
-    const features = this.getMaps(this.state.page)
+    const page = Math.min(this.state.page, count - 1)
+    const features = this.getMaps(page)
 
     let paginate
 
     if (count > 1) {
       paginate = (
-        <PaginateContainer>
-          <ReactPaginate previousLabel='<' nextLabel='>' key={count} initialPage={0}
-            breakLabel={<span>...</span>} breakClassName={'break'}
-            pageCount={count} marginPagesDisplayed={1} pageRangeDisplayed={2}
-            onPageChange={this.handlePageClick.bind(this)} activeClassName={'active'} />
-        </PaginateContainer>
+        <Paginate page={page} pageCount={count}
+          onPageChange={this.handlePageClick.bind(this)} />
       )
     }
 
@@ -71,16 +67,17 @@ export class DataPageList extends React.Component {
               <MapListItem key={`${index}-${map.properties.id}`} map={map} index={index} />
             ) }
           </StyledList>
+          {paginate}
         </div>
       )
     }
   }
 
-  handlePageClick (data) {
+  handlePageClick (page) {
     this.setState({
-      page: data.selected
+      page
     })
-    this.props.selectMaps(this.getMaps(data.selected))
+    this.props.selectMaps(this.getMaps(page))
   }
 }
 
