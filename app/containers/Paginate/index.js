@@ -2,6 +2,8 @@ import React from 'react'
 
 import { StyledNav } from './styles'
 
+// Ideas from http://www.a11ymatters.com/pattern/pagination/
+
 function Item (props) {
   const isCurrent = props.page !== undefined && props.currentPage === props.page
   const tabIndex = (!isCurrent && props.page !== undefined) ? 0 : false
