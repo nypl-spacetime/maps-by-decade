@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
 
-import DataPageHeading from 'components/DataPageHeading'
 import NoMapsFound from 'components/NoMapsFound'
 import MapListItem from 'containers/MapListItem'
 import Paginate from 'containers/Paginate'
@@ -17,7 +16,7 @@ import {
   selectMaps
 } from 'containers/App/actions'
 
-import { StyledList } from './styles'
+import { StyledList, Found } from './styles'
 
 export class DataPageList extends React.Component {
 
@@ -58,11 +57,9 @@ export class DataPageList extends React.Component {
     } else {
       return (
         <div>
-          <div role='region' aria-live='polite'>
-            <DataPageHeading>
-              {formatNumber(this.props.features.length)} maps found
-            </DataPageHeading>
-          </div>
+          <Found role='region' aria-live='polite' aria-relevant='text'>
+            {formatNumber(this.props.features.length)} maps found
+          </Found>
           {paginate}
           <StyledList>
             { features.map((map, index) =>
