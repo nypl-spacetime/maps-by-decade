@@ -32,6 +32,10 @@ export const StyledNav = styled.nav`
     width: 50px;
   }
 
+  & li a {
+    text-decoration: none;
+  }
+
   & li.active a {
     background-color: ${mapColor};
   }

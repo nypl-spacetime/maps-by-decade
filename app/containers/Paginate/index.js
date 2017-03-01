@@ -8,6 +8,7 @@ function Item (props) {
   const isCurrent = props.page !== undefined && props.currentPage === props.page
   const tabIndex = (!isCurrent && props.page !== undefined) ? 0 : false
   const disabled = props.page === undefined
+  const href = disabled ? null : 'javascript:void(0)'
   let className = [
     disabled ? 'disabled' : null,
     isCurrent ? 'active' : null
@@ -15,7 +16,7 @@ function Item (props) {
 
   return (
     <li className={className} key={props.page} >
-      <a aria-label={props.label} aria-current={isCurrent} aria-hidden={disabled}
+      <a href={href} aria-label={props.label} aria-current={isCurrent} aria-hidden={disabled}
         tabIndex={tabIndex} onClick={props.onClick}>
         {props.children}
       </a>
