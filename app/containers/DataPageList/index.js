@@ -58,9 +58,11 @@ export class DataPageList extends React.Component {
     } else {
       return (
         <div>
-          <DataPageHeading role='region' aria-live='polite'>
-            {formatNumber(this.props.features.length)} maps found
-          </DataPageHeading>
+          <div role='region' aria-live='polite'>
+            <DataPageHeading>
+              {formatNumber(this.props.features.length)} maps found
+            </DataPageHeading>
+          </div>
           {paginate}
           <StyledList>
             { features.map((map, index) =>
