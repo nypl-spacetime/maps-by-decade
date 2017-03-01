@@ -34,6 +34,8 @@ injectGlobal`
   }
 
   :focus {
+    outline: 2px solid ${outlineColor};
+    outline: auto -webkit-focus-ring-color;
     outline-color: ${outlineColor};
   }
 
