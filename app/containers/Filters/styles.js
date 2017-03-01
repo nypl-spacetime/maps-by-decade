@@ -17,11 +17,6 @@ export const StyledForm = styled.form`
     border-radius: 3px;
   }
 
-  & label > span:after {
-    content: ':';
-    margin-right: 0.5em;
-  }
-
   & label div {
     padding: 10px;
   }

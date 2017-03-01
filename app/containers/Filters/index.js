@@ -14,6 +14,8 @@ import {
   selectGroups
 } from 'containers/App/selectors'
 
+import { decadeToPeriod } from 'utils/utils'
+
 import Button from 'components/Button'
 import DataPageHeading from 'components/DataPageHeading'
 
@@ -47,7 +49,7 @@ export class Filters extends React.Component {
                     <input type='checkbox' name='decades' id={`filter-decades-${index}`}
                       checked={checked} value={group}
                       onChange={this.handleChange.bind(this)} />
-                    <label htmlFor={`filter-decades-${index}`}>
+                    <label htmlFor={`filter-decades-${index}`} aria-label={decadeToPeriod(group)} >
                       {group}s
                     </label>
                   </div>
@@ -56,7 +58,7 @@ export class Filters extends React.Component {
             </Decades>
           </Fieldset>
           <label>
-            <span>Filter by title</span>
+            <span>Filter by title:</span>
             <div>
               <input type='text' name='title' value={this.props.filters.title || ''}
                 autoComplete='off' placeholder='Map title' onChange={this.handleChange.bind(this)} />
