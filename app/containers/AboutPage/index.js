@@ -137,33 +137,36 @@ export class AboutPage extends React.Component {
             an initiative of the <a href='http://www.knightfoundation.org/'>John S. and James
             L. Knight Foundation</a>.
           </p>
-          <img src={knightFoundation} alt='Knight Foundation Logo' style={{width: '50%', opacity: 0.88}} />
+          <p>
+            <img src={knightFoundation} alt='Knight Foundation Logo' style={{width: '50%', opacity: 0.88}} />
+          </p>
 
           <h2>Accessibility</h2>
           <p>
-            <a href='https://www.nypl.org/'>The New York Public Library</a> strives to ensure
-            that anyone can access the information and services it provides. Our digital teams
-            seek to conform to <a href='https://www.w3.org/TR/WCAG20/'>Web Content Accessibility
+            <a href='https://www.nypl.org/'>The New York Public Library</a> strives to ensure that
+            everyone has access to the full range of information, programs, and services that
+            it offers. Our digital teams seek to conform to <a href='https://www.w3.org/TR/WCAG20/'>Web Content Accessibility
             Guidelines (WCAG) 2.0</a> success criteria of at least Level AA. Even when
-            surpassing those criteria, we acknowledge that we might not meet the specific needs
-            of all users. As techniques and technologies evolve that better address those needs,
-            we are committed to adopting them into our development processes.
+            surpassing these criteria, we realize that we might not meet the needs of all users.
+            As new techniques emerge to address accessibility issues, we are committed to
+            incorporating them into our development processes.
           </p>
           <p>
-            Some items in our collections present accessibility challenges. In such cases, we
-            look at using metadata in different ways to improve accessibility. Additionally, as
-            part of our efforts, we actively work on projects that enrich our metadata. As a
-            result, we are increasingly able to provide better experiences of our collections to
-            all users&mdash;regardless of their abilities.
+            Some items in our collections present accessibility challenges. In such cases,
+            we look at using metadata in different ways to improve accessibility. Additionally,
+            as part of our efforts, we actively work on projects that enrich our metadata. As a
+            result, we are increasingly able to provide better experiences with our collections
+            for all users&mdash;regardless of their abilities.
           </p>
           <p>
-            If you encounter any accessibility shortfalls when using Maps by Decade or would like
-            to provide other feedback, please email <a href='mailto:spacetime@nypl.org'>spacetime@nypl.org</a>.
+            If you encounter any accessibility shortfalls when using Maps by Decade or would
+            like to provide other feedback, please email <a href='mailto:spacetime@nypl.org'>spacetime@nypl.org</a> or
+             TTY Ask NYPL at <a href='tel:2129300950'>212-930-0950</a>.
           </p>
           <p>
-            For further information about assistive technologies and accommodations available for
-            people with disabilities at the <a href='https://www.nypl.org/locations/'>research centers and branch libraries</a> of The New York
-            Public Library, please visit <a href='http://nypl.org/accessibility'>nypl.org/accessibility</a> or email <a href='mailto:accessibility@nypl.org'>accessibility@nypl.org</a>.
+            For further information about assistive technologies and accommodations available
+            for people with disabilities at the <a href='https://www.nypl.org/locations/'>research
+            centers and branch libraries</a> of The New York Public Library, please visit please visit <a href='http://nypl.org/accessibility'>nypl.org/accessibility</a> or email <a href='mailto:accessibility@nypl.org'>accessibility@nypl.org</a>.
           </p>
         </Article>
         <Footer />
