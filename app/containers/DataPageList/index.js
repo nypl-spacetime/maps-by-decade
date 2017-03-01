@@ -57,7 +57,7 @@ export class DataPageList extends React.Component {
     } else {
       return (
         <div>
-          <Found role='region' aria-live='polite' aria-relevant='text'>
+          <Found id='data-page-maps-found' role='region' aria-live='polite' aria-relevant='text'>
             {formatNumber(this.props.features.length)} maps found
           </Found>
           {paginate}
