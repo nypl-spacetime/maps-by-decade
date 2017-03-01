@@ -57,9 +57,8 @@ export class DataPageList extends React.Component {
       return <NoMapsFound groupBounds={this.props.groupBounds} />
     } else {
       return (
-        <div id='data-page-list' role='region'
-          aria-live='polite' aria-relevant='additions removals'>
-          <DataPageHeading>
+        <div>
+          <DataPageHeading role='region' aria-live='polite'>
             {formatNumber(this.props.features.length)} maps found
           </DataPageHeading>
           {paginate}
