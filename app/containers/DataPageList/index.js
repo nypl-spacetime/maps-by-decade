@@ -62,7 +62,8 @@ export class DataPageList extends React.Component {
             {formatNumber(this.props.features.length)} maps found
           </DataPageHeading>
           {paginate}
-          <StyledList>
+          <StyledList id='data-page-list' role='region'
+            aria-live='polite' aria-relevant='additions removals'>
             { features.map((map, index) =>
               <MapListItem key={`${index}-${map.properties.id}`} map={map} index={index} />
             ) }
