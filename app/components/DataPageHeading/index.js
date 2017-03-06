@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export const Heading = styled.h4`
+export const Heading = styled.h2`
   margin-bottom: 10px;
   font-size: 1em;
 `

@@ -58,9 +58,6 @@ function MapPageControls (props) {
   return (
     <Container>
       <div>
-        <Previous>
-          {previousDecade}
-        </Previous>
         <Middle>
           <Title>{decadeToPeriod(props.decade)}</Title>
           <Box>
@@ -69,6 +66,9 @@ function MapPageControls (props) {
             </Link>
           </Box>
         </Middle>
+        <Previous>
+          {previousDecade}
+        </Previous>
         <Next>
           {nextDecade}
         </Next>

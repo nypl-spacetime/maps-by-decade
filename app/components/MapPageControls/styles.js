@@ -64,18 +64,21 @@ export const PreviousNext = styled.div`
 `
 
 export const Previous = styled(PreviousNext)`
+  order: 0;
   & a {
     float: right;
   }
 `
 
 export const Next = styled(PreviousNext)`
+  order: 2;
   & a {
     float: left;
   }
 `
 
 export const Middle = styled.div`
+  order: 1;
   width: 220px;
   margin: 0 10px;
   pointer-events: none;
@@ -85,7 +88,7 @@ export const Middle = styled.div`
   }
 `
 
-export const Title = styled.div`
+export const Title = styled.h2`
   font-size: 2.5rem;
   font-family: 'MiloSlab';
   font-weight: bold;

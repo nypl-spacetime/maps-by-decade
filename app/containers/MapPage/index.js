@@ -105,13 +105,13 @@ export class MapPage extends React.Component {
       <Container>
         <Helmet title={`${decade}s`} />
         <MapPane active={!this.props.selectedMapsLocked}>
+          <MapPageControls previousDecade={this.props.previousDecade} nextDecade={this.props.nextDecade}
+            decade={decade} locked={this.props.selectedMapsLocked} selectedCount={this.props.selectedMaps.length} />
           <HoverMap decade={decade} tree={tree} crosshair hasTouch={this.props.hasTouch}
             groupedGeoJSON={this.props.groupedGeoJSON} allGeoJSON={this.props.allGeoJSON}
             onHoverMaps={this.hoverMaps.bind(this)} options={this.props.mapOptions}
             disableHover={this.props.selectedMapsLocked} mapCreated={this.mapCreated.bind(this)}
             onEachFeatureAll={this.onEachFeatureAll.bind(this)} onEachFeatureGrouped={this.onEachFeatureGrouped.bind(this)} />
-          <MapPageControls previousDecade={this.props.previousDecade} nextDecade={this.props.nextDecade}
-            decade={decade} locked={this.props.selectedMapsLocked} selectedCount={this.props.selectedMaps.length} />
         </MapPane>
         <Pane active={this.props.selectedMapsLocked}>
           <Sidebar />
