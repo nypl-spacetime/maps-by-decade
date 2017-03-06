@@ -55,11 +55,12 @@ export class DataPageList extends React.Component {
     if (count === 0) {
       return <NoMapsFound groupBounds={this.props.groupBounds} />
     } else {
+      const mapsFound = `${formatNumber(this.props.features.length)} maps found`
       return (
         <div>
           <Found id='data-page-maps-found' aria-atomic='true'
-            aria-live='polite'>
-            {formatNumber(this.props.features.length)} maps found
+            aria-live='polite' aria-relevant='text additions'>
+            {mapsFound}
           </Found>
           {paginate}
           <StyledList>

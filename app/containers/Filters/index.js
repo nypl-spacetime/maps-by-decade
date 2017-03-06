@@ -33,7 +33,7 @@ export class Filters extends React.Component {
     return (
       <div>
         <DataPageHeading>Search maps by decade and title:</DataPageHeading>
-        <StyledForm onSubmit={this.handleSubmit.bind(this)} ref='form'>
+        <StyledForm onSubmit={this.handleSubmit.bind(this)} ref='form' aria-controls='data-page-maps-found'>
           <span>Filter by decade:</span>
           <Fieldset>
             <Decades>
