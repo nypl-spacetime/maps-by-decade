@@ -1,20 +1,3 @@
-/*
- * App Actions
- *
- * Actions change things in your application
- * Since this boilerplate uses a uni-directional data flow, specifically redux,
- * we have these actions which are the only way your application interacts with
- * your appliction state. This guarantees that your state is up to date and nobody
- * messes it up weirdly somewhere.
- *
- * To add a new Action:
- * 1) Import your constant
- * 2) Add a function like this:
- *    export function yourAction(var) {
- *        return { type: YOUR_ACTION_CONSTANT, var: var }
- *    }
- */
-
 import {
   LOAD_DATA,
   LOAD_DATA_SUCCESS,
@@ -31,90 +14,106 @@ import {
 
   SHOW_LIGHTBOX,
   LIGHTBOX_PREV,
-  LIGHTBOX_NEXT
-} from './constants';
+  LIGHTBOX_NEXT,
 
-export function loadData(file) {
+  SET_FILTER,
+  RESET_FILTERS
+} from './constants'
+
+export function loadData (file) {
   return {
     type: LOAD_DATA,
     file
-  };
+  }
 }
 
-export function dataLoaded(file, data) {
+export function dataLoaded (file, data) {
   return {
     type: LOAD_DATA_SUCCESS,
     file,
     data
-  };
+  }
 }
 
-export function dataLoadingError(file, error) {
+export function dataLoadingError (file, error) {
   return {
     type: LOAD_DATA_ERROR,
     file,
     error
-  };
+  }
 }
 
-export function newMiniMap(map) {
+export function newMiniMap (map) {
   return {
     type: NEW_MINI_MAP,
     map
-  };
+  }
 }
 
-export function selectMaps(maps) {
+export function selectMaps (maps) {
   return {
     type: SELECT_MAPS,
     maps
-  };
+  }
 }
 
-export function lockSelectedMaps(locked) {
+export function lockSelectedMaps (locked) {
   return {
     type: LOCK_SELECTED_MAPS,
     locked
-  };
+  }
 }
 
-export function addTileLayerMap(feature) {
+export function addTileLayerMap (feature) {
   return {
     type: ADD_TILE_LAYER_MAP,
     feature
-  };
+  }
 }
 
-export function removeTileLayerMap(feature) {
+export function removeTileLayerMap (feature) {
   return {
     type: REMOVE_TILE_LAYER_MAP,
     feature
-  };
+  }
 }
 
-export function clearTileLayerMaps() {
+export function clearTileLayerMaps () {
   return {
-    type: CLEAR_TILE_LAYER_MAPS,
-    feature
-  };
+    type: CLEAR_TILE_LAYER_MAPS
+  }
 }
 
-export function showLightbox(show, index) {
+export function showLightbox (show, index) {
   return {
     type: SHOW_LIGHTBOX,
     show,
     index
-  };
+  }
 }
 
-export function lightboxPrev() {
+export function lightboxPrev () {
   return {
     type: LIGHTBOX_PREV
-  };
+  }
 }
 
-export function lightboxNext() {
+export function lightboxNext () {
   return {
     type: LIGHTBOX_NEXT
-  };
+  }
+}
+
+export function setFilter (filter, value) {
+  return {
+    type: SET_FILTER,
+    filter,
+    value
+  }
+}
+
+export function resetFilters () {
+  return {
+    type: RESET_FILTERS
+  }
 }

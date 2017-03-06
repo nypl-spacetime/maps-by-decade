@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) 2016 Bert Spaan
+Copyright (c) 2016 The New York Public Library
 
 Uses portions of https://github.com/mxstbr/react-boilerplate:
 Copyright (c) 2016 Maximilian Stoiber

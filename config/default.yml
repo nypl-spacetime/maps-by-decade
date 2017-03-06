@@ -2,9 +2,13 @@ data:
   baseUrl: http://maps-by-decade-data.dev/
 
 cssVariables:
+  headerHeight: 50px
   mobileWidth: 800px
-  homepageColor: '#aed8e6'
-  singleDecadeColor: '#ffd72e'
+  backgroundColor: '#fefefe'
+  textColor: '#333'
+  mainColor: '#aed8e6'
+  mapColor: '#d7ecf3'
+  outlineColor: '#ffd72e'
 
 mapOptions:
   singleDecade:
@@ -13,7 +17,7 @@ mapOptions:
       scrollWheelZoom: true
       doubleClickZoom: true
       boxZoom: true
-      keyboard: false
+      keyboard: true
       minZoom: 10
       maxZoom: 18
       attributionControl: false
@@ -21,8 +25,8 @@ mapOptions:
       center: [40.75319,-73.98224]
       maxBounds: [[40.436495, -73.424377], [41.155910, -74.347229]]
     tileLayer:
-      opacity: 0.3
-      tileUrl: https://api.mapbox.com/styles/v1/bertspaan/ciqawh1ss0007bzmag2ubt5tp/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmVydHNwYWFuIiwiYSI6ImR3dERiQk0ifQ.DLbScmbRohc3Sqv7prfhqw
+      opacity: 0.4
+      tileUrl: https://api.mapbox.com/styles/v1/nypllabs/ciqs7cs9w0000cwm74gb05xmq/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibnlwbGxhYnMiLCJhIjoiSFVmbFM0YyJ9.sl0CRaO71he1XMf_362FZQ
     geojson:
       color: '#39484c'
       weight: 1.5
@@ -39,17 +43,19 @@ mapOptions:
       zoomControl: false
       scrollWheelZoom: false
       doubleClickZoom: false
-      keyboard: false
+      keyboard: true
       boxZoom: false
       minZoom: 10
       maxZoom: 10
       attributionControl: false
       zoom: 10
       center: [40.75319,-73.98224]
-      maxBounds: [[40.436495, -73.424377], [41.155910, -74.347229]]
+      # With maxBounds enabled Leaflet.Sync is hangs browser when moving one
+      #   out of set bounds
+      # maxBounds: [[40.436495, -73.424377], [41.155910, -74.347229]]
     tileLayer:
-      opacity: 0.3
-      tileUrl: https://api.mapbox.com/styles/v1/bertspaan/cio0gk14s000hainh1ghuhmyu/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmVydHNwYWFuIiwiYSI6ImR3dERiQk0ifQ.DLbScmbRohc3Sqv7prfhqw
+      opacity: 0.6
+      tileUrl: https://api.mapbox.com/styles/v1/nypllabs/ciqs7ai4a0000cwm4663mv4x7/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibnlwbGxhYnMiLCJhIjoiSFVmbFM0YyJ9.sl0CRaO71he1XMf_362FZQ
     geojson:
       color: '#39484c'
       weight: 1.5

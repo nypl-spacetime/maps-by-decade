@@ -1,72 +1,80 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { findDOMNode } from 'react-dom';
+import React from 'react'
+import styled from 'styled-components'
+import { connect } from 'react-redux'
+import { findDOMNode } from 'react-dom'
 
-import L from 'leaflet';
-require('leaflet.sync');
+import L from 'leaflet'
+require('./Map.KeyboardEsc')
+require('leaflet.sync')
 
-import '../../../node_modules/leaflet/dist/leaflet.css';
-import styles from './styles.css';
+const StyledMap = styled.div`
+  width: 100%;
+  height: 100%;
+`
 
 export class Map extends React.Component {
 
-  roundCoordinate = (coordinate) => Math.round(coordinate * 1000000) / 1000000;
+  roundCoordinate = (coordinate) => Math.round(coordinate * 1000000) / 1000000
 
-  render() {
+  render () {
     return (
-      <div className={`${styles.map}`} ref='map' />
-    );
+      <StyledMap ref='map' className='map' />
+    )
   }
 
   getView = () => {
     if (this.map) {
-      var center = this.map.getCenter();
+      var center = this.map.getCenter()
       return {
         center: [
           center.lng,
           center.lat
         ].map(this.roundCoordinate),
-        zoom: this.map.getZoom(),
-      };
+        zoom: this.map.getZoom()
+      }
     } else {
-      return null;
+      return null
     }
   }
 
-  getMap = () => this.map;
+  getMap = () => this.map
 
   componentDidMount = () => {
-    var node = findDOMNode(this.refs.map);
+    var node = findDOMNode(this.refs.map)
 
-    var map = L.map(node, this.props.options);
+    var map = L.map(node, Object.assign({}, this.props.options, {
+      keyboard: false
+    }))
+
+    if (this.props.options.keyboard) {
+      map.addHandler('keyboardEsc', L.Map.KeyboardEsc)
+    }
 
     if (this.props.mapEvents) {
-      Object.keys(this.props.mapEvents).forEach((event) => map.on(event, this.props.mapEvents[event]));
+      Object.keys(this.props.mapEvents).forEach((event) => map.on(event, this.props.mapEvents[event]))
     }
 
     if (this.props.mapCreated) {
-      this.props.mapCreated(map);
+      this.props.mapCreated(map)
     }
 
-    this.map = map;
-
-    const zeroOffsetDimension = () => (node.offsetWidth && node.offsetHeight) ? false : true;
-    if (zeroOffsetDimension()) {
+    const zeroOffsetDimension = node.offsetWidth && node.offsetHeight
+    if (zeroOffsetDimension) {
       this.offsetDimensionInterval = window.setInterval(() => {
-        if (!zeroOffsetDimension()) {
-          this.map.invalidateSize();
-          window.clearInterval(this.offsetDimensionInterval);
+        if (!zeroOffsetDimension) {
+          this.map.invalidateSize()
+          window.clearInterval(this.offsetDimensionInterval)
         }
-      }, 100);
+      }, 100)
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     if (this.offsetDimensionInterval) {
-      window.clearInterval(this.offsetDimensionInterval);
+      window.clearInterval(this.offsetDimensionInterval)
     }
   }
 
 }
 
-export default connect(null, null, null, { withRef: true })(Map);
+export default connect(null, null, null, { withRef: true })(Map)

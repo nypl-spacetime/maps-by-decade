@@ -1,13 +1,19 @@
-import React from 'react';
+import React from 'react'
+import styled from 'styled-components'
 
-import styles from './styles.css';
+const Container = styled.article`
+  width: 100%;
+  margin: 0 auto;
+  max-width: 900px;
+  padding: 10px;
+`
 
-function Article(props) {
+function Article (props) {
   return (
-    <div className={styles.container}>
+    <Container>
       {props.children}
-    </div>
-  );
+    </Container>
+  )
 }
 
-export default Article;
+export default Article
