@@ -16,7 +16,7 @@ const config = require('config')
 
 const plugins = [
   new webpack.HotModuleReplacementPlugin(), // Tell webpack we want hot reloading
-  new webpack.NoErrorsPlugin(),
+  new webpack.NoEmitOnErrorsPlugin(),
   new webpack.DefinePlugin({
     __CONFIG__: JSON.stringify(config),
     __DEV__: true
