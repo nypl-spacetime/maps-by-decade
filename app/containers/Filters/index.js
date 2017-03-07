@@ -19,7 +19,7 @@ import { decadeToPeriod } from 'utils/utils'
 import Button from 'components/Button'
 import DataPageHeading from 'components/DataPageHeading'
 
-import { StyledForm, Fieldset, Decades } from './styles'
+import { StyledForm, Fieldset, Decades, InputContainer } from './styles'
 
 export class Filters extends React.Component {
   render () {
@@ -57,13 +57,14 @@ export class Filters extends React.Component {
               }) }
             </Decades>
           </Fieldset>
-          <label>
-            <span>Filter by title:</span>
-            <div>
-              <input type='text' name='title' value={this.props.filters.title || ''}
-                autoComplete='off' placeholder='Map title' onChange={this.handleChange.bind(this)} />
-            </div>
+          <label htmlFor='filter-title'>
+            Filter by title:
           </label>
+          <InputContainer>
+            <input type='text' name='title' value={this.props.filters.title || ''}
+              id='filter-title' autoComplete='off'
+              placeholder='Map title' onChange={this.handleChange.bind(this)} />
+          </InputContainer>
           { /*
           <div>
             <label>

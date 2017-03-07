@@ -6,7 +6,7 @@ import { StyledNav } from './styles'
 
 function Item (props) {
   const isCurrent = props.page !== undefined && props.currentPage === props.page
-  const tabIndex = (!isCurrent && props.page !== undefined) ? 0 : false
+  const tabIndex = (!isCurrent && props.page !== undefined) ? 0 : -1
   const disabled = props.page === undefined
   const href = disabled ? null : 'javascript:void(0)'
   let className = [
@@ -128,7 +128,7 @@ export class Paginate extends React.Component {
     }
 
     return (
-      <StyledNav role='navigation' aria-label='Pagination navigation'>
+      <StyledNav aria-label='Pagination navigation'>
         <ol>
           {previous}
           {firstItems}

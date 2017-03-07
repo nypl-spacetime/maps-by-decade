@@ -17,13 +17,13 @@ export const StyledForm = styled.form`
     border-radius: 3px;
   }
 
-  & label div {
-    padding: 10px;
-  }
-
   & button {
     margin-top: 10px;
   }
+`
+
+export const InputContainer = styled.div`
+  padding: 10px;
 `
 
 export const Fieldset = styled.fieldset`
