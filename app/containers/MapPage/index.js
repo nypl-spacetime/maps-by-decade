@@ -23,9 +23,9 @@ import {
   selectSelectedMapsLocked
 } from 'containers/App/selectors'
 
-import HoverMap from 'containers/HoverMap'
 import MapPageControls from 'components/MapPageControls'
-
+import ScreenReaderInfo from 'components/ScreenReaderInfo'
+import HoverMap from 'containers/HoverMap'
 import Sidebar from 'containers/Sidebar'
 import NotFoundPage from 'containers/NotFoundPage'
 
@@ -105,6 +105,7 @@ export class MapPage extends React.Component {
       <Container>
         <Helmet title={`${decade}s`} />
         <MapPane active={!this.props.selectedMapsLocked}>
+          <ScreenReaderInfo />
           <MapPageControls previousDecade={this.props.previousDecade} nextDecade={this.props.nextDecade}
             decade={decade} locked={this.props.selectedMapsLocked} selectedCount={this.props.selectedMaps.length} />
           <HoverMap decade={decade} tree={tree} crosshair hasTouch={this.props.hasTouch}

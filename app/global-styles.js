@@ -116,6 +116,18 @@ injectGlobal`
     background-image: url(images/external-link-white.svg);
   }
 
+  /* External links
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+  .only-screen-reader {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
   /* Mobile classes
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
 

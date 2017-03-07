@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
 import Article from 'components/Article'
+import ScreenReaderInfo from 'components/ScreenReaderInfo'
 import DecadeList from 'containers/DecadeList'
 
 import { createSelector } from 'reselect'
@@ -26,6 +27,7 @@ export class HomePage extends React.Component {
             Use it to compare urban geography across time, and marvel at the countours of New York City's past. For more information, see the <Link to='/about'>About page</Link>.
           </p>
         </DecadeList>
+        <ScreenReaderInfo />
       </Article>
     )
   }

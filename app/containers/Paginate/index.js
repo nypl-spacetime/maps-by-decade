@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { StyledNav, Hidden } from './styles'
+import { StyledNav } from './styles'
 
 // Ideas from http://www.a11ymatters.com/pattern/pagination/
 
@@ -131,10 +131,10 @@ export class Paginate extends React.Component {
 
     return (
       <StyledNav aria-label='Pagination navigation'>
-        <Hidden id='paginate-current-page'
+        <div className='only-screen-reader' id='paginate-current-page'
           aria-atomic='true' aria-live='polite' aria-relevant='text additions'>
           {currentPage}
-        </Hidden>
+        </div>
         <ol aria-controls='paginate-current-page'>
           {previous}
           {firstItems}
