@@ -52,3 +52,12 @@ export const StyledNav = styled.nav`
     opacity: 0.2;
   }
 `
+
+export const Hidden = styled.div`
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+`
