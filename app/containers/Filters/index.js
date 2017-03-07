@@ -34,8 +34,8 @@ export class Filters extends React.Component {
       <div>
         <DataPageHeading>Search maps by decade and title:</DataPageHeading>
         <StyledForm onSubmit={this.handleSubmit.bind(this)} ref='form' aria-controls='data-page-maps-found'>
-          <span>Filter by decade:</span>
           <Fieldset>
+            <legend>Filter by decade:</legend>
             <Decades>
               { groups.map((group, index) => {
                 let checked = true
@@ -57,14 +57,14 @@ export class Filters extends React.Component {
               }) }
             </Decades>
           </Fieldset>
-          <label htmlFor='filter-title'>
-            Filter by title:
-          </label>
-          <InputContainer>
-            <input type='text' name='title' value={this.props.filters.title || ''}
-              id='filter-title' autoComplete='off'
-              placeholder='Map title' onChange={this.handleChange.bind(this)} />
-          </InputContainer>
+          <Fieldset>
+            <legend>Filter by title:</legend>
+            <InputContainer>
+              <input type='text' name='title' value={this.props.filters.title || ''}
+                id='filter-title' autoComplete='off'
+                placeholder='e.g. "greenpoint"' onChange={this.handleChange.bind(this)} />
+            </InputContainer>
+          </Fieldset>
           { /*
           <div>
             <label>

@@ -41,15 +41,12 @@ export const Decades = styled.div`
 
   & > div {
     width: 100px;
-    // padding: 0 10px;
   }
 
   & label {
     display: inline-block;
     text-align: center;
     margin-left: 10px;
-    // padding: 0.5em 0.2em;
-    // padding: 5px 10px;
     cursor: pointer;
   }
 
