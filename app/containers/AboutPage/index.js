@@ -161,7 +161,7 @@ export class AboutPage extends React.Component {
           <p>
             If you encounter any accessibility shortfalls when using Maps by Decade or would
             like to provide other feedback, please email <a href='mailto:spacetime@nypl.org'>spacetime@nypl.org</a> or
-             TTY Ask NYPL at <a href='tel:2129300950'>212-930-0950</a>.
+             TTY Ask NYPL at <a href='tel:2129300020'>212-930-0020</a>.
           </p>
           <p>
             For further information about assistive technologies and accommodations available
