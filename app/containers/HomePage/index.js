@@ -25,9 +25,9 @@ export class HomePage extends React.Component {
           </p>
           <p>
             Use it to compare urban geography across time, and marvel at the countours of New York City's past. For more information, see the <Link to='/about'>About page</Link>.
+            <ScreenReaderInfo />
           </p>
         </DecadeList>
-        <ScreenReaderInfo />
       </Article>
     )
   }

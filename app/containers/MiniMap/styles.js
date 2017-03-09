@@ -33,4 +33,8 @@ export const Title = styled.h2`
 
   text-shadow: 0 0 8px white;
   text-align: center;
+
+  & a {
+    text-decoration: none;
+  }
 `

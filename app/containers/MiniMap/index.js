@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import { push } from 'react-router-redux'
 import { createSelector } from 'reselect'
 
@@ -47,7 +48,11 @@ export class MiniMap extends React.Component {
           onEachFeatureGrouped={this.onEachFeature.bind(this)} hasTouch={this.props.hasTouch}
           groupedGeoJSON={this.props.feature} allGeoJSON={this.props.allGeoJSON}
           mapCreated={this.mapCreated.bind(this)} options={mapOptions} />
-        <Title>{decadeToPeriod(group)}</Title>
+        <Title>
+          <Link to={group}>
+            {decadeToPeriod(group)}
+          </Link>
+        </Title>
       </StyledMiniMap>
     )
   }
