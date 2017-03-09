@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import turfInside from 'turf-inside'
+import turfInside from '@turf/inside'
 import L from 'leaflet'
 
 import Crosshair from 'components/Crosshair'
