@@ -166,7 +166,7 @@ export class AboutPage extends React.Component {
           <p>
             For further information about assistive technologies and accommodations available
             for people with disabilities at the <a href='https://www.nypl.org/locations/'>research
-            centers and branch libraries</a> of The New York Public Library, please visit please visit <a href='http://nypl.org/accessibility'>nypl.org/accessibility</a> or email <a href='mailto:accessibility@nypl.org'>accessibility@nypl.org</a>.
+            centers and branch libraries</a> of The New York Public Library, please visit <a href='http://nypl.org/accessibility'>nypl.org/accessibility</a> or email <a href='mailto:accessibility@nypl.org'>accessibility@nypl.org</a>.
           </p>
         </Article>
         <Footer />
