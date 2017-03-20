@@ -28,9 +28,16 @@ export class Sidebar extends React.Component {
     if (!this.props.selectedMaps || this.props.selectedMaps.length === 0) {
       let text
       if (this.props.hasTouch) {
-        text = 'Drag map to see details; tap to lock selection.'
+        text = <span>
+          Drag to move around the map, and tap to lock selected areas.
+        </span>
       } else {
-        text = 'Move mouse over map to see details, or use your arrow keys; click to lock selection.'
+        text = <span>
+          Use your mouse or arrow keys to move around the map. With a mouse,
+          hover over outlined areas to see details and click to lock and unlock
+          selected areas. When using arrow keys, press Enter to lock selections and
+          Escape to unlock.
+        </span>
       }
 
       return (
@@ -39,7 +46,7 @@ export class Sidebar extends React.Component {
             ←
           </span>
           <span>
-            {text} See the <Link to='/about'>About page</Link> for more information.
+            {text} <span>See the <Link to='/about'>About page</Link> for more information.</span>
           </span>
         </Instructions>
       )
@@ -48,7 +55,7 @@ export class Sidebar extends React.Component {
     return (
       <Container ref='sidebar'>
         <GoBack>
-          <ArrowLink direction='left' onClick={this.goBack.bind(this)}
+          <ArrowLink direction='left' onClick={this.goBack.bind(this)} showTextOnMobile
             title='Go back to map - or press Escape' >
             Go back to map
           </ArrowLink>

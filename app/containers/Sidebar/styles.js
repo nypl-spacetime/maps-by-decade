@@ -36,10 +36,9 @@ export const GoBack = styled.div`
   display: none;
   padding: 5px 10px;
   margin-right: 1.5em;
-  // padding: 5px;
 
   @media (max-width: ${mobileWidth}) {
-        display: flex;
+    display: flex;
     justify-content: center;
   }
 `

@@ -30,21 +30,30 @@ const RightArrow = styled(Arrow)`
 
 function ArrowLink (props) {
   const {direction, ...linkProps} = props
+
+  let underline
+
+  if (props.showTextOnMobile) {
+    underline = <Underline>
+      {props.children}
+    </Underline>
+  } else {
+    underline = <Underline className='hide-on-mobile'>
+      {props.children}
+    </Underline>
+  }
+
   if (direction === 'left') {
     return (
       <StyledLink {...linkProps}>
         <LeftArrow />
-        <Underline className='hide-on-mobile'>
-          {props.children}
-        </Underline>
+        {underline}
       </StyledLink>
     )
   } else {
     return (
       <StyledLink {...linkProps}>
-        <Underline className='hide-on-mobile'>
-          {props.children}
-        </Underline>
+        {underline}
         <RightArrow />
       </StyledLink>
     )
