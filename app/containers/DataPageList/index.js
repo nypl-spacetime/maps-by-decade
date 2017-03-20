@@ -43,10 +43,15 @@ export class DataPageList extends React.Component {
     const page = Math.min(this.state.page, count - 1)
     const features = this.getMaps(page)
 
-    let paginate
-
+    let paginate1
+    let paginate2
     if (count > 1) {
-      paginate = (
+      paginate1 = (
+        <Paginate page={page} pageCount={count} ariaLive
+          onPageChange={this.handlePageClick.bind(this)} />
+      )
+
+      paginate2 = (
         <Paginate page={page} pageCount={count}
           onPageChange={this.handlePageClick.bind(this)} />
       )
@@ -62,13 +67,13 @@ export class DataPageList extends React.Component {
             aria-live='polite' aria-relevant='text additions'>
             {mapsFound}
           </Found>
-          {paginate}
+          {paginate1}
           <StyledList>
             { features.map((map, index) =>
               <MapListItem key={`${index}-${map.properties.id}`} map={map} index={index} />
             ) }
           </StyledList>
-          {paginate}
+          {paginate2}
         </div>
       )
     }

@@ -127,14 +127,19 @@ export class Paginate extends React.Component {
       }
     }
 
-    const currentPage = `Current page: ${this.props.page + 1}`
-
-    return (
-      <StyledNav aria-label='Pagination navigation'>
+    let currentPageElement
+    if (this.props.ariaLive) {
+      const currentPage = `Current page: ${this.props.page + 1}`
+      currentPageElement = (
         <div className='only-screen-reader' id='paginate-current-page'
           aria-atomic='true' aria-live='polite' aria-relevant='text additions'>
           {currentPage}
         </div>
+      )
+    }
+
+    return (
+      <StyledNav aria-label='Pagination navigation'>
         <ol aria-controls='paginate-current-page'>
           {previous}
           {firstItems}
@@ -144,6 +149,7 @@ export class Paginate extends React.Component {
           {lastItems}
           {next}
         </ol>
+        {currentPageElement}
       </StyledNav>
     )
   }
