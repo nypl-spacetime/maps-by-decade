@@ -57,14 +57,14 @@ export class Filters extends React.Component {
               }) }
             </Decades>
           </Fieldset>
-          <Fieldset>
-            <legend>Filter by title:</legend>
+          <div>
+            <label htmlFor='filter-title'>Filter by title:</label>
             <InputContainer>
               <input type='text' name='title' value={this.props.filters.title || ''}
                 id='filter-title' autoComplete='off'
                 placeholder='e.g. "greenpoint"' onChange={this.handleChange.bind(this)} />
             </InputContainer>
-          </Fieldset>
+          </div>
           { /*
           <div>
             <label>
