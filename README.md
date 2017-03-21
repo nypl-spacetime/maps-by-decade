@@ -8,7 +8,7 @@ Maps by Decade shows more than 5,000 large-scale maps (i.e. maps depicting an ar
 
 For more information, see Map by Decade's [About page](http://spacetime.nypl.org/maps-by-decade/#about).
 
-[![Screenshot of Maps by Decade](images/screenshot.png)](http://spacetime.nypl.org/maps-by-decade)
+[![Screenshot of Maps by Decade](screenshot.png)](http://spacetime.nypl.org/maps-by-decade)
 
 ## NYC Space/Time Directory
 
@@ -40,12 +40,14 @@ In NYPL's [Map Warper](http://maps.nypl.org/warper/), maps are both rectified an
 Each map for which this is done is available via [Map Warper's API](http://maps.nypl.org/warper/maps.json). Data from Map Warper will appear in Maps by Decade through the following steps:
 
 1. Using [Space/Time's ETL tool](https://github.com/nypl-spacetime/spacetime-etl) (Extract, Transform, Load), [`etl-mapwarper`](https://github.com/nypl-spacetime/etl-mapwarper) is run
-  - This ETL module reads all maps from Map Warper's API and converts them to a [NYC Space/Time Directory dataset](http://spacetime.nypl.org/#data-mapwarper)
-  - `etl-mapwarper` uses [mask-to-geojson](https://github.com/nypl-spacetime/mask-to-geojson ) to convert the outlines of cropped maps to GeoJSON
+    - This ETL module reads all maps from Map Warper's API and converts them to a [NYC Space/Time Directory dataset](http://spacetime.nypl.org/#data-mapwarper)
+    - `etl-mapwarper` uses [mask-to-geojson](https://github.com/nypl-spacetime/mask-to-geojson ) to convert the outlines of cropped maps to GeoJSON
 2. Another ETL module, [`etl-group-maps`](https://github.com/nypl-spacetime/etl-group-maps) is executed; this module processes Space/Time's Map Warper dataset, groups all maps by decade, and uses [Turf](http://turfjs.org/) to compute the geospatial union per decade
-3. The two resulting GeoJSON files are [published on GitHub](https://github.com/nypl-spacetime/maps-by-decade-data):
+3. The two resulting GeoJSON files are published on S3:
+    - [`maps-by-decade.all.geojson`](http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.all.geojson)
+    - [`maps-by-decade.grouped.geojson`](http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.grouped.geojson)
 
-[![Screenshot of Maps by Decade data on GitHub](images/github-data.png)](See https://github.com/nypl-spacetime/maps-by-decade-data/all.geojson)
+[![Screenshot of Maps by Decade data, visualized with QGIS](app/images/qgis-mapwarper.png)]
 
 ## Installation
 
@@ -64,13 +66,13 @@ To start Maps by Decade, run:
 
 Maps by Decade is now running on [localhost:3223](http://localhost:3223/)!
 
-By running `start-no-local-data`, Maps by Decade will load its data [from GitHub](https://github.com/nypl-spacetime/maps-by-decade-data).
+By running `start-no-local-data`, Maps by Decade will load its data from S3.
 
 It's also possible to serve Maps by Decade's data files locally. To do this, run:
 
     npm start
 
-By default, Maps by Decade expects its two data files (e.g. `all.geojson` and `grouped.geojson`) to be available on http://maps-by-decade-data.dev/, but you can change this by editing [`config/default.yml`](config/default.yml).
+Then, by default, Maps by Decade expects its two data files (e.g. `maps-by-decade.all.geojson` and `maps-by-decade.grouped.geojson`) to be available on http://group-maps-data.dev/, but you can change this by editing [`config/default.yml`](config/default.yml).
 
 To use the `.dev` domain, Maps by Decade uses [Hotel](https://github.com/typicode/hotel). Install Hotel:
 
@@ -80,16 +82,31 @@ Install [http-server](https://github.com/indexzero/http-server):
 
     npm install http-server -g
 
-Then, clone Maps by Decade's data repository:
+Clone Maps by Decade's data repository:
 
-    git clone https://github.com/nypl-spacetime/maps-by-decade-data
-    cd maps-by-decade-data
+    mkdir group-maps-data
+    cd group-maps-data
+    wget http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.all.geojson
+    wget http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.grouped.geojson
 
 Add a Hotel dev server in the data directory, with CORS enabled:
 
     hotel add 'http-server -p $PORT --cors'
 
-Now, the Maps by Decade data files are available on http://maps-by-decade-data.dev/.
+Now, the Maps by Decade data files are available on http://group-maps-data.dev/.
+
+It's also possible to use Space/Time's ETL tool to fetch Map Warper data and compute Maps by Decade data yourself:
+
+- [See GitHub for instructions](https://github.com/nypl-spacetime/spacetime-etl) how to install and use the ETL tool
+- Install the following two ETL modules:
+    1. [`etl-mapwarper`](https://github.com/nypl-spacetime/etl-mapwarper)
+    2. [`etl-group-maps`](https://github.com/nypl-spacetime/etl-group-maps)
+- Run both ETL modules:
+    1. `spacetime-etl mapwarper`
+    2. `spacetime-etl group-maps`
+
+[Space/Time's ETL tool](https://github.com/nypl-spacetime/spacetime-etl)
+etl map-warper and etl-gropu-maps
 
 To build Maps by Decade, run:
 

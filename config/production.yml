@@ -1,4 +1,4 @@
 publicPath: /mbd-test/
 
 data:
-  baseUrl: https://raw.githubusercontent.com/nypl-spacetime/maps-by-decade-data/master/
+  baseUrl: http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/

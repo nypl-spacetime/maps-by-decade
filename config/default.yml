@@ -1,5 +1,5 @@
 data:
-  baseUrl: http://maps-by-decade-data.dev/
+  baseUrl: http://group-maps-data.dev/
 
 cssVariables:
   headerHeight: 50px
