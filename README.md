@@ -47,7 +47,7 @@ Each map for which this is done is available via [Map Warper's API](http://maps.
     - [`maps-by-decade.all.geojson`](http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.all.geojson)
     - [`maps-by-decade.grouped.geojson`](http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.grouped.geojson)
 
-[![Screenshot of Maps by Decade data, visualized with QGIS](app/images/qgis-mapwarper.png)]
+![Screenshot of Maps by Decade data, visualized with QGIS](app/images/qgis-mapwarper.png)
 
 ## Installation
 
