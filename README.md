@@ -43,7 +43,7 @@ Each map for which this is done is available via [Map Warper's API](http://maps.
     - This ETL module reads all maps from Map Warper's API and converts them to a [NYC Space/Time Directory dataset](http://spacetime.nypl.org/#data-mapwarper)
     - `etl-mapwarper` uses [mask-to-geojson](https://github.com/nypl-spacetime/mask-to-geojson ) to convert the outlines of cropped maps to GeoJSON
 2. Another ETL module, [`etl-group-maps`](https://github.com/nypl-spacetime/etl-group-maps) is executed; this module processes Space/Time's Map Warper dataset, groups all maps by decade, and uses [Turf](http://turfjs.org/) to compute the geospatial union per decade
-3. The two resulting GeoJSON files are published on S3:
+3. The two resulting GeoJSON files are published on Amazon S3 (and served via Amazon CloudFront):
     - [`maps-by-decade.all.geojson`](http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.all.geojson)
     - [`maps-by-decade.grouped.geojson`](http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.grouped.geojson)
 
@@ -66,7 +66,7 @@ To start Maps by Decade, run:
 
 Maps by Decade is now running on [localhost:3223](http://localhost:3223/)!
 
-By running `start-no-local-data`, Maps by Decade will load its data from S3.
+By running `start-no-local-data`, Maps by Decade will load its data from Amazon CloudFront.
 
 It's also possible to serve Maps by Decade's data files locally. To do this, run:
 
@@ -89,7 +89,7 @@ Clone Maps by Decade's data repository:
     wget http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.all.geojson
     wget http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.grouped.geojson
 
-Add a Hotel dev server in the data directory, with CORS enabled:
+Add a Hotel dev server in the `group-maps-data` directory, with CORS enabled:
 
     hotel add 'http-server -p $PORT --cors'
 

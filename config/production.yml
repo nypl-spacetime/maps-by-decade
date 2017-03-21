@@ -1,4 +1,5 @@
 publicPath: /mbd-test/
 
 data:
-  baseUrl: http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/
+  baseUrl: http://d3l53tpdbq0uw2.cloudfront.net/group-maps/
+
