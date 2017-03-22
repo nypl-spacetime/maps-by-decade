@@ -47,6 +47,8 @@ Each map for which this is done is available via [Map Warper's API](http://maps.
     - [`maps-by-decade.all.geojson`](http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.all.geojson)
     - [`maps-by-decade.grouped.geojson`](http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.grouped.geojson)
 
+Screenshot of Maps by Decade data, visualized with QGIS:
+
 ![Screenshot of Maps by Decade data, visualized with QGIS](app/images/qgis-mapwarper.png)
 
 ## Installation
@@ -82,7 +84,7 @@ Install [http-server](https://github.com/indexzero/http-server):
 
     npm install http-server -g
 
-Clone Maps by Decade's data repository:
+Download Maps by Decade's data files:
 
     mkdir group-maps-data
     cd group-maps-data
@@ -95,7 +97,7 @@ Add a Hotel dev server in the `group-maps-data` directory, with CORS enabled:
 
 Now, the Maps by Decade data files are available on http://group-maps-data.dev/.
 
-It's also possible to use Space/Time's ETL tool to fetch Map Warper data and compute Maps by Decade data yourself:
+It's also possible to use [Space/Time's ETL tool](https://github.com/nypl-spacetime/spacetime-etl) to fetch Map Warper data and compute Maps by Decade data yourself:
 
 - [See GitHub for instructions](https://github.com/nypl-spacetime/spacetime-etl) how to install and use the ETL tool
 - Install the following two ETL modules:
@@ -104,9 +106,6 @@ It's also possible to use Space/Time's ETL tool to fetch Map Warper data and com
 - Run both ETL modules:
     1. `spacetime-etl mapwarper`
     2. `spacetime-etl group-maps`
-
-[Space/Time's ETL tool](https://github.com/nypl-spacetime/spacetime-etl)
-etl map-warper and etl-gropu-maps
 
 To build Maps by Decade, run:
 
