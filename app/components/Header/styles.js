@@ -51,11 +51,8 @@ export const StyledHeader = styled.header`
 export const Logo = styled.a`
   width: 43px;
   height: 43px;
-  opacity: 0.8;
   background-size: contain;
   background-position: center;
-  margin-top: -3px;
-  margin-left: 5px;
   margin-right: 5px;
 
   & > span {

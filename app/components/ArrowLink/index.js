@@ -29,11 +29,11 @@ const RightArrow = styled(Arrow)`
 `
 
 function ArrowLink (props) {
-  const {direction, ...linkProps} = props
+  const {direction, showTextOnMobile, ...linkProps} = props
 
   let underline
 
-  if (props.showTextOnMobile) {
+  if (showTextOnMobile) {
     underline = <Underline>
       {props.children}
     </Underline>
