@@ -34,8 +34,8 @@ Maps by Decade makes the Library's collection of digitized and georectified hist
 
 In NYPL's [Map Warper](http://maps.nypl.org/warper/), maps are both rectified and cropped:
 
-1. [Rectifying a map](http://maps.nypl.org/warper/maps/15640#Rectify_tab) by placing control points on the original map and on OpenStreetMap
-2. [Cropping a map](http://maps.nypl.org/warper/maps/15640#Crop_tab) by removing non-cartographic parts of scanned map
+1. [Map rectification](http://maps.nypl.org/warper/maps/15640#Rectify_tab): placing control points on the original map and on OpenStreetMap
+2. [Map cropping](http://maps.nypl.org/warper/maps/15640#Crop_tab): selecting and removing non-cartographic areas on the original map
 
 Each map for which this is done is available via [Map Warper's API](http://maps.nypl.org/warper/maps.json). Data from Map Warper will appear in Maps by Decade through the following steps:
 
