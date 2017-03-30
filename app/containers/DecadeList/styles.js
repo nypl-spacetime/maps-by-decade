@@ -19,6 +19,7 @@ export const List = styled.ol`
 export const ItemWrapper = styled.li`
   position: relative;
   width: calc(33.33% - 6.66px);
+  margin-bottom: 10px;
 
   &:before {
     content: "";
@@ -55,7 +56,6 @@ export const Item = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  padding-bottom: 10px;
 `
 
 export const ChildContainer = styled(Item)`
