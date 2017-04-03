@@ -52,10 +52,10 @@ export class AboutPage extends React.Component {
           <h3>Data</h3>
           <p>
             The data for Maps by Decade comes from <a href='http://maps.nypl.org/'>Map Warper</a>,
-            a tool for browsing and georectifying thousands of the Library's public domain maps.
+            our tool for browsing and georectifying thousands of the Library's public domain maps.
             To explore, download and use this dataset (and many others), see
             the <a href='http://spacetime.nypl.org/#data'>Data section</a> on the website of
-            the NYC Space/Time Directory site.
+            the NYC Space/Time Directory.
           </p>
           <p>
             For detailed information about how data from Map Warper is used in Maps by Decade,
