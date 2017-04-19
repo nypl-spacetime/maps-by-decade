@@ -116,7 +116,7 @@ injectGlobal`
     background-image: url(images/external-link-white.svg);
   }
 
-  /* External links
+  /* Screen Reader
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
   .only-screen-reader {
