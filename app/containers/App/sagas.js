@@ -20,7 +20,7 @@ import request from 'utils/request'
 
 function* loadData (action) {
   const dataConfig = yield select(selectDataConfig())
-  const url = `${dataConfig.baseUrl}maps-by-decade.${action.file}.geojson`
+  const url = `${dataConfig.baseUrl}maps-by-decade.${action.file}.json`
 
   try {
     const data = yield call(request, url)
