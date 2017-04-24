@@ -115,7 +115,6 @@ function appReducer (state = initialState, action) {
         .update('miniMaps', (miniMaps) => miniMaps.push(action.map))
     case LOCATION_CHANGE:
       return state
-        .set('selectedMaps', [])
         .set('selectedMapsLocked', false)
         .set('ligtboxIndex', 0)
         .set('tileLayerMaps', fromJS({}))
