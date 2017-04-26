@@ -74,7 +74,7 @@ It's also possible to serve Maps by Decade's data files locally. To do this, run
 
     npm start
 
-Then, by default, Maps by Decade expects its two data files (e.g. `maps-by-decade.all.geojson` and `maps-by-decade.grouped.geojson`) to be available on http://group-maps-data.dev/, but you can change this by editing [`config/default.yml`](config/default.yml).
+Then, by default, Maps by Decade expects its two data files (e.g. `maps-by-decade.all.json` and `maps-by-decade.grouped.json`) to be available on http://group-maps-data.dev/, but you can change this by editing [`config/default.yml`](config/default.yml).
 
 To use the `.dev` domain, Maps by Decade uses [Hotel](https://github.com/typicode/hotel). Install Hotel:
 
@@ -88,8 +88,8 @@ Download Maps by Decade's data files:
 
     mkdir group-maps-data
     cd group-maps-data
-    wget http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.all.geojson
-    wget http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.grouped.geojson
+    wget http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.all.json
+    wget http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.grouped.json
 
 Add a Hotel dev server in the `group-maps-data` directory, with CORS enabled:
 
