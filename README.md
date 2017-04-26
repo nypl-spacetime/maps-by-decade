@@ -44,8 +44,8 @@ Each map for which this is done is available via [Map Warper's API](http://maps.
     - `etl-mapwarper` uses [mask-to-geojson](https://github.com/nypl-spacetime/mask-to-geojson ) to convert the outlines of cropped maps to GeoJSON
 2. Another ETL module, [`etl-group-maps`](https://github.com/nypl-spacetime/etl-group-maps) is executed; this module processes Space/Time's Map Warper dataset, groups all maps by decade, and uses [Turf](http://turfjs.org/) to compute the geospatial union per decade
 3. The two resulting GeoJSON files are published on Amazon S3 (and served via Amazon CloudFront):
-    - [`maps-by-decade.all.geojson`](http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.all.geojson)
-    - [`maps-by-decade.grouped.geojson`](http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.grouped.geojson)
+    - [`maps-by-decade.all.json`](http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.all.json)
+    - [`maps-by-decade.grouped.json`](http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.grouped.json)
 
 Screenshot of Maps by Decade data, visualized with QGIS:
 
