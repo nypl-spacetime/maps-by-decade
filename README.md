@@ -44,8 +44,8 @@ Each map for which this is done is available via [Map Warper's API](http://maps.
     - `etl-mapwarper` uses [mask-to-geojson](https://github.com/nypl-spacetime/mask-to-geojson ) to convert the outlines of cropped maps to GeoJSON
 2. Another ETL module, [`etl-group-maps`](https://github.com/nypl-spacetime/etl-group-maps) is executed; this module processes Space/Time's Map Warper dataset, groups all maps by decade, and uses [Turf](http://turfjs.org/) to compute the geospatial union per decade
 3. The two resulting GeoJSON files are published on Amazon S3 (and served via Amazon CloudFront):
-    - [`maps-by-decade.all.geojson`](http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.all.geojson)
-    - [`maps-by-decade.grouped.geojson`](http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.grouped.geojson)
+    - [`maps-by-decade.all.json`](http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.all.json)
+    - [`maps-by-decade.grouped.json`](http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.grouped.json)
 
 Screenshot of Maps by Decade data, visualized with QGIS:
 
@@ -74,7 +74,7 @@ It's also possible to serve Maps by Decade's data files locally. To do this, run
 
     npm start
 
-Then, by default, Maps by Decade expects its two data files (e.g. `maps-by-decade.all.geojson` and `maps-by-decade.grouped.geojson`) to be available on http://group-maps-data.dev/, but you can change this by editing [`config/default.yml`](config/default.yml).
+Then, by default, Maps by Decade expects its two data files (e.g. `maps-by-decade.all.json` and `maps-by-decade.grouped.json`) to be available on http://group-maps-data.dev/, but you can change this by editing [`config/default.yml`](config/default.yml).
 
 To use the `.dev` domain, Maps by Decade uses [Hotel](https://github.com/typicode/hotel). Install Hotel:
 
@@ -88,8 +88,8 @@ Download Maps by Decade's data files:
 
     mkdir group-maps-data
     cd group-maps-data
-    wget http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.all.geojson
-    wget http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.grouped.geojson
+    wget http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.all.json
+    wget http://s3.amazonaws.com/spacetime-nypl-org/datasets/group-maps/maps-by-decade.grouped.json
 
 Add a Hotel dev server in the `group-maps-data` directory, with CORS enabled:
 
