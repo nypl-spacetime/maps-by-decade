@@ -140,28 +140,28 @@ export class AboutPage extends React.Component {
           <p>
             <img src={knightFoundation} alt='Knight Foundation Logo' style={{width: '50%', opacity: 0.88}} />
           </p>
-
           <h2>Accessibility</h2>
           <p>
             <a href='https://www.nypl.org/'>The New York Public Library</a> strives to ensure that
-            everyone has access to the full range of information, programs, and services that
-            it offers. Our digital teams seek to conform to <a href='https://www.w3.org/TR/WCAG20/'>Web Content Accessibility
-            Guidelines (WCAG) 2.0</a> success criteria of at least Level AA. Even when
-            surpassing these criteria, we realize that we might not meet the needs of all users.
-            As new techniques emerge to address accessibility issues, we are committed to
-            incorporating them into our development processes.
+            everyone has access to the full range of information, programs, and services that it
+            offers. When developing NYPL websites and mobile applications, our digital teams seek
+            to conform to <a href='https://www.w3.org/TR/WCAG20/'>Web Content Accessibility Guidelines
+            (WCAG) 2.0</a> success criteria of at least Level AA. Even when surpassing these
+            criteria, we realize that we might not meet the needs of all users. As new techniques
+            emerge to address accessibility issues, we are committed to incorporating them into our
+            development processes.
           </p>
           <p>
-            Some items in our collections present accessibility challenges. In such cases,
-            we look at using metadata in different ways to improve accessibility. Additionally,
-            as part of our efforts, we actively work on projects that enrich our metadata. As a
-            result, we are increasingly able to provide better experiences with our collections
-            for all users&mdash;regardless of their abilities.
+            Some items in our collections present accessibility challenges. In such cases, we look
+            at using metadata in different ways to improve accessibility. Additionally, as part of
+            our efforts, we actively work on projects that enrich our metadata. As a result, we are
+            increasingly able to provide better experiences with our collections for all
+            users&mdash;regardless of their abilities.
           </p>
           <p>
-            If you encounter any accessibility shortfalls when using Maps by Decade or would
-            like to provide other feedback, please email <a href='mailto:spacetime@nypl.org'>spacetime@nypl.org</a> or
-             TTY Ask NYPL at <a href='tel:2129300020'>212-930-0020</a>.
+            If you encounter any accessibility shortfalls when using Maps by Decade, or would like
+            to provide other feedback, please <a href='http://gethelp.nypl.org/customer/portal/emails/new'>contact Ask NYPL by email</a> or
+            call 917-275-6975 (TTY 212-930-0020).
           </p>
           <p>
             For further information about assistive technologies and accommodations available
