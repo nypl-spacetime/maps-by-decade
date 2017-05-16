@@ -19,7 +19,6 @@ export class HoverMap extends React.Component {
 
     this.throttleMs = 75
     this.highlightMapsLatLng = null
-
     this.state = {
       showCrosshair: props.crosshair && props.hasTouch
     }
@@ -46,6 +45,7 @@ export class HoverMap extends React.Component {
 
   render () {
     let crosshair
+
     if (this.props.crosshair && this.state.showCrosshair) {
       crosshair = (
         <Crosshair />
@@ -98,7 +98,7 @@ export class HoverMap extends React.Component {
       }
 
       this.setState({
-        showCrosshair: false
+        showCrosshair: this.props.hasTouch
       })
 
       this.updateHighlightedMaps(event.latlng)

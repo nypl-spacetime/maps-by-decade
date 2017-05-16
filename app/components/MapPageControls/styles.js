@@ -99,7 +99,7 @@ export const Title = styled.h2`
 
   @media (max-width: ${mobileWidth}) {
     & {
-      font-size: 1.2em;
+      font-size: 1.8em;
     }
   }
 `
