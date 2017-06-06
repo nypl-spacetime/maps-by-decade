@@ -1,6 +1,6 @@
 {
   "name": "spacetime-maps-by-decade",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "New York City street maps from the New York Public Library, grouped by decade",
   "repository": {
     "type": "git",

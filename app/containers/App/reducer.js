@@ -102,14 +102,15 @@ function appReducer (state = initialState, action) {
           .set('mapCount', action.data.features.length)
       }
 
-      var loaded = true
+      let allLoaded = true
       for (let value of newState.get('data').values()) {
-        loaded = loaded && (value !== undefined)
+        allLoaded = allLoaded && value
       }
 
+      const loading = !allLoaded
       return newState
         .set('selectedMaps', [])
-        .set('loading', !loaded)
+        .set('loading', loading)
     case NEW_MINI_MAP:
       return state
         .update('miniMaps', (miniMaps) => miniMaps.push(action.map))
