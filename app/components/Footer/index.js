@@ -28,7 +28,7 @@ function Footer (props) {
           A <a href='http://spacetime.nypl.org/'>NYC Space/Time Directory</a> project
         </p>
         <p>
-          © The New York Public Library, Astor, Lenox, and Tilden Foundation 2013-2017
+          © The New York Public Library, Astor, Lenox and Tilden Foundations 2013–2017
         </p>
         <p>
           <img src={nypl} alt='The New York Public Library' />
